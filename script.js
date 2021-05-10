@@ -20,6 +20,8 @@ let songIndex = 0;
 // load song info to DOM
 loadSong(songs[songIndex]);
 
+const section = document.querySelector(".music-section");
+
 // load and update song title and media
 function loadSong(song) {
     title.textContent = song;
@@ -43,12 +45,22 @@ function pauseSong() {
 }
 
 // functions for prev and next btns
+function theme () {
+    // section.classList.add(`${themes[songIndex]}`);
+    // section.classList.remove(themes[songIndex-1])
+    // Would we need to remove the prev class or will the new class over ride it? 
+    // Does it need to be in a template literal because it needs to be a string for the classList.add method? 
+    section.style.backgroundColor = colors[songIndex];
+    progress.style.backgroundColor = colors[songIndex];
+}
+
 function prevSong() {
     songIndex--;
     if (songIndex < 0) {
         songIndex = songs.length - 1;
     }
     loadSong(songs[songIndex]);
+    theme ();
     playSong();
 }
 
@@ -58,6 +70,7 @@ function nextSong() {
         songIndex = 0;
     }
     loadSong(songs[songIndex]);
+    theme();
     playSong();
 }
 

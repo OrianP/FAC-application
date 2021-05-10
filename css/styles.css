@@ -131,7 +131,7 @@
 .action-btn:focus {
     outline: 0;
 }
-
+/* Use the below as a model for all the different color gradients */
 .pink-bg {
     background-image: linear-gradient(
         0deg,
@@ -139,3 +139,7 @@
         #fcdddd 92%
     );
 }
+/* Thoughts on changing bg and progress themes: */
+
+/* create generic gradient overlay and add it as a class to section */
+/* or put the classnames instead of colors in the array to include specifc linear gradients and add/remove classlists in the theme function */
