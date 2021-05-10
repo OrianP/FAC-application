@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
+  <title>Orian Peled</title>
+</head>
+
+<body>
+  <header>
+  </header>
+  <main>
+    <section class="music-section pink-bg">
+        <h2>My Music</h2>
+        <div class="music-container">
+            <div class="music-info">
+                <h3 id="song-title">Here We Are</h3>
+                <div class="progress-container">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <audio src="media/music/Here We Are.mp3" id="audio"></audio>
+
+            <div class="artwork-container">
+                <img src="media/images/HWA.jpg" alt="Here We Are Single Artwork" id="cover">
+            </div>
+
+            <div class="navigation">
+                <button id="prev" class="action-btn">
+                    <i class="fas fa-backward"></i>
+                </button>
+                <button id="play" class="action-btn action-btn-big">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="next" class="action-btn">
+                    <i class="fas fa-forward"></i>
+                </button>
+            </div> 
+        </div>
+    </section>
+  </main>
+  <footer>
+  </footer>
+</body>
+</html>
