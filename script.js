@@ -1,5 +1,5 @@
 // Music Player
-
+const musicSection = document.querySelector(".music-section");
 const musicContainer = document.querySelector(".music-container");
 const playBtn = document.querySelector("#play");
 const prevBtn = document.querySelector("#prev");
@@ -12,15 +12,18 @@ const cover = document.querySelector("#cover");
 
 // song titles
 const songs = ["Here We Are", "Dancing On The Floor", "Leave It Til Tomorrow", "When It Comes To Love"];
-
+// progress bar colors
 const colors = ["#f68e88", "#006184", "#1a4d31", "#930118"];
+// musicSection background gradients
+const bgColor = ["pink-bg", "blue-bg", "green-bg", "red-bg"];
+// musicContainer box shadows 
+const boxShadow = ["pink-shadow", "blue-shadow", "green-shadow", "red-shadow"]; 
 
 let songIndex = 0;
+let lastSongIndex = songs.length -1;
 
 // load song info to DOM
 loadSong(songs[songIndex]);
-
-const section = document.querySelector(".music-section");
 
 // load and update song title and media
 function loadSong(song) {
@@ -45,22 +48,15 @@ function pauseSong() {
 }
 
 // functions for prev and next btns
-function theme () {
-    // section.classList.add(`${themes[songIndex]}`);
-    // section.classList.remove(themes[songIndex-1])
-    // Would we need to remove the prev class or will the new class over ride it? 
-    // Does it need to be in a template literal because it needs to be a string for the classList.add method? 
-    section.style.backgroundColor = colors[songIndex];
-    progress.style.backgroundColor = colors[songIndex];
-}
-
 function prevSong() {
     songIndex--;
     if (songIndex < 0) {
         songIndex = songs.length - 1;
     }
     loadSong(songs[songIndex]);
-    theme ();
+    prevTheme(musicSection, bgColor);
+    prevTheme(musicContainer, boxShadow);
+    prevTheme (progress, colors);
     playSong();
 }
 
@@ -70,10 +66,48 @@ function nextSong() {
         songIndex = 0;
     }
     loadSong(songs[songIndex]);
-    theme();
+    nextTheme(musicSection, bgColor);
+    nextTheme(musicContainer, boxShadow);
+    nextTheme (progress, colors);
     playSong();
 }
 
+function prevTheme(el, arr) {
+    // Change background gradient 
+    // Initial bg-color class is never removed but is overriden by CSS source order
+    el.classList.add(`${arr[songIndex]}`);
+    el.classList.remove(`${arr[songIndex + 1]}`);
+    // Remove the last bg-color class when song index returns to zero in the prevSong function
+    if (songIndex === 0) {
+        el.classList.remove(`${arr[lastSongIndex]}`) 
+    };
+    // Change progress bar color
+    // Seems that js is creating a class from the colors array and this code is redundant:
+    // el.style.backgroundColor = arr[songIndex];
+
+    console.log(el.className)
+    console.log(el.style.backgroundColor);
+    console.log(songIndex);
+} 
+
+function nextTheme (el, arr) {
+    // Change background gradient 
+    // Remove the class of the previous index
+    el.classList.add(`${arr[songIndex]}`);
+    el.classList.remove(`${arr[songIndex -1]}`);
+    // Remove the last bg-color class when song index returns to zero in the nextSong function
+    if (songIndex === 0) {
+        el.classList.remove(`${arr[lastSongIndex]}`) 
+    };
+    // Change progress bar color 
+    // Seems that js is creating a class from the colors array and this code is redundant: 
+    // el.style.backgroundColor = arr[songIndex];
+
+    console.log(el.className);
+    console.log(el.style.backgroundColor);
+    console.log(songIndex);
+};
+        
 function updateProgress (e) {
     const {duration, currentTime} = e.srcElement;
     const progressPercent = (currentTime / duration) * 100;
