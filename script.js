@@ -12,15 +12,16 @@ const cover = document.querySelector("#cover");
 
 // song titles
 const songs = ["Here We Are", "Dancing On The Floor", "Leave It Til Tomorrow", "When It Comes To Love"];
-// progress bar colors
-const colors = ["#f68e88", "#006184", "#1a4d31", "#930118"];
+// progress bar colors make this into classes!!!!
+const colors = ["pink", "blue", "green", "red"];
 // musicSection background gradients
 const bgColor = ["pink-bg", "blue-bg", "green-bg", "red-bg"];
 // musicContainer box shadows 
 const boxShadow = ["pink-shadow", "blue-shadow", "green-shadow", "red-shadow"]; 
 
 let songIndex = 0;
-let lastSongIndex = songs.length -1;
+let prevIndex = songIndex -1;
+let lastSongIndex = songs.length - 1;
 
 // load song info to DOM
 loadSong(songs[songIndex]);
@@ -45,7 +46,7 @@ function pauseSong() {
     playBtn.querySelector("i.fas").classList.add("fa-play");
     playBtn.querySelector("i.fas").classList.remove("fa-pause");
     audio.pause();
-}
+};
 
 // functions for prev and next btns
 function prevSong() {
@@ -81,30 +82,31 @@ function prevTheme(el, arr) {
     if (songIndex === 0) {
         el.classList.remove(`${arr[lastSongIndex]}`) 
     };
-    // Change progress bar color
-    // Seems that js is creating a class from the colors array and this code is redundant:
-    // el.style.backgroundColor = arr[songIndex];
-
+    
     console.log(el.className)
-    console.log(el.style.backgroundColor);
     console.log(songIndex);
 } 
+
+// function changeTheme (el, arr) {
+//     el.classList.add(`${arr[songIndex]}`);
+//     if (songIndex > prevIndex) { 
+//         el.classList.remove(`${arr[prevIndex]}`)
+//     } else {
+//         el.classList.remove(`${arr[songIndex + 1]}`);
+//     }
+// };
 
 function nextTheme (el, arr) {
     // Change background gradient 
     // Remove the class of the previous index
-    el.classList.add(`${arr[songIndex]}`);
+    el.classList.add(`${arr[songIndex]}`); 
     el.classList.remove(`${arr[songIndex -1]}`);
     // Remove the last bg-color class when song index returns to zero in the nextSong function
     if (songIndex === 0) {
         el.classList.remove(`${arr[lastSongIndex]}`) 
     };
-    // Change progress bar color 
-    // Seems that js is creating a class from the colors array and this code is redundant: 
-    // el.style.backgroundColor = arr[songIndex];
-
+    
     console.log(el.className);
-    console.log(el.style.backgroundColor);
     console.log(songIndex);
 };
         
