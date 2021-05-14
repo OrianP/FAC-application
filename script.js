@@ -12,15 +12,14 @@ const cover = document.querySelector("#cover");
 
 // song titles
 const songs = ["Here We Are", "Dancing On The Floor", "Leave It Til Tomorrow", "When It Comes To Love"];
-// progress bar colors make this into classes!!!!
+// progress bar color classes
 const colors = ["pink", "blue", "green", "red"];
-// musicSection background gradients
+// musicSection background gradient classes
 const bgColor = ["pink-bg", "blue-bg", "green-bg", "red-bg"];
-// musicContainer box shadows 
+// musicContainer box shadow classes
 const boxShadow = ["pink-shadow", "blue-shadow", "green-shadow", "red-shadow"]; 
 
 let songIndex = 0;
-let prevIndex = songIndex -1;
 let lastSongIndex = songs.length - 1;
 
 // load song info to DOM
@@ -55,9 +54,9 @@ function prevSong() {
         songIndex = songs.length - 1;
     }
     loadSong(songs[songIndex]);
-    prevTheme(musicSection, bgColor);
-    prevTheme(musicContainer, boxShadow);
-    prevTheme (progress, colors);
+    changeTheme(musicSection, bgColor);
+    changeTheme(musicContainer, boxShadow);
+    changeTheme (progress, colors);
     playSong();
 }
 
@@ -67,47 +66,28 @@ function nextSong() {
         songIndex = 0;
     }
     loadSong(songs[songIndex]);
-    nextTheme(musicSection, bgColor);
-    nextTheme(musicContainer, boxShadow);
-    nextTheme (progress, colors);
+    changeTheme(musicSection, bgColor);
+    changeTheme(musicContainer, boxShadow);
+    changeTheme (progress, colors);
     playSong();
 }
 
-function prevTheme(el, arr) {
-    // Change background gradient 
-    // Initial bg-color class is never removed but is overriden by CSS source order
+function changeTheme (el, arr) {
+// Variables to hold the prev and next song indices based on the updated songIndex in prevSong and nextSong functions
+    let prevIndex = songIndex - 1;
+    let nextIndex = songIndex + 1;
+// Add the class correlating to the songIndex in the provided array
+// Remove the previous and next index classes 
     el.classList.add(`${arr[songIndex]}`);
-    el.classList.remove(`${arr[songIndex + 1]}`);
-    // Remove the last bg-color class when song index returns to zero in the prevSong function
+    el.classList.remove(`${arr[prevIndex]}`, `${arr[nextIndex]}`)
+// When we reach songIndex 0 again, remove the last class in the array. This functionality is for the nextBtn
     if (songIndex === 0) {
         el.classList.remove(`${arr[lastSongIndex]}`) 
     };
-    
-    console.log(el.className)
-    console.log(songIndex);
-} 
-
-// function changeTheme (el, arr) {
-//     el.classList.add(`${arr[songIndex]}`);
-//     if (songIndex > prevIndex) { 
-//         el.classList.remove(`${arr[prevIndex]}`)
-//     } else {
-//         el.classList.remove(`${arr[songIndex + 1]}`);
-//     }
-// };
-
-function nextTheme (el, arr) {
-    // Change background gradient 
-    // Remove the class of the previous index
-    el.classList.add(`${arr[songIndex]}`); 
-    el.classList.remove(`${arr[songIndex -1]}`);
-    // Remove the last bg-color class when song index returns to zero in the nextSong function
-    if (songIndex === 0) {
-        el.classList.remove(`${arr[lastSongIndex]}`) 
-    };
-    
-    console.log(el.className);
-    console.log(songIndex);
+    // console.log(songIndex);
+    // console.log(prevIndex);
+    // console.log(nextIndex);
+    // console.log(el.className);
 };
         
 function updateProgress (e) {
@@ -123,6 +103,7 @@ function setProgress (e) {
     const duration = audio.duration;
     audio.currentTime = (clickX / width) * duration;
 }
+
 // event listeners
 // play and pause btns
 playBtn.addEventListener('click', () => {
