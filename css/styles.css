@@ -1,3 +1,61 @@
+/* Banner */
+
+.banner {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.banner-title {
+    font-size: 2rem;
+    /* fallback bg color  */
+    background-color: #FFCC70;
+/* gradient */
+    background-image: linear-gradient(to left, #6cee90 0%, #60f2dc 15%, #3e93cd 39%, #4158D0 60%, #C850C0 80%, #FFCC70 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 200%;
+    animation: gradient 10s linear infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0%, 50%;
+    }
+    50% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: 0%, 50%;
+    }
+}
+
+.shiny-button {
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 1rem 5rem;
+    text-transform: uppercase;
+    color: whitesmoke;
+    background: #c94b4b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
+      /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-size: 300% 300%;
+    transition: background-position 300ms;
+    
+}
+
+.banner .shiny-button:hover {
+    background-position: right center;
+}
+/* Music */
+
 .music-info {
     display: flex;
     flex-direction: column;
@@ -195,7 +253,3 @@
 }
 
 
-/* Thoughts on changing bg and progress themes: */
-
-/* create generic gradient overlay and add it as a class to section */
-/* or put the classnames instead of colors in the array to include specifc linear gradients and add/remove classlists in the theme function */
