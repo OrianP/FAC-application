@@ -33,6 +33,11 @@
     }
 }
 
+.txt-type > .txt {
+    border-right: 0.13rem solid #006184;
+    padding-right: 0.12rem;
+}
+
 .shiny-button {
     margin-top: 1rem;
     border: none;
@@ -47,13 +52,13 @@
     background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     background-size: 300% 300%;
-    transition: background-position 300ms;
-    
+    transition: background-position 300ms;    
 }
 
 .banner .shiny-button:hover {
     background-position: right center;
 }
+
 /* Music */
 
 .music-info {

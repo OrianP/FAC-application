@@ -1,3 +1,81 @@
+// Banner
+// constructor function for TypWriter object
+const TypeWriter = function(txtElement, words, wait = 1500){
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = '';
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
+}
+
+// type method
+TypeWriter.prototype.type = function() {
+    // current index of word
+    const current = this.wordIndex % this.words.length;
+    
+    // get full text of word
+    const fullTxt = this.words[current];
+    
+    // check if deleting
+    if (this.isDeleting) {
+        // remove char
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+        // add char
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    // insert txt into element
+    this.txtElement.innerHTML = `<h1 class="txt">${this.txt}</h1>`;
+
+    // initial type speed
+    let typeSpeed = 150;
+    // check if deleting
+    if (this.isDeleting) {
+        // set the speed at which to delete chars
+        typeSpeed -= 50; 
+    } 
+
+    // check if word is complete
+    if(!this.isDeleting && this.txt === fullTxt) {
+        // set a pause at end of word
+        typeSpeed = this.wait;
+        // set delete to true
+        this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        // type next line
+        this.wordIndex++;
+        // pause before typing next line
+        typeSpeed = 400;
+    }
+
+    const id = setTimeout(() => this.type(), typeSpeed);
+    console.log(id);
+    // Trying to find a variable to compare the setTimeout function id to, so I don't have to hard code it to 68
+    const wordsArrlength = this.words.toString().split('');
+    console.log(wordsArrlength)
+    if(id === 68) {
+        clearTimeout(id);
+    }
+}
+
+// initialize on DOM load 
+document.addEventListener('DOMContentLoaded', init);
+
+// init app
+function init() {
+    const txtElement = document.querySelector('.txt-type');
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+    // init TypeWriter
+    new TypeWriter(txtElement, words, wait);
+
+}
+
+
 // Music Player
 const musicSection = document.querySelector(".music-section");
 const musicContainer = document.querySelector(".music-container");
