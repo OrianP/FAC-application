@@ -1,80 +1,129 @@
 // Banner
-// constructor function for TypWriter object
-const TypeWriter = function(txtElement, words, wait = 1500){
-    this.txtElement = txtElement;
-    this.words = words;
-    this.txt = '';
-    this.wordIndex = 0;
-    this.wait = parseInt(wait, 10);
-    this.type();
-    this.isDeleting = false;
-}
+const phrases = ['Hello Founders and Coders', 'How are you today?'];
+let phraseIndex = 0;
+let letterIndex = 0;
+let currentPhrase = '';
+let letter = '';
+let isDeleting = false;
+// initial typing speed used as the setTimeout delay parameter 
+let typeSpeed = 150;
 
-// type method
-TypeWriter.prototype.type = function() {
-    // current index of word
-    const current = this.wordIndex % this.words.length;
-    
-    // get full text of word
-    const fullTxt = this.words[current];
-    
-    // check if deleting
-    if (this.isDeleting) {
-        // remove char
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
+// Immediately invoked function
+(function typeEffect () {
+    currentPhrase = phrases[phraseIndex];
+    // Check if we are on the last phrase in the array and keep it displayed on screen instead of deleting
+    if (phraseIndex === phrases.length - 1) {
+        isDeleting = false;
+    }
+
+    if (isDeleting) {
+    // remove character at faster typing speed
+        typeSpeed = 100
+        letter = currentPhrase.substring(0, --letterIndex);
+
     } else {
-        // add char
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
+    //  add character at initial typing speed
+        typeSpeed = 150;
+        letter = currentPhrase.substring(0, ++letterIndex);
     }
 
-    // insert txt into element
-    this.txtElement.innerHTML = `<h1 class="txt">${this.txt}</h1>`;
-
-    // initial type speed
-    let typeSpeed = 150;
-    // check if deleting
-    if (this.isDeleting) {
-        // set the speed at which to delete chars
-        typeSpeed -= 50; 
-    } 
-
-    // check if word is complete
-    if(!this.isDeleting && this.txt === fullTxt) {
-        // set a pause at end of word
-        typeSpeed = this.wait;
-        // set delete to true
-        this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        // type next line
-        this.wordIndex++;
-        // pause before typing next line
-        typeSpeed = 400;
+    // select the h1 element with a class of 'banner-title' and update it's text content to display the letter
+    document.querySelector('.banner-title').textContent = letter;
+    
+    // if the phrase typing is complete, start removing characters by setting isDeleting to true
+    if (letter.length === currentPhrase.length) {
+        // pause before deleting characters
+        typeSpeed = 800
+        isDeleting = true; 
+    };
+    
+    // if the deletion of characters is complete, move on to the next phrase by incrementing phraseIndex and reset letterIndex to type characters from index 0 of the next phrase. Set isDeleting back to false. 
+    if(isDeleting && letter === '') {
+        phraseIndex++;
+        letterIndex = 0;
+        isDeleting = false; 
+        // pause before typing next phrase
+        typeSpeed = 800   
     }
+    console.log(typeSpeed);
+    // console.log(setTimeout.id);
+    setTimeout(typeEffect, typeSpeed); 
+}());
 
-    const id = setTimeout(() => this.type(), typeSpeed);
-    console.log(id);
-    // Trying to find a variable to compare the setTimeout function id to, so I don't have to hard code it to 68
-    const wordsArrlength = this.words.toString().split('');
-    console.log(wordsArrlength)
-    if(id === 68) {
-        clearTimeout(id);
-    }
-}
+// Traversy Media Tutorial 
+// constructor function for TypeWriter object
+// const TypeWriter = function(txtElement, words, wait = 1500){
+//     this.txtElement = txtElement;
+//     this.words = words;
+//     this.txt = '';
+//     this.wordIndex = 0;
+//     this.wait = parseInt(wait, 10);
+//     this.type();
+//     this.isDeleting = false;
+// }
 
-// initialize on DOM load 
-document.addEventListener('DOMContentLoaded', init);
+// // type method
+// TypeWriter.prototype.type = function() {
+//     // current index of word
+//     const current = this.wordIndex; 
+//     // get full text of word
+//     const fullTxt = this.words[current];
+//     // check if deleting
+//     if (this.isDeleting) {
+//         // remove char
+//         this.txt = fullTxt.substring(0, this.txt.length - 1);
+//     } else {
+//         // add char
+//         this.txt = fullTxt.substring(0, this.txt.length + 1);
+//     }
 
-// init app
-function init() {
-    const txtElement = document.querySelector('.txt-type');
-    const words = JSON.parse(txtElement.getAttribute('data-words'));
-    const wait = txtElement.getAttribute('data-wait');
-    // init TypeWriter
-    new TypeWriter(txtElement, words, wait);
+//     // insert txt into element
+//     this.txtElement.innerHTML = `<h1 class="txt">${this.txt}</h1>`;
 
-}
+//     // initial type speed
+//     let typeSpeed = 150;
+//     // check if deleting
+//     if (this.isDeleting) {
+//         // set the speed at which to delete chars
+//         typeSpeed -= 50; 
+//     } 
 
+//     // check if word is complete
+//     if(!this.isDeleting && this.txt === fullTxt) {
+//         // set a pause at end of word
+//         typeSpeed = this.wait;
+//         // set delete to true
+//         this.isDeleting = true;
+//     } else if (this.isDeleting && this.txt === '') {
+//         this.isDeleting = false;
+//         // type next line
+//         this.wordIndex++;
+//         // pause before typing next line
+//         typeSpeed = 400;
+//     }
+
+//     const id = setTimeout(() => this.type(), typeSpeed);
+//     // console.log(id);
+//     // Trying to find a variable to compare the setTimeout function id to, so I don't have to hard code it to 68
+//     const wordsArrlength = this.words.toString().split('');
+//     // console.log(wordsArrlength)
+//     if(id === 68) {
+//         clearTimeout(id);
+//     }
+// }
+
+// // initialize on DOM load 
+// document.addEventListener('DOMContentLoaded', init);
+
+// // init app
+// function init() {
+//     const txtElement = document.querySelector('.txt-type');
+//     const words = JSON.parse(txtElement.getAttribute('data-words'));
+//     const wait = txtElement.getAttribute('data-wait');
+//     // init TypeWriter
+//     new TypeWriter(txtElement, words, wait);
+
+// }
 
 // Music Player
 const musicSection = document.querySelector(".music-section");
@@ -204,6 +253,3 @@ progressContainer.addEventListener('click', setProgress);
 
 // play next song when current song ends
 audio.addEventListener('ended', nextSong);
-
-
-

@@ -21,6 +21,13 @@
     animation: gradient 10s linear infinite;
 }
 
+.banner-title::after {
+    content: "";
+    border-right: 1px solid #4158D0;
+    margin-left: 2px;
+    animation: blink 0.5s infinite ease;
+}
+
 @keyframes gradient {
     0% {
         background-position: 0%, 50%;
@@ -33,10 +40,20 @@
     }
 }
 
-.txt-type > .txt {
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Traversy Media typewriter effect */
+/* .txt-type > .txt {
     border-right: 0.13rem solid #006184;
     padding-right: 0.12rem;
-}
+} */
 
 .shiny-button {
     margin-top: 1rem;
