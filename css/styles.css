@@ -1,3 +1,39 @@
+body {
+    font-size: 16px;
+}
+
+/* hides the menu items when JS is enabled in the browser */
+.js-enabled .menu-items {
+    display: none;
+}
+
+/* Navigation */
+
+#hamburger {
+    margin: 0.5rem 0rem 0rem 0.5rem;
+    border: 1px solid transparent;
+    background-color: inherit;   
+    height: auto;
+    width: 5rem;
+}
+
+#hamburger[aria-expanded ="true"] {
+    background-color: pink;
+}
+
+#expanded {
+    display: none;
+}
+
+#hamburger[aria-expanded ="true"] #expanded {
+    display: block;
+}
+
+/* sibling selector to select the menu items */
+#hamburger[aria-expanded ="true"] + .menu-items {
+    display: block;
+}
+
 /* Banner */
 
 .banner {
@@ -15,6 +51,7 @@
     background-color: #FFCC70;
 /* gradient */
     background-image: linear-gradient(to left, #6cee90 0%, #60f2dc 15%, #3e93cd 39%, #4158D0 60%, #C850C0 80%, #FFCC70 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-size: 200%;
@@ -25,7 +62,7 @@
     content: "";
     border-right: 1px solid #4158D0;
     margin-left: 2px;
-    animation: blink 0.5s infinite ease;
+    animation: blink 0.5s paused;
 }
 
 @keyframes gradient {
