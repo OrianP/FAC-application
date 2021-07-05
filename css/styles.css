@@ -1,20 +1,48 @@
 body {
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 /* hides the menu items when JS is enabled in the browser */
-.js-enabled .menu-items {
+.js-enabled .menu-items, .js-enabled .fa-times {
     display: none;
+}
+
+/* Layout */
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Navigation */
 
+nav {
+    position: relative;
+}
+
 #hamburger {
-    margin: 0.5rem 0rem 0rem 0.5rem;
+    margin: 0.5rem 0.5rem 0 0;
     border: 1px solid transparent;
-    background-color: inherit;   
-    height: auto;
-    width: 5rem;
+    background-color: inherit; 
+    padding: 0;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    right: 0rem;
+    
+}
+
+.fa-bars {
+    font-size: 2.5rem;
+}
+
+.fa-times {
+    font-size: 2rem;
 }
 
 #hamburger[aria-expanded ="true"] {
@@ -31,6 +59,15 @@ body {
 
 /* sibling selector to select the menu items */
 #hamburger[aria-expanded ="true"] + .menu-items {
+    display: block;
+    text-align: center;
+}
+
+#hamburger[aria-expanded ="true"] .fa-bars {
+    display: none;
+}
+
+#hamburger[aria-expanded ="true"] .fa-times {
     display: block;
 }
 

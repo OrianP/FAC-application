@@ -1,7 +1,6 @@
 // Navigation
-// if JS is enabled in the browser, add the classlist 'js-enabled' to the nav element to hide the menu items (in css)
-const nav = document.querySelector('nav');
-nav.classList.add('js-enabled');
+// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (in css)
+document.body.classList.add('js-enabled');
 
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('#hamburger');
