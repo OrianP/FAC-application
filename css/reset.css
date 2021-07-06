@@ -38,8 +38,13 @@ body {
 	box-sizing: inherit;
 }
 
-ol, ul, a {
+ol, ul, li, a {
 	list-style: none; 
 	text-decoration: none;
 	font-family: inherit;
 }
+
+a {
+	color: inherit;
+}
+

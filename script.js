@@ -1,9 +1,17 @@
 // Navigation
+
+const hamburger = document.querySelector('#hamburger');
+
 // if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (in css)
 document.body.classList.add('js-enabled');
 
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
+})
+
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('#hamburger');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.addEventListener('click', () => {
         if ((hamburger.getAttribute('aria-expanded')) === 'true') {
