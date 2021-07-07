@@ -1,18 +1,26 @@
-// Navigation
+// Navigation 
 
-const hamburger = document.querySelector('#hamburger');
+// select hamburger button
+const hamburger = document.querySelector('.hamburger');
 
-// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (in css)
+// the menu is expanded by default for progressive enhancement (if JS is disabled in the user's browser)
+// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 23)
 document.body.classList.add('js-enabled');
 
+// Event listeners 
+
+// collapse the hamburger menu when the width of the window content area exceeds 1024px 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 1024) {
         hamburger.setAttribute('aria-expanded', 'false');
     }
 })
 
+// collapse the hamburger menu on page load when JS is enabled (code will not run if JS is disabled) 
+// button click logic: if the menu is expanded: collapse it. else, if it is collapsed: expand it
 document.addEventListener('DOMContentLoaded', function() {
     hamburger.setAttribute('aria-expanded', 'false');
+
     hamburger.addEventListener('click', () => {
         if ((hamburger.getAttribute('aria-expanded')) === 'true') {
             hamburger.setAttribute('aria-expanded', 'false')
@@ -21,9 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 });
-
-
-
 
 
 // Banner

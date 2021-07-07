@@ -3,40 +3,37 @@ body {
     overflow-x: hidden;
 }
 
-/* hides the menu items when JS is enabled in the browser */
-.js-enabled .menu, .js-enabled .fa-times {
-    display: none;
-}
-
 /* Layout */
-
+/* these have not been applied in HTML yet */
 .flex {
     display: flex;
 }
 
 .flex-column {
     flex-direction: column;
-    
 }
 
 /* Navigation */
 
 nav {
     position: relative;
-    align-items: center;
-    justify-content: end;
 }
 
-#hamburger {
+/* hide the menu and 'X' icon when JS is enabled in the browser */
+.js-enabled .menu, .js-enabled .fa-times {
+    display: none;
+}
+
+.hamburger {
+    font-family:'Encode Sans Semi Expanded', sans-serif;  
     margin: 0.5rem 0.5rem 0 0;
+    padding: 0;
     border: 1px solid transparent;
     background-color: inherit; 
-    padding: 0;
     width: 4rem;
     height: 4rem;
     position: absolute;
     right: 0rem;
-    font-family:'Encode Sans Semi Expanded', sans-serif;  
     cursor: pointer;  
 }
 
@@ -45,36 +42,29 @@ nav {
 }
 
 .fa-times {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
-#hamburger[aria-expanded ="true"] {
+.hamburger[aria-expanded ="true"] {
     background-color: pink;
 }
 
-#expanded {
+.hamburger[aria-expanded ="true"] .fa-bars {
     display: none;
 }
 
-#hamburger[aria-expanded ="true"] #expanded {
+/* display 'X' icon when hamburger is expanded */
+.hamburger[aria-expanded ="true"] .fa-times {
     display: block;
 }
 
-/* sibling selector to select the menu items */
-#hamburger[aria-expanded ="true"] + .menu {
+/* sibling selector to select the menu when hamburger is expanded */
+.hamburger[aria-expanded ="true"] + .menu {
     display: block;
     text-align: center;
-    margin-top: 5rem;
+    padding-top: 5rem;
     width: 100%;
     border-bottom: 1px solid lightcoral;
-}
-
-#hamburger[aria-expanded ="true"] .fa-bars {
-    display: none;
-}
-
-#hamburger[aria-expanded ="true"] .fa-times {
-    display: block;
 }
 
 .menu {
@@ -89,20 +79,24 @@ nav {
 
 @media only screen and (min-width: 1024px) {
 
-    #hamburger {
+/* Navigation */
+
+    .hamburger {
         display: none;
     }
 
-    nav.flex-column {
-        flex-direction: row;
+    .js-disabled nav, .js-enabled nav {
+        display: flex;
         justify-content: flex-end;
         margin-right: 0.5rem;
     }
 
-    .js-enabled .menu {
+    /* change layout of menu. if JS is disabled, the aria-expanded will be true by default  */
+    .js-disabled .hamburger[aria-expanded ="true"] + .menu, .js-enabled .menu  {
         display: flex;
         border-bottom: none;
-        margin: 0;
+        margin-top: 0;
+        width: unset;
 
     }  
     
@@ -113,11 +107,9 @@ nav {
         border-right: 1px solid black;
     }
 
-    li:last-child {
+    .menu li:last-child {
         border-right: none;
-    }
-
-    
+    }    
 }
 
 /* Banner */
