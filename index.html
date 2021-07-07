@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
   <title>Orian Peled</title>
 </head>
@@ -16,8 +17,7 @@
 <body class="js-disabled">
   <header>
       <nav>
-        <button class="hamburger" aria-expanded="true">
-           <p class="menu-title">Menu</p>
+        <button class="hamburger" aria-label="menu" aria-expanded="true" >
            <i class="fas fa-bars" aria-hidden="true"></i>
            <i class="fas fa-times" aria-hidden="true"></i>
         </button>
@@ -34,9 +34,11 @@
 
       <div class="banner">
           <!-- <h1 class="banner-title txt-type" data-wait="1500" data-words='["Hello&nbsp;Founders&nbsp;and&nbsp;Coders", "How&nbsp;are&nbsp;you&nbsp;today?"]'></h1> -->
-          <h1 class="banner-title type-text"></h1>
+          <h1 class="banner-title type-text" aria-hidden="true"></h1>
+          <h1 class="banner-title--no-animation">Hello Founders and Coders<br>
+          My name is Orian</h1>
 
-          <button class="shiny-button">hover me</button>
+          <!-- <button class="shiny-button">hover me</button> -->
       </div>
       
   </header>

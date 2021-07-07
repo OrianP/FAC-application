@@ -39,6 +39,7 @@ nav {
 
 .fa-bars {
     font-size: 2.5rem;
+    color: pink;
 }
 
 .fa-times {
@@ -77,70 +78,49 @@ nav {
     color: rgb(53, 50, 50);
 }
 
-@media only screen and (min-width: 1024px) {
-
-/* Navigation */
-
-    .hamburger {
-        display: none;
-    }
-
-    .js-disabled nav, .js-enabled nav {
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 0.5rem;
-    }
-
-    /* change layout of menu. if JS is disabled, the aria-expanded will be true by default  */
-    .js-disabled .hamburger[aria-expanded ="true"] + .menu, .js-enabled .menu  {
-        display: flex;
-        border-bottom: none;
-        margin-top: 0;
-        width: unset;
-
-    }  
-    
-    .menu-item {
-        margin: 1rem 0;
-        padding: 0rem 1rem;
-        font-size: 1.2rem;
-        border-right: 1px solid black;
-    }
-
-    .menu li:last-child {
-        border-right: none;
-    }    
-}
 
 /* Banner */
 
+header {
+    background-image: linear-gradient(0deg, rgba(187, 48, 106, 0.418), rgba(214, 16, 138, 0.301)), url(/media/images/lum3n--RBuQ2PK_L8-unsplash.jpg);
+    background-size: cover;
+    height: 100vh;
+    background-position-y: bottom;
+    position: relative;
+    
+}
+
 .banner {
-    font-family: 'Lato', sans-serif;
+    font-family:'Fira Mono', monospace;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 60vh;
+    align-items: center;    
 }
 
 .banner-title {
     font-size: 2rem;
+    line-height: 1.2;
+    text-align: center;
+    color: white;
     /* fallback bg color  */
-    background-color: #FFCC70;
-/* gradient */
-    background-image: linear-gradient(to left, #6cee90 0%, #60f2dc 15%, #3e93cd 39%, #4158D0 60%, #C850C0 80%, #FFCC70 100%);
+    /* background-color: black;
+    /* gradient */
+    /* background-image: linear-gradient(to left, #6cee90 0%, #60f2dc 15%, #3e93cd 39%, #4158D0 60%, #C850C0 80%, #FFCC70 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-size: 200%;
-    animation: gradient 10s linear infinite;
+    animation: gradient 10s linear infinite;  */
 }
 
 .banner-title::after {
     content: "";
-    border-right: 1px solid #4158D0;
+    border-right: 5px solid white;
     margin-left: 2px;
-    animation: blink 0.5s paused;
+    animation: blink 0.5s ease-in-out;
+    animation-iteration-count: 21;
 }
 
 @keyframes gradient {
@@ -163,6 +143,59 @@ nav {
         opacity: 1;
     }
 }
+
+/* hide non-animated banner title from view but not from screen readers */
+.js-enabled .banner-title--no-animation {
+    opacity: 0;
+}
+
+.js-disabled .banner-title::after {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+
+    /* Navigation */
+    
+        .hamburger {
+            display: none;
+        }
+    
+        .js-disabled nav, .js-enabled nav {
+            display: flex;
+            /* justify-content: flex-end; */
+            margin-right: 0.5rem;
+        }
+    
+        /* change layout of menu. if JS is disabled, the aria-expanded will be true by default  */
+        .js-disabled .hamburger[aria-expanded ="true"] + .menu, .js-enabled .menu  {
+            display: flex;
+            border-bottom: none;
+            margin-top: 0;
+            width: unset;
+    
+        }  
+        
+        .menu-item {
+            margin: 1rem 0;
+            padding: 0rem 1rem;
+            font-size: 1.2rem;
+            border-right: 1px solid black;
+        }
+    
+        .menu li:last-child {
+            border-right: none;
+        }   
+    
+        /* Banner */
+    
+        .banner {
+        display: block;
+        position: absolute;
+        top: 15rem;
+        left: 23rem;
+        }
+    }
 
 /* Traversy Media typewriter effect */
 /* .txt-type > .txt {

@@ -5,6 +5,7 @@ const hamburger = document.querySelector('.hamburger');
 
 // the menu is expanded by default for progressive enhancement (if JS is disabled in the user's browser)
 // if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 23)
+document.body.classList.remove('js-disabled');
 document.body.classList.add('js-enabled');
 
 // Event listeners 
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Banner
-const phrases = ['Hello Founders and Coders', 'How are you today?'];
+const phrases = ['Hello Founders and Coders', 'My name is Orian'];
 let phraseIndex = 0;
 let letterIndex = 0;
 let currentPhrase = '';
@@ -42,46 +43,46 @@ let isDeleting = false;
 let typeSpeed = 150;
 
 // Immediately invoked function
-// (function typeEffect () {
-//     currentPhrase = phrases[phraseIndex];
-//     // Check if we are on the last phrase in the array and keep it displayed on screen instead of deleting
-//     if (phraseIndex === phrases.length - 1) {
-//         isDeleting = false;
-//     }
+(function typeEffect () {
+    currentPhrase = phrases[phraseIndex];
+    // Check if we are on the last phrase in the array and keep it displayed on screen instead of deleting
+    if (phraseIndex === phrases.length - 1) {
+        isDeleting = false;
+    }
 
-//     if (isDeleting) {
-//     // remove character at faster typing speed
-//         typeSpeed = 100
-//         letter = currentPhrase.substring(0, --letterIndex);
+    if (isDeleting) {
+    // remove character at faster typing speed
+        typeSpeed = 100
+        letter = currentPhrase.substring(0, --letterIndex);
 
-//     } else {
-//     //  add character at initial typing speed
-//         typeSpeed = 150;
-//         letter = currentPhrase.substring(0, ++letterIndex);
-//     }
+    } else {
+    //  add character at initial typing speed
+        typeSpeed = 150;
+        letter = currentPhrase.substring(0, ++letterIndex);
+    }
 
-//     // select the h1 element with a class of 'banner-title' and update it's text content to display the letter
-//     document.querySelector('.banner-title').textContent = letter;
+    // select the h1 element with a class of 'banner-title' and update it's text content to display the letter
+    document.querySelector('.banner-title').textContent = letter;
     
-//     // if the phrase typing is complete, start removing characters by setting isDeleting to true
-//     if (letter.length === currentPhrase.length) {
-//         // pause before deleting characters
-//         typeSpeed = 800
-//         isDeleting = true; 
-//     };
+    // if the phrase typing is complete, start removing characters by setting isDeleting to true
+    if (letter.length === currentPhrase.length) {
+        // pause before deleting characters
+        typeSpeed = 800
+        isDeleting = true; 
+    };
     
-//     // if the deletion of characters is complete, move on to the next phrase by incrementing phraseIndex and reset letterIndex to type characters from index 0 of the next phrase. Set isDeleting back to false. 
-//     if(isDeleting && letter === '') {
-//         phraseIndex++;
-//         letterIndex = 0;
-//         isDeleting = false; 
-//         // pause before typing next phrase
-//         typeSpeed = 800   
-//     }
-//     console.log(typeSpeed);
-//     // console.log(setTimeout.id);
-//     setTimeout(typeEffect, typeSpeed); 
-// }());
+    // if the deletion of characters is complete, move on to the next phrase by incrementing phraseIndex and reset letterIndex to type characters from index 0 of the next phrase. Set isDeleting back to false. 
+    if(isDeleting && letter === '') {
+        phraseIndex++;
+        letterIndex = 0;
+        isDeleting = false; 
+        // pause before typing next phrase
+        typeSpeed = 800   
+    }
+    console.log(typeSpeed);
+    // console.log(setTimeout.id);
+    setTimeout(typeEffect, typeSpeed); 
+}());
 
 // Traversy Media Tutorial 
 // constructor function for TypeWriter object
