@@ -217,7 +217,7 @@ function prevSong() {
     loadSong(songs[songIndex]);
     changeTheme(musicSection, bgColor);
     changeTheme(musicContainer, boxShadow);
-    changeTheme (progress, colors);
+    changeTheme(progress, colors);
     playSong();
 }
 
@@ -229,7 +229,7 @@ function nextSong() {
     loadSong(songs[songIndex]);
     changeTheme(musicSection, bgColor);
     changeTheme(musicContainer, boxShadow);
-    changeTheme (progress, colors);
+    changeTheme(progress, colors);
     playSong();
 }
 
