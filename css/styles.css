@@ -3,6 +3,11 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    font-family:'Lato', sans-serif; 
+    text-align: center;
+}
+
 /* Layout */
 /* these have not been applied in HTML yet */
 .flex {
@@ -112,6 +117,20 @@ header {
 .banner-title {
     display: none;
 }
+
+/* About */
+
+.about {
+    background-color: rgb(240, 238, 238);
+    padding: 2rem;
+}
+
+.about-text {
+    line-height: 1.4;
+    font-size: 1.2rem;    
+}
+
+/* Projects */
 
 @media only screen and (min-width: 1024px) {
 
