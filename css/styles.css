@@ -146,7 +146,6 @@ header {
 /* Projects */
 
 section.projects {
-    --clr-primary: #651fff;
     --clr-gray: #37474f;
     --clr-gray-light: #b0bec5;
     --box-shadow: 0px 2px 8px 0px #b0bec5;
@@ -159,12 +158,13 @@ section.projects {
 }
 
 .card-container {
+    position: relative;
+    height: 30rem;
     overflow: hidden;
     box-shadow: var(--box-shadow);
     background-color: #fff;
     text-align: center;
     border-radius: 1rem;
-    position: relative;
     margin: 1rem;
     transition: transform 400ms ease-out;
 }
@@ -203,22 +203,48 @@ section.projects {
     background-color: purple;
 }
 
+.img-and-text {
+    height: 25.1rem;
+}
+
 .project-img {
     position: absolute;
     background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), 
     url(/media/images/project-oandoduo.png);
-    height: 15rem;
+    height: inherit;
     width: 100%;
     background-position: top;
     background-repeat: no-repeat;
-    background-size: cover;   
+    background-size: cover;
+    justify-content: center;
+    align-items: center;   
 }
 
 .project-title {
-    margin: 16rem 0 1rem 0rem;
+    color: #fff;
 }
 
-.project-info {
+.info-container {
+    position: relative;
+    height: inherit;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.897);
+    transform: translateY(26rem);
+    transition: transform 400ms linear, opacity 400ms ease-out;    
+}
+
+.card-container:hover .info-container {
+    transform: translateY(0);
+    opacity: 1;
+    
+}
+
+.info-project-title {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.info-text {
     margin: 1rem 2rem 3rem;
 
 }
@@ -226,6 +252,8 @@ section.projects {
 .btn-container {
     width: 100%;
     justify-content: center;
+    position: absolute;
+    bottom: 0rem;
 }
 
 .btn-container button {
