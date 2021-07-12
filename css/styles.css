@@ -9,13 +9,25 @@ main {
 }
 
 /* Layout */
-/* these have not been applied in HTML yet */
+
 .flex {
     display: flex;
 }
 
+/* this has not been applied in HTML yet */
 .flex-column {
     flex-direction: column;
+}
+
+/* Text */
+
+.section-title {
+    width: fit-content;
+    font-size: 1.5rem;
+    padding: 2rem 0;
+    text-align: left;
+    padding: 0.5rem 1.5rem 0.5rem 5rem;
+    background-color: pink;
 }
 
 /* Navigation */
@@ -121,16 +133,117 @@ header {
 /* About */
 
 .about {
-    background-color: rgb(240, 238, 238);
-    padding: 2rem;
+    background-color: #F5F4F4;
+    
 }
 
 .about-text {
     line-height: 1.4;
     font-size: 1.2rem;    
+    padding: 2rem;
 }
 
 /* Projects */
+
+section.projects {
+    --clr-primary: #651fff;
+    --clr-gray: #37474f;
+    --clr-gray-light: #b0bec5;
+    --box-shadow: 0px 2px 8px 0px #b0bec5;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25rem);
+    justify-content: center;
+}
+
+.card-container {
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 1rem;
+    position: relative;
+    margin: 1rem;
+    transition: transform 400ms ease-out;
+}
+
+.card-container:hover {
+    transform: scale(1.03);
+}
+
+.tag-container {
+    padding: 1rem 0.5rem;
+    justify-content: center;
+}
+
+.tag-container > span {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 5rem;
+    font-size: 14px;
+    color: #fff;
+}
+
+.projects span > i {
+    margin-right: 0.5rem;
+}
+
+.wip-tag {
+    background-color: var(--clr-gray);
+}
+
+.html-tag {
+    background-color: orangered;
+}
+
+.css-tag {
+    background-color: purple;
+}
+
+.project-img {
+    position: absolute;
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), 
+    url(/media/images/project-oandoduo.png);
+    height: 15rem;
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+
+.project-title {
+    margin: 16rem 0 1rem 0rem;
+}
+
+.project-info {
+    margin: 1rem 2rem 3rem;
+
+}
+
+.btn-container {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-container button {
+    width: 100%;
+    border: transparent;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: #fff;
+}
+
+.live-btn {
+    background-color: rgba(3, 114, 3, 0.74);    
+}
+
+.code-btn {
+    background-color: var(--clr-gray);
+}
 
 @media only screen and (min-width: 1024px) {
 
