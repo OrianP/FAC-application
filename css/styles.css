@@ -1,8 +1,3 @@
-body {
-    font-size: 16px;
-    overflow-x: hidden;
-}
-
 main {
     font-family:'Lato', sans-serif; 
     text-align: center;
@@ -16,7 +11,10 @@ main {
 
 /* this has not been applied in HTML yet */
 .flex-column {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Text */
@@ -149,12 +147,25 @@ section.projects {
     --clr-gray: #37474f;
     --clr-gray-light: #b0bec5;
     --box-shadow: 0px 2px 8px 0px #b0bec5;
+    overflow: hidden
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 25rem);
-    justify-content: center;
+.slider-btns {
+    justify-content: space-between;
+}
+
+.slider-btns button {
+    background-color: transparent;
+    border: transparent;
+    margin: 2rem;
+    font-size: 2rem;
+}
+
+.project-cards-flex {
+    display: inline-flex;
+    justify-content: space-between;
+    overflow: hidden;
+
 }
 
 .card-container {
@@ -165,12 +176,9 @@ section.projects {
     background-color: #fff;
     text-align: center;
     border-radius: 1rem;
-    margin: 1rem;
+    margin: 1rem 2rem;
     transition: transform 400ms ease-out;
-}
 
-.card-container:hover {
-    transform: scale(1.03);
 }
 
 .tag-container {
@@ -203,8 +211,9 @@ section.projects {
     background-color: purple;
 }
 
-.img-and-text {
-    height: 25.1rem;
+/* deduct the tag-container height from the overall card-container height to set the img-and-info-container height */
+.img-and-info-container {
+    height: calc(30rem - var(--tag-container-height));
 }
 
 .project-img {
@@ -235,8 +244,7 @@ section.projects {
 
 .card-container:hover .info-container {
     transform: translateY(0);
-    opacity: 1;
-    
+    opacity: 1;    
 }
 
 .info-project-title {
@@ -246,7 +254,6 @@ section.projects {
 
 .info-text {
     margin: 1rem 2rem 3rem;
-
 }
 
 .btn-container {
@@ -355,13 +362,34 @@ section.projects {
         .js-enabled .banner-title--no-animation {
         opacity: 0;
         }
+
+    /* Projects */
+
+        /* display all projects on a grid instead of slider if js is disabled */
+        .js-disabled .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 22rem);
+            justify-content: center;
+        }
+
+        /* set a fixed height if js is disabled */
+        .js-disabled .img-and-info-container {
+            height: 24.25rem;
+        }
+
+        .slider > button:hover {
+            opacity: 0.5;
+        }
+
+        .card-container:hover {
+            transform: scale(1.03);
+        }
+
     }
 
-/* Traversy Media typewriter effect */
-/* .txt-type > .txt {
-    border-right: 0.13rem solid #006184;
-    padding-right: 0.12rem;
-} */
+
+
+
 
 .shiny-button {
     margin-top: 1rem;

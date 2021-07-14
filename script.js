@@ -84,6 +84,16 @@ let typeSpeed = 150;
     setTimeout(typeEffect, typeSpeed); 
 }());
 
+
+// Projects
+
+const tagContainer = document.querySelector('.tag-container');
+const projects = document.querySelector('.projects');
+
+// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 195)
+projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
+
+
 // Music Player
 const musicSection = document.querySelector(".music-section");
 const musicContainer = document.querySelector(".music-container");
