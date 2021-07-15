@@ -172,7 +172,7 @@ section.projects {
     margin: 0 2rem;
 }
 
-.project-cards-flex {
+.project-cards-container {
     display: inline-flex;
     justify-content: space-between;
     overflow: hidden;  
@@ -228,8 +228,6 @@ section.projects {
 
 .project-img {
     position: absolute;
-    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), 
-    url(/media/images/project-oandoduo.png);
     height: inherit;
     width: 100%;
     background-position: top;
@@ -237,6 +235,20 @@ section.projects {
     background-size: cover;
     justify-content: center;
     align-items: center;   
+}
+
+.oando .project-img {
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), 
+    url(/media/images/project-oandoduo.png);
+}
+
+.score-keeper .project-img {
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/andrey-metelev-DEuansgqjns-unsplash.jpg);
+}
+
+.tribute-page .project-img {
+    background-color: yellow;
+    /* background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/banner-leone-venter-unsplash.jpg); */
 }
 
 .project-title {
@@ -470,6 +482,7 @@ section.projects {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .music-section h2 {

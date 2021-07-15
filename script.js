@@ -79,7 +79,7 @@ let typeSpeed = 150;
         // pause before typing next phrase
         typeSpeed = 800   
     }
-    console.log(typeSpeed);
+    // console.log(typeSpeed);
     // console.log(setTimeout.id);
     setTimeout(typeEffect, typeSpeed); 
 }());
@@ -92,6 +92,78 @@ const projects = document.querySelector('.projects');
 
 // set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 195)
 projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
+
+const btnNext = document.querySelector('.next-btn');
+const btnPrev = document.querySelector('.prev-btn');
+const cardsContainer = document.querySelector('.project-cards-container');
+let currentCardIndex = 1;
+
+// clone first and last card for infinite slider effect
+const firstCardClone = cardsContainer.children[0].cloneNode(true);
+const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1].cloneNode(true);
+
+// insert clones at beginning and end of cardsContainer
+cardsContainer.insertBefore(lastCardClone, cardsContainer.children[0]);
+cardsContainer.appendChild(firstCardClone);
+
+// set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
+cardsContainer.style.transitionDuration = '0ms';
+cardsContainer.style.transform = `translate(-25rem)`;
+
+// Event Listeners 
+
+btnNext.addEventListener('click', () => {
+    // index of clone card
+    const lastCardIndex = cardsContainer.children.length - 1;
+    if (currentCardIndex < lastCardIndex) {
+        currentCardIndex++;
+        transitionCard();
+
+        // when the last card (which is a clone of the first)  is reached, transition to the first card for an infinite scrolling effect
+        // the transitionCard function in the first if statement runs, the clone is seen for 600ms and then the 'invisible' transition runs and the index is reset to the first real card 
+        if(currentCardIndex === lastCardIndex) {
+            setTimeout(() => {
+                cardsContainer.style.transitionDuration = '0ms';
+                cardsContainer.style.transform = `translate(-25rem)`;
+                currentCardIndex = 1;
+                // console.log({lastCardIndex, currentCardIndex});
+                // console.log(cardsContainer.style.transform); 
+            }, 600);   
+            
+        }
+        // console.log({lastCardIndex, currentCardIndex});
+        // console.log(cardsContainer.style.transform);
+    }
+
+})
+
+btnPrev.addEventListener('click', () => {
+    // the index of the last real card (not the clone)
+    const lastCardIndex = cardsContainer.children.length - 2;
+    // the initial currentCardIndex is set to 1 in global scope therefore the first if statement transition function will run and the currentCardIndex will be decremented to 0, which will cause the second if statement to run 600ms later
+    if (currentCardIndex > 0) {
+        currentCardIndex--;
+        transitionCard();
+        console.log(currentCardIndex);
+
+        if(currentCardIndex === 0) {
+            setTimeout(() => {
+                cardsContainer.style.transitionDuration = '0ms';
+                cardsContainer.style.transform = `translate(-${lastCardIndex * 25}rem)`;
+                currentCardIndex = lastCardIndex;
+                console.log({lastCardIndex, currentCardIndex});
+            }, 600);  
+            console.log({lastCardIndex, currentCardIndex});  
+        }
+    }
+})
+
+// Functions
+
+const transitionCard = () => {
+    cardsContainer.style.transitionDuration = '500ms';
+    cardsContainer.style.transform = `translate(-${currentCardIndex * 25}rem)`;
+}
 
 
 // Music Player
@@ -200,7 +272,8 @@ function setProgress (e) {
     audio.currentTime = (clickX / width) * duration;
 }
 
-// event listeners
+// Event Listeners 
+
 // play and pause btns
 playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains("play");
