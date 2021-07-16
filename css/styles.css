@@ -164,27 +164,24 @@ section.projects {
 }
 
 .view-port {
-    background-color: red;
+    background-color: transparent;
     height: 30rem;
-    width: 25rem;
+    width: 23rem;
     border-radius: 1rem;
-    /* overflow: hidden; */
+    overflow: hidden;
     margin: 0 2rem;
+    box-shadow: var(--box-shadow);
 }
 
 .project-cards-container {
-    display: inline-flex;
-    justify-content: space-between;
-    overflow: hidden;  
+    display: inline-flex;        
 }
 
 .card-container {
     position: relative;
     height: 30rem;
     width: 23rem;
-    margin: 0 1rem;
     overflow: hidden;
-    box-shadow: var(--box-shadow);
     background-color: #fff;
     text-align: center;
     border-radius: 1rem;
@@ -401,6 +398,20 @@ section.projects {
 
         .slider > button:hover {
             opacity: 0.5;
+        }
+
+        .view-port {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35rem;
+            width: fit-content;
+            box-shadow: unset;
+        }
+
+        .card-container {
+            margin: 0 2rem;
+            box-shadow: var(--box-shadow);
         }
 
         .card-container:hover {

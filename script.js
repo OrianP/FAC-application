@@ -108,7 +108,7 @@ cardsContainer.appendChild(firstCardClone);
 
 // set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
 cardsContainer.style.transitionDuration = '0ms';
-cardsContainer.style.transform = `translate(-25rem)`;
+cardsContainer.style.transform = `translate(-23rem)`;
 
 // Event Listeners 
 
@@ -124,7 +124,7 @@ btnNext.addEventListener('click', () => {
         if(currentCardIndex === lastCardIndex) {
             setTimeout(() => {
                 cardsContainer.style.transitionDuration = '0ms';
-                cardsContainer.style.transform = `translate(-25rem)`;
+                cardsContainer.style.transform = `translate(-23rem)`;
                 currentCardIndex = 1;
                 // console.log({lastCardIndex, currentCardIndex});
                 // console.log(cardsContainer.style.transform); 
@@ -149,7 +149,7 @@ btnPrev.addEventListener('click', () => {
         if(currentCardIndex === 0) {
             setTimeout(() => {
                 cardsContainer.style.transitionDuration = '0ms';
-                cardsContainer.style.transform = `translate(-${lastCardIndex * 25}rem)`;
+                cardsContainer.style.transform = `translate(-${lastCardIndex * 23}rem)`;
                 currentCardIndex = lastCardIndex;
                 console.log({lastCardIndex, currentCardIndex});
             }, 600);  
@@ -162,7 +162,7 @@ btnPrev.addEventListener('click', () => {
 
 const transitionCard = () => {
     cardsContainer.style.transitionDuration = '500ms';
-    cardsContainer.style.transform = `translate(-${currentCardIndex * 25}rem)`;
+    cardsContainer.style.transform = `translate(-${currentCardIndex * 23}rem)`;
 }
 
 
