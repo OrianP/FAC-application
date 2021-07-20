@@ -170,13 +170,17 @@ section.projects {
     height: 30rem;
     width: 23rem;
     border-radius: 1rem;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 0 2rem;
     box-shadow: var(--box-shadow);
 }
 
 .project-cards-container {
     display: inline-flex;       
+}
+
+.card-transition {
+    transition: transform 0.4s;
 }
 
 .card {

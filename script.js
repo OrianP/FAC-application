@@ -108,63 +108,61 @@ const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1
 cardsContainer.insertBefore(lastCardClone, cardsContainer.children[0]);
 cardsContainer.appendChild(firstCardClone);
 
-// set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
+// index of last clone card after clones have been inserted
+const lastCardIndex = cardsContainer.children.length - 1; // expected: 4
 
-cardsContainer.style.transform = `translate(-${cardWidth}px)`;
+// set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
+cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
 
 // Event Listeners 
 
-btnNext.addEventListener('click', () => {
-    // index of clone card
-    const lastCardIndex = cards.length - 1;
+btnNext.addEventListener('click', () => {    
     if (currentCardIndex < lastCardIndex) {
         currentCardIndex++;
         transitionCard();
 
-        // when the last card (which is a clone of the first)  is reached, transition to the first card for an infinite scrolling effect
-        // the transitionCard function in the first if statement runs, the clone is seen for 600ms and then the 'invisible' transition runs and the index is reset to the first real card 
-        if(currentCardIndex === lastCardIndex) {
-            setTimeout(() => {
-                cardsContainer.style.transitionDuration = '0ms';
-                cardsContainer.style.transform = `translate(-${cardWidth}px)`;
-                currentCardIndex = 1;
-                // console.log({lastCardIndex, currentCardIndex});
-                // console.log(cardsContainer.style.transform); 
-            }, 600);   
-            
-        }
-        // console.log({lastCardIndex, currentCardIndex});
-        // console.log(cardsContainer.style.transform);
+        console.log(currentCardIndex);
     }
-
 })
 
 btnPrev.addEventListener('click', () => {
-    // the index of the last real card (not the clone)
-    const lastCardIndex = cardsContainer.children.length - 2;
-    // the initial currentCardIndex is set to 1 in global scope therefore the first if statement transition function will run and the currentCardIndex will be decremented to 0, which will cause the second if statement to run 600ms later
+    // the initial currentCardIndex is set to 1 in global scope therefore the first if statement transition function will run and the currentCardIndex will be decremented to 0, which will cause the transitionend event listener to fire 
     if (currentCardIndex > 0) {
         currentCardIndex--;
         transitionCard();
-        console.log(currentCardIndex);
 
-        if(currentCardIndex === 0) {
-            setTimeout(() => {
-                cardsContainer.style.transitionDuration = '0ms';
-                cardsContainer.style.transform = `translate(-${lastCardIndex * cardWidth}px)`;
-                currentCardIndex = lastCardIndex;
-                console.log({lastCardIndex, currentCardIndex});
-            }, 600);  
-            console.log({lastCardIndex, currentCardIndex});  
-        }
+        console.log(currentCardIndex);
     }
+})
+
+// event listener that fires at the end of the CSS transition
+cardsContainer.addEventListener('transitionend', () => {
+    // when the card at index 0 (which is a clone of the last card) is reached: remove the transition duration class, update the currentCardIndex to the last real card (last clone index - 1) and update the transform property to jump to the card at currentCardIndex
+    if(currentCardIndex === 0) {
+        cardsContainer.classList.remove('card-transition');
+        currentCardIndex = lastCardIndex - 1;
+        cardsContainer.style.transform = `translateX(-${currentCardIndex * cardWidth}px)`;
+        
+        console.log({lastCardIndex, currentCardIndex}); 
+        console.log(cardsContainer.style.transform);
+}
+
+    if(currentCardIndex === lastCardIndex) {
+    // when the last card (which is a clone of the first card) is reached: remove the transition duration class, update the currentCardIndex to the first real card (at index 1) and update the transform property to jump to the card at currentCardIndex
+        cardsContainer.classList.remove('card-transition');
+        currentCardIndex = 1;
+        cardsContainer.style.transform = `translateX(-${currentCardIndex * cardWidth}px)`;
+
+        console.log({lastCardIndex, currentCardIndex}); 
+        console.log(cardsContainer.style.transform);
+}
 })
 
 // Functions
 
 const transitionCard = () => {
-    cardsContainer.style.transitionDuration = '500ms';
-    cardsContainer.style.transform = `translate(-${currentCardIndex * cardWidth}px)`;
+    cardsContainer.classList.add('card-transition');
+    cardsContainer.style.transform = `translateX(-${currentCardIndex * cardWidth}px)`;
 }
 
 
