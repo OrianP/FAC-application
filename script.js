@@ -90,13 +90,15 @@ let typeSpeed = 150;
 const tagContainer = document.querySelector('.tag-container');
 const projects = document.querySelector('.projects');
 
-// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 195)
+// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 222)
 projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
 
 const btnNext = document.querySelector('.next-btn');
 const btnPrev = document.querySelector('.prev-btn');
 const cardsContainer = document.querySelector('.project-cards-container');
 let currentCardIndex = 1;
+const cards = document.querySelectorAll('.card');
+const cardWidth = cards[0].clientWidth;
 
 // clone first and last card for infinite slider effect
 const firstCardClone = cardsContainer.children[0].cloneNode(true);
@@ -107,14 +109,14 @@ cardsContainer.insertBefore(lastCardClone, cardsContainer.children[0]);
 cardsContainer.appendChild(firstCardClone);
 
 // set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
-cardsContainer.style.transitionDuration = '0ms';
-cardsContainer.style.transform = `translate(-23rem)`;
+
+cardsContainer.style.transform = `translate(-${cardWidth}px)`;
 
 // Event Listeners 
 
 btnNext.addEventListener('click', () => {
     // index of clone card
-    const lastCardIndex = cardsContainer.children.length - 1;
+    const lastCardIndex = cards.length - 1;
     if (currentCardIndex < lastCardIndex) {
         currentCardIndex++;
         transitionCard();
@@ -124,7 +126,7 @@ btnNext.addEventListener('click', () => {
         if(currentCardIndex === lastCardIndex) {
             setTimeout(() => {
                 cardsContainer.style.transitionDuration = '0ms';
-                cardsContainer.style.transform = `translate(-23rem)`;
+                cardsContainer.style.transform = `translate(-${cardWidth}px)`;
                 currentCardIndex = 1;
                 // console.log({lastCardIndex, currentCardIndex});
                 // console.log(cardsContainer.style.transform); 
@@ -149,7 +151,7 @@ btnPrev.addEventListener('click', () => {
         if(currentCardIndex === 0) {
             setTimeout(() => {
                 cardsContainer.style.transitionDuration = '0ms';
-                cardsContainer.style.transform = `translate(-${lastCardIndex * 23}rem)`;
+                cardsContainer.style.transform = `translate(-${lastCardIndex * cardWidth}px)`;
                 currentCardIndex = lastCardIndex;
                 console.log({lastCardIndex, currentCardIndex});
             }, 600);  
@@ -162,7 +164,7 @@ btnPrev.addEventListener('click', () => {
 
 const transitionCard = () => {
     cardsContainer.style.transitionDuration = '500ms';
-    cardsContainer.style.transform = `translate(-${currentCardIndex * 23}rem)`;
+    cardsContainer.style.transform = `translate(-${currentCardIndex * cardWidth}px)`;
 }
 
 
