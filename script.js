@@ -89,27 +89,16 @@ let typeSpeed = 150;
 
 const tagContainer = document.querySelector('.tag-container');
 const projects = document.querySelector('.projects');
-
-// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 222)
-projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
-
 const btnNext = document.querySelector('.next-btn');
 const btnPrev = document.querySelector('.prev-btn');
 const cardsContainer = document.querySelector('.project-cards-container');
-let currentCardIndex = 1;
 const cards = document.querySelectorAll('.card');
-const cardWidth = cards[0].clientWidth;
+let currentCardIndex = 1;
+let cardWidth = cards[0].clientWidth;
+let lastCardIndex;
 
-// clone first and last card for infinite slider effect
-const firstCardClone = cardsContainer.children[0].cloneNode(true);
-const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1].cloneNode(true);
-
-// insert clones at beginning and end of cardsContainer
-cardsContainer.insertBefore(lastCardClone, cardsContainer.children[0]);
-cardsContainer.appendChild(firstCardClone);
-
-// index of last clone card after clones have been inserted
-const lastCardIndex = cardsContainer.children.length - 1; // expected: 4
+// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 229)
+projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
 
 // set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
 cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
@@ -119,8 +108,9 @@ cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
 btnNext.addEventListener('click', () => {    
     if (currentCardIndex < lastCardIndex) {
         currentCardIndex++;
-        transitionCard();
-
+        transitionCard(currentCardIndex, cardWidth);
+        
+        console.log(cardsContainer.style.transform);
         console.log(currentCardIndex);
     }
 })
@@ -129,8 +119,9 @@ btnPrev.addEventListener('click', () => {
     // the initial currentCardIndex is set to 1 in global scope therefore the first if statement transition function will run and the currentCardIndex will be decremented to 0, which will cause the transitionend event listener to fire 
     if (currentCardIndex > 0) {
         currentCardIndex--;
-        transitionCard();
+        transitionCard(currentCardIndex, cardWidth);
 
+        console.log(cardsContainer.style.transform);
         console.log(currentCardIndex);
     }
 })
@@ -160,10 +151,63 @@ cardsContainer.addEventListener('transitionend', () => {
 
 // Functions
 
-const transitionCard = () => {
+const transitionCard = (index, width) => {
     cardsContainer.classList.add('card-transition');
-    cardsContainer.style.transform = `translateX(-${currentCardIndex * cardWidth}px)`;
+    cardsContainer.style.transform = `translateX(-${index * width}px)`;
 }
+
+// Media query for desktop screens
+
+// matchMedia() method returns a new MediaQueryList object used to check if the document matches the media query string
+// assign the result of matchMedia to the variable mq
+const mq = window.matchMedia('(min-width: 1024px)');
+
+// the matches property returns true or false depending on whether the document matches the media query string or not
+// function to execute based on the matches property return value 
+const handleDesktopScreen = (e) => {
+    if (e.matches) {
+        // total width to disply three cards with 2rem left and right margins
+        cardWidth = ((cards[0].clientWidth + 64) * 3);
+        cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
+        // create an array from the cards Nodelist and clone each card
+        const clones = Array.from(cards, card => 
+            card.cloneNode(true));
+        // spread clones array and append to the cardsContainer 
+        cardsContainer.append(...clones);
+        // update lastCardIndex to transition correctly:
+        // displaying 3 cards at a time with 2 sets of real cards and 1 set of clones on either side to create the infinite slider effect 
+        lastCardIndex = 3; 
+        
+        console.log('desktop');
+        console.log({lastCardIndex}); 
+        console.log({currentCardIndex});
+        console.log({cardWidth});
+        console.log(cardsContainer.style.transform);
+
+     } else {
+        // clone first and last card for infinite slider effect
+        const firstCardClone = cardsContainer.children[0].cloneNode(true);
+        const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1].cloneNode(true);
+
+        // insert clones at beginning and end of cardsContainer
+        cardsContainer.insertBefore(lastCardClone, cardsContainer.children[0]);
+        cardsContainer.appendChild(firstCardClone);
+        // index of last clone card after clones have been inserted
+        lastCardIndex = cardsContainer.children.length - 1; // expected: 7
+
+        console.log('mobile');
+        console.log({lastCardIndex}); 
+        console.log({currentCardIndex});
+        console.log({cardWidth});
+        console.log(cardsContainer.style.transform);
+
+     }
+    }
+
+// attach event listener to MediaQueryList object for changes in screen size 
+mq.addEventListener('change', handleDesktopScreen);
+// call the function for initial screen size check on document load
+handleDesktopScreen(mq);
 
 
 // Music Player

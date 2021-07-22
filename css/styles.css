@@ -170,13 +170,14 @@ section.projects {
     height: 30rem;
     width: 23rem;
     border-radius: 1rem;
-    /* overflow: hidden; */
+    overflow: hidden;
     margin: 0 2rem;
     box-shadow: var(--box-shadow);
 }
 
 .project-cards-container {
-    display: inline-flex;       
+    display: inline-flex;
+    justify-content: start;       
 }
 
 .card-transition {
@@ -240,22 +241,36 @@ section.projects {
     align-items: center;   
 }
 
+.project1 .project-img {
+    background-color: #fa4c4c9f;
+}
+
+.project2 .project-img {
+    background-color: #4c66fa9f;
+}
+
+.project3 .project-img {
+    background-color: #4cfa949f;
+}
+
 .oando .project-img {
     background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), 
     url(/media/images/project-oandoduo.png);
 }
 
 .score-keeper .project-img {
-    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/andrey-metelev-DEuansgqjns-unsplash.jpg);
+    background-color: #f70073be;
+    /* background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/andrey-metelev-DEuansgqjns-unsplash.jpg); */
 }
 
 .tribute-page .project-img {
-    background-color: #fafa4c9f;
+    background-color: #01aeb4;
     /* background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/banner-leone-venter-unsplash.jpg); */
 }
 
 .project-title {
     color: #fff;
+    font-size: 3rem;
 }
 
 .info-container {
@@ -408,15 +423,17 @@ section.projects {
 
         .view-port {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             height: 35rem;
+            width: 81rem;
+            margin: 0;
             box-shadow: unset;
             overflow: visible;
         }
 
         .card {
-            /* margin: 0 2rem; */
+            margin: 0 2rem;
             box-shadow: var(--box-shadow);
         }
 
