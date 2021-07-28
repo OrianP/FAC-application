@@ -208,38 +208,46 @@
         </div>
     </section>
 
-    <section>
+    <section class="application" id="application">
         <h2 class="section-title">Why am I Applying for FAC? </h2>
         <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur quam felis, sed tristique enim cursus aliquet. In lobortis vulputate odio, ut fermentum diam accumsan nec. Quisque at elit at justo convallis facilisis. Integer condimentum dictum erat et pulvinar. Aenean varius congue leo. Nullam dignissim volutpat feugiat. Aliquam luctus luctus ligula, vel placerat risus malesuada quis. Donec sodales ligula eu eros auctor congue. Curabitur fermentum massa sit amet nisl suscipit malesuada. Etiam vel mattis lorem. Proin aliquam orci nec dapibus ornare. Fusce porttitor lobortis varius. Nulla facilisi. Aenean sit amet tellus eget orci porttitor lobortis non eu lorem. Curabitur viverra, tortor nec gravida aliquet, diam erat rhoncus ligula, ac sagittis sem dui eget risus. Vivamus vehicula, est ut congue feugiat, ante mi aliquam risus, fringilla mollis diam justo vitae tortor.</p>
     </section>
 
     <section class="music-section pink-bg">
         <h2 class="section-title">My Background</h2>
-        <div class="music-container pink-shadow">
-            <div class="music-info">
-                <h3 id="song-title">Here We Are</h3>
-                <div class="progress-container">
-                    <div class="progress"></div>
+        <div class="music-section-content">
+            <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur quam felis, sed tristique enim cursus aliquet. In lobortis vulputate odio, ut fermentum diam accumsan nec. Quisque at elit at justo convallis facilisis. Integer condimentum dictum erat et pulvinar. Aenean varius congue leo. Nullam dignissim volutpat feugiat. Aliquam luctus luctus ligula, vel placerat risus malesuada quis. Donec sodales ligula eu eros auctor congue. Curabitur fermentum massa sit amet nisl suscipit malesuada.</p>
+            <div class="music-player">
+                <div class="artwork-container-square">
+                    <img src="media/images/Here We Are.jpg" alt="Here We Are Single Artwork" id="square-cover">
+                </div>
+                <div class="music-container pink-shadow">
+                    <div class="music-info">
+                        <h3 id="song-title">Here We Are</h3>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+
+                    <audio src="media/music/Here We Are.mp3" id="audio"></audio>
+
+                    <div class="artwork-container">
+                        <img src="media/images/Here We Are.jpg" alt="Here We Are Single Artwork" id="cover">
+                    </div>
+
+                    <div class="navigation">
+                        <button id="prev" class="action-btn">
+                            <i class="fas fa-backward"></i>
+                        </button>
+                        <button id="play" class="action-btn action-btn-big">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="next" class="action-btn">
+                            <i class="fas fa-forward"></i>
+                        </button>
+                    </div> 
                 </div>
             </div>
-
-            <audio src="media/music/Here We Are.mp3" id="audio"></audio>
-
-            <div class="artwork-container">
-                <img src="media/images/Here We Are.jpg" alt="Here We Are Single Artwork" id="cover">
-            </div>
-
-            <div class="navigation">
-                <button id="prev" class="action-btn">
-                    <i class="fas fa-backward"></i>
-                </button>
-                <button id="play" class="action-btn action-btn-big">
-                    <i class="fas fa-play"></i>
-                </button>
-                <button id="next" class="action-btn">
-                    <i class="fas fa-forward"></i>
-                </button>
-            </div> 
         </div>
     </section>
   </main>

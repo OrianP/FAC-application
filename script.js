@@ -184,6 +184,12 @@ const handleDesktopScreen = (e) => {
         console.log({cardWidth});
         console.log(cardsContainer.style.transform);
 
+        // Music Player
+        const musicInfo = document.querySelector('.music-info');
+        const squareCoverContainer = document.querySelector('.artwork-container-square');
+        musicInfo.prepend(squareCoverContainer);
+
+
      } else {
         // clone first and last card for infinite slider effect
         const firstCardClone = cardsContainer.children[0].cloneNode(true);
@@ -211,25 +217,26 @@ handleDesktopScreen(mq);
 
 
 // Music Player
-const musicSection = document.querySelector(".music-section");
-const musicContainer = document.querySelector(".music-container");
-const playBtn = document.querySelector("#play");
-const prevBtn = document.querySelector("#prev");
-const nextBtn = document.querySelector("#next");
-const audio = document.querySelector("#audio");
-const progress = document.querySelector(".progress");
-const progressContainer = document.querySelector(".progress-container");
-const title = document.querySelector("#song-title");
-const cover = document.querySelector("#cover");
+const musicSection = document.querySelector('.music-section');
+const musicContainer = document.querySelector('.music-container');
+const playBtn = document.querySelector('#play');
+const prevBtn = document.querySelector('#prev');
+const nextBtn = document.querySelector('#next');
+const audio = document.querySelector('#audio');
+const progress = document.querySelector('.progress');
+const progressContainer = document.querySelector('.progress-container');
+const title = document.querySelector('#song-title');
+const squareCover = document.querySelector('#square-cover')
+const cover = document.querySelector('#cover');
 
 // song titles
-const songs = ["Here We Are", "Dancing On The Floor", "Leave It Til Tomorrow", "When It Comes To Love"];
+const songs = ['Here We Are', 'Dancing On The Floor', 'Leave It Til Tomorrow', 'When It Comes To Love'];
 // progress bar color classes
-const colors = ["pink", "blue", "green", "red"];
+const colors = ['pink', 'blue', 'green', 'red'];
 // musicSection background gradient classes
-const bgColor = ["pink-bg", "blue-bg", "green-bg", "red-bg"];
+const bgColor = ['pink-bg', 'blue-bg', 'green-bg', 'red-bg'];
 // musicContainer box shadow classes
-const boxShadow = ["pink-shadow", "blue-shadow", "green-shadow", "red-shadow"]; 
+const boxShadow = ['pink-shadow', 'blue-shadow', 'green-shadow', 'red-shadow']; 
 
 let songIndex = 0;
 let lastSongIndex = songs.length - 1;
@@ -242,6 +249,7 @@ function loadSong(song) {
     title.textContent = song;
     audio.src = `media/music/${song}.mp3`;
     cover.src = `media/images/${song}.jpg`;
+    squareCover.src = `media/images/${song}.jpg`;
 }
 
 // functions for play and pause btns
