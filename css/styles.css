@@ -320,6 +320,170 @@ section.projects {
     background-color: var(--clr-gray);
 }
 
+
+/* Music Player */
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    background-color: #ffffff80;
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: calc(100% - 40px);
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 300ms ease-in, opacity 300ms ease-in;
+    
+}
+
+.music-container.play .music-info {
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.progress-container {
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.6rem 0;
+    height: 4px;
+    width: 100%;
+}
+
+.progress {
+    background-color: #f68e88CC;
+    border-radius: inherit;
+    height: 100%;
+    width: 0%;
+    transition: width 100ms linear;
+}
+
+.music-section {
+    /* font-family: 'Lato', sans-serif; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+/* 
+.music-section h2 {
+    padding-top: 2.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+} */
+
+.music-container {
+    background-color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 1.25rem 2rem;
+    position: relative;
+    margin: 6.25rem 0;
+    z-index: 10;
+    width: 80%;
+}
+
+.artwork-container {
+    display: none;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+    background-color: #fff;
+    border: 0;
+    color: #dfdbdf;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 1rem;
+    margin: 0 1.25rem;
+}
+
+.action-btn-big {
+    color: #cdc2d0;
+    font-size: 1.5rem;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+/* Use the below as a model for all the different color gradients */
+.pink {
+    background-color: #f68e88;
+}
+
+.pink-bg {
+    background-image: linear-gradient(
+        0deg,
+        #f7f7f7 23.8%,
+        #fcdddd 92%
+        );
+    }
+    
+.pink-shadow {
+    box-shadow: 0 20px 20px 0 #fca9a999;
+}
+    
+.blue {
+    background-color: #006184;
+}
+
+.blue-bg {
+    background-image: linear-gradient(
+        0deg,
+        #dff3fa 23.8%,
+        #c0ebfa 92%
+    );
+}
+        
+.blue-shadow {
+    box-shadow: 0 20px 20px 0 #a9cdfc99;
+}
+        
+.green {
+    background-color: #1a4d31;
+}
+        
+.green-bg {
+    background-image: linear-gradient(
+        0deg,
+        #cdf5e1 23.8%,
+        #0c4d28 92%
+    );
+}
+            
+.green-shadow {
+    box-shadow: 0 20px 20px 0 #6b977e99;
+}
+            
+.red {
+    background-color: #930118;
+}
+            
+.red-bg {
+    background-image: linear-gradient(
+        0deg,
+        #fdd9de 23.8%,
+        #af0a23 92%
+    );
+}
+                
+.red-shadow {
+    box-shadow: 0 20px 20px 0 #ec8c9999;
+}
+
 @media only screen and (min-width: 1024px) {
 
     /* Navigation */
@@ -440,233 +604,68 @@ section.projects {
         .card:hover {
             transform: scale(1.03);
         }
-
-    }
-
-
-
-
-
-.shiny-button {
-    margin-top: 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    padding: 1rem 5rem;
-    text-transform: uppercase;
-    color: whitesmoke;
-    background: #c94b4b;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
-      /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    background-size: 300% 300%;
-    transition: background-position 300ms;    
-}
-
-.banner .shiny-button:hover {
-    background-position: right center;
-}
-
-/* Music */
-
-.music-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 0;
-    background-color: #ffffff80;
-    border-radius: 15px 15px 0 0;
-    position: absolute;
-    top: 0;
-    left: 20px;
-    width: calc(100% - 40px);
-    opacity: 0;
-    transform: translateY(0%);
-    transition: transform 300ms ease-in, opacity 300ms ease-in;
     
-}
+    /* Music Player */
 
-.music-container.play .music-info {
-    opacity: 1;
-    transform: translateY(-100%);
-}
+        .music-container {
+            width: unset;
+        }
 
-.progress-container {
-    background-color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0.6rem 0;
-    height: 4px;
-    width: 100%;
+        /* display rotating circle artwork */
+        .artwork-container {
+            display: block;
+            position: relative;
+            width: 6.87rem;
+        }
+        
+        .artwork-container img {
+            width: inherit;
+            height: 6.87rem;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: rotate 3s linear infinite;
+            animation-play-state: paused;
+        }
+        
+        .music-container.play .artwork-container img {
+            animation-play-state: running;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
 }
-
-.progress {
-    background-color: #f68e88CC;
-    border-radius: inherit;
-    height: 100%;
-    width: 0%;
-    transition: width 100ms linear;
-}
-
-.music-section {
-    font-family: 'Lato', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.music-section h2 {
-    padding-top: 2.5rem;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-}
-
-.music-container {
-    background-color: #fff;
-    border-radius: 1rem;
-    display:flex;
-    padding: 1.25rem 2rem;
-    position: relative;
-    margin: 6.25rem 0;
-    z-index: 10;
-}
-
-.artwork-container {
-    position: relative;
-    width: 6.87rem;
-}
-
-/* .artwork-container::after {
-    content: '';
-    background-color: #fff;
-    height: 1.25rem;
-    width: 1.25rem;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    border-radius: 50%;
-    transform: translate(-50%, -175%);    
-} */
-
-.artwork-container img {
-    width: inherit;
-    height: 6.87rem;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    animation: rotate 3s linear infinite;
-    animation-play-state: paused;
-}
-
-.music-container.play .artwork-container img {
-    animation-play-state: running;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.action-btn {
-    background-color: #fff;
-    border: 0;
-    color: #dfdbdf;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 1rem;
-    margin: 0 1.25rem;
-}
-
-.action-btn-big {
-    color: #cdc2d0;
-    font-size: 1.5rem;
-}
-
-.action-btn:focus {
-    outline: 0;
-}
-/* Use the below as a model for all the different color gradients */
-.pink {
-    background-color: #f68e88;
-}
-
-.pink-bg {
-    background-image: linear-gradient(
-        0deg,
-        #f7f7f7 23.8%,
-        #fcdddd 92%
-    );
-}
-
-.pink-shadow {
-    box-shadow: 0 20px 20px 0 #fca9a999;
-}
-
-.blue {
-    background-color: #006184;
-}
-.blue-bg {
-    background-image: linear-gradient(
-        0deg,
-        #dff3fa 23.8%,
-        #c0ebfa 92%
-    );
-}
-
-.blue-shadow {
-    box-shadow: 0 20px 20px 0 #a9cdfc99;
-}
-
-.green {
-    background-color: #1a4d31;
-}
-
-.green-bg {
-    background-image: linear-gradient(
-        0deg,
-        #f3fdf8 23.8%,
-        #0c4d28 92%
-    );
-}
-
-.green-shadow {
-    box-shadow: 0 20px 20px 0 #6b977e99;
-}
-
-.red {
-    background-color: #930118;
-}
-
-.red-bg {
-    background-image: linear-gradient(
-        0deg,
-        #fdd9de 23.8%,
-        #af0a23 92%
-    );
-}
-
-.red-shadow {
-    box-shadow: 0 20px 20px 0 #ec8c9999;
-}
-
+                
+                
+/* Not used yet */
+                .shiny-button {
+                    margin-top: 1rem;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 1.2rem;
+                    padding: 1rem 5rem;
+                    text-transform: uppercase;
+                    color: whitesmoke;
+                    background: #c94b4b; /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
+                      /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+                    background-size: 300% 300%;
+                    transition: background-position 300ms;    
+                } 
+                
+                .banner .shiny-button:hover {
+                    background-position: right center;
+                }
 
 
 
