@@ -634,14 +634,29 @@ section.projects {
         }
     
     /* Music Player */
+        .music-section {
+            justify-content: flex-start;
+            height: 50rem;
+        }
+        
         .music-section-content {
             display: flex;
-            flex-direction: row;
+            flex-direction: row;    
+        }
+
+        .music-section-content .about-text {
+            text-align: justify;
         }
 
         .music-player {
             background-color: transparent;
-            margin-top: 27rem;
+            /* margin-top: 27rem; */
+            align-self: center;
+            transition: transform 300ms ease-in;
+        }
+
+        .music-player.play {
+            transform: translateY(150%);
         }
 
         .music-container {

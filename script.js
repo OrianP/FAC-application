@@ -218,6 +218,7 @@ handleDesktopScreen(mq);
 
 // Music Player
 const musicSection = document.querySelector('.music-section');
+const musicPlayer = document.querySelector('.music-player');
 const musicContainer = document.querySelector('.music-container');
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
@@ -255,6 +256,7 @@ function loadSong(song) {
 // functions for play and pause btns
 function playSong() {
     musicContainer.classList.add("play");
+    musicPlayer.classList.add("play");
     playBtn.querySelector("i.fas").classList.remove("fa-play");
     playBtn.querySelector("i.fas").classList.add("fa-pause");
     audio.play();
@@ -262,6 +264,7 @@ function playSong() {
 
 function pauseSong() {
     musicContainer.classList.remove("play");
+    musicPlayer.classList.remove("play");
     playBtn.querySelector("i.fas").classList.add("fa-play");
     playBtn.querySelector("i.fas").classList.remove("fa-pause");
     audio.pause();
