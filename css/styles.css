@@ -320,8 +320,41 @@ section.projects {
     background-color: var(--clr-gray);
 }
 
+/* Styles for JS disabled browsers */
 
-/* Music Player */
+.js-disabled section.projects {
+    margin-bottom: 3rem;
+}
+/* display all projects on a grid instead of slider if js is disabled */
+.js-disabled .project-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 23rem);
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.js-disabled .view-port {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+}
+
+.js-disabled .card {
+    margin: 0;
+    box-shadow: var(--box-shadow);
+}
+
+/* set a fixed height if js is disabled */
+.js-disabled .img-and-info-container {
+    height: 25.10rem;
+}
+
+.js-disabled .slider-btns {
+    display: none;
+}
+
+/* Background */
 
 .music-section {
     /* font-family: 'Lato', sans-serif; */
@@ -339,6 +372,7 @@ section.projects {
     letter-spacing: 0.2rem;
 } */
 
+/* Music Player */
 .music-player {
     display: flex;
     flex-direction: column;
@@ -447,6 +481,7 @@ section.projects {
 .action-btn:focus {
     outline: 0;
 }
+
 /* Use the below as a model for all the different color gradients */
 .pink {
     background-color: #f68e88;
@@ -512,6 +547,45 @@ section.projects {
     box-shadow: 0 20px 20px 0 #ec8c9999;
 }
 
+/* Pre requisites */
+
+.pre-req {
+    padding: 2rem 0;
+}
+
+.profile-cards-container {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 30rem));
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: wheat;
+}
+
+.profile-info {
+    text-align: left;
+}
+
+.logo-container {
+    width: 5rem;
+    height: 100%;
+    border-left: 1px dashed black;
+    
+}
+
+.logo-container img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+
+/* media query for desktop / laptop */
 @media only screen and (min-width: 1024px) {
 
     /* Navigation */
@@ -532,7 +606,6 @@ section.projects {
             width: unset;
             background-color: unset;
             box-shadow: unset;
-    
         }  
         
         .menu-item {
@@ -597,18 +670,6 @@ section.projects {
 
     /* Projects */
 
-        /* display all projects on a grid instead of slider if js is disabled */
-        .js-disabled .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, 22rem);
-            justify-content: center;
-        }
-
-        /* set a fixed height if js is disabled */
-        .js-disabled .img-and-info-container {
-            height: 24.25rem;
-        }
-
         .slider > button:hover {
             opacity: 0.5;
         }
@@ -632,6 +693,7 @@ section.projects {
         .card:hover {
             transform: scale(1.03);
         }
+
     
     /* Music Player */
         .music-section {
