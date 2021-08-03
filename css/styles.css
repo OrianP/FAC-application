@@ -551,6 +551,7 @@ section.projects {
 
 .pre-req {
     padding: 2rem 0;
+    background-color: #E6E5E1;
 }
 
 .profile-cards-container {
@@ -558,30 +559,103 @@ section.projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 30rem));
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1.2rem;    
 }
 
 .profile {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: wheat;
+    background-color: #f7f7f7f1;
+    position: relative;
+    overflow: hidden;  
+    box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+    cursor: pointer;
+    transition: opacity 300ms ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .profile-info {
     text-align: left;
+    padding: 2rem 0 2rem 2rem;
+}
+
+.profile-info > * {
+    padding: 0.5rem 0;
+}
+
+.profile-info > h3 {
+    font-size: 1.2rem;
 }
 
 .logo-container {
     width: 5rem;
     height: 100%;
-    border-left: 1px dashed black;
-    
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px black;
+    background-color: #fff;    
 }
 
 .logo-container img {
     max-width: 100%;
     border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 5px 15px 5px rgba(59, 59, 59, 0.35);
+    transition: all 400ms ease-in-out;
+    z-index: 100;
+}
+
+.github img, .repl img {
+    border-radius: 50%;
+    margin-bottom: -2px;
+}
+
+.logo-container img:hover {
+    transform: scale(0.9);
+    box-shadow: 0px 5px 15px 8px rgba(37, 37, 37, 0.35);
+}
+
+.circle {
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
+    width: 1rem;
+    height: 1rem;
+    background-color: #035572;
+    border-radius: 1rem;
+    cursor: pointer;
+    outline: transparent;
+    box-shadow: none;
+    border: none;
+    mix-blend-mode: hard-light;
+    transition: transform 300ms ease-in-out;
+}
+
+.profile:hover .circle {
+    transform: scale(28);
+}
+
+.codewars .circle {
+    background-color: #0b5e08 ;
+}
+
+.github .circle {
+    background-color: #cc4230
+}
+
+.repl .circle {
+    background-color: #cc30c4
+}
+
+.profile-cards-container:hover > .profile {
+    opacity: 0.5;
+}
+
+.profile-cards-container:hover > .profile:hover {
+    opacity: 1.0;
 }
 
 
