@@ -844,6 +844,38 @@ section.projects {
             left: 0; */
         }
 }
+
+    /* Pre requisites */
+
+    .profile-info p:nth-child(3), .profile-info p:nth-child(4) {
+        /* visibility: hidden; */
+        transform: translateY(3rem);
+        opacity: 0;
+        transition: visibility 0s linear 0ms, opacity 300ms ease-in, transform 1s;
+    }
+
+    .profile-info p:nth-child(3) {
+        transition-delay: 300ms;
+    }
+
+    .profile-info p:nth-child(4) {
+        transition-delay: 100ms;
+    }
+
+    /* .profile-info:hover p:nth-child(3) {
+        transition-delay: 100ms;
+    }
+
+    .profile-info:hover p:nth-child(4) {
+        transition-delay: 300ms;
+    } */
+
+    .profile:hover p:nth-child(3), .profile:hover p:nth-child(4) {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0); 
+        transition: visibility 0s linear 0ms, opacity 400ms ease-in, transform 400ms;    
+    }
                 
                 
 /* Not used yet */
