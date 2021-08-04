@@ -350,3 +350,28 @@ progressContainer.addEventListener('click', setProgress);
 
 // play next song when current song ends
 audio.addEventListener('ended', nextSong);
+
+// Pre Requisites
+const profileCards = document.querySelectorAll('.overflow-container');
+const profileLinks = document.querySelectorAll('.profile-link');
+
+// for each profile card, open the link at the same index as card
+profileCards.forEach((card, index) => card.addEventListener('click', () => {
+    console.log('clicked');
+    openLink(index);
+    }
+));
+
+// change cursor style to pointer when user hovers on profile card
+profileCards.forEach((card) => card.addEventListener('mouseover', () => changeCursor(card)));
+
+// open the profile link at the given index in a new tab
+// set opener property to null to prevent tabnabbing 
+const openLink = (index) => {
+    window.open(profileLinks[index], '_tab').opener = null;
+} 
+
+// change cursor style to pointer when user
+const changeCursor = (el) => {
+    el.classList.add('pointer-cursor');
+}
