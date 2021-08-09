@@ -93,15 +93,21 @@ const btnNext = document.querySelector('.next-btn');
 const btnPrev = document.querySelector('.prev-btn');
 const cardsContainer = document.querySelector('.project-cards-container');
 const cards = document.querySelectorAll('.card');
+// For mobile: clone first and last card to be appended in media query
+const firstCardClone = cardsContainer.children[0].cloneNode(true);
+const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1].cloneNode(true);
+// For desktop: create an array from the cards Nodelist and clone each card to be appended in media query
+const desktopClones = Array.from(cards, card => 
+    card.cloneNode(true));
 let currentCardIndex = 1;
 let cardWidth = cards[0].clientWidth;
 let lastCardIndex;
 
-// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 229)
+// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 228)
 projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
 
 // set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
-cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
+// cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
 
 // Event Listeners 
 
@@ -111,7 +117,8 @@ btnNext.addEventListener('click', () => {
         transitionCard(currentCardIndex, cardWidth);
         
         console.log(cardsContainer.style.transform);
-        console.log(currentCardIndex);
+        console.log({currentCardIndex});
+        console.log({lastCardIndex})
     }
 })
 
@@ -122,7 +129,8 @@ btnPrev.addEventListener('click', () => {
         transitionCard(currentCardIndex, cardWidth);
 
         console.log(cardsContainer.style.transform);
-        console.log(currentCardIndex);
+        console.log({currentCardIndex});
+        console.log({lastCardIndex})
     }
 })
 
@@ -166,14 +174,18 @@ const mq = window.matchMedia('(min-width: 1024px)');
 // function to execute based on the matches property return value 
 const handleDesktopScreen = (e) => {
     if (e.matches) {
+        cardsContainer.classList.add('desktop');
+        // remove mobile clones on window resize
+        if (cardsContainer.classList.contains('mobile')) {
+            firstCardClone.remove();
+            lastCardClone.remove();
+        }
         // total width to disply three cards with 2rem left and right margins
         cardWidth = ((cards[0].clientWidth + 64) * 3);
+        // set translate position to first three real cards
         cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
-        // create an array from the cards Nodelist and clone each card
-        const clones = Array.from(cards, card => 
-            card.cloneNode(true));
-        // spread clones array and append to the cardsContainer 
-        cardsContainer.append(...clones);
+        // spread desktop clones array and append to the cardsContainer 
+        cardsContainer.append(...desktopClones);
         // update lastCardIndex to transition correctly:
         // displaying 3 cards at a time with 2 sets of real cards and 1 set of clones on either side to create the infinite slider effect 
         lastCardIndex = 3; 
@@ -183,30 +195,37 @@ const handleDesktopScreen = (e) => {
         console.log({currentCardIndex});
         console.log({cardWidth});
         console.log(cardsContainer.style.transform);
+        console.log(cardsContainer.children);
 
-        // Music Player
+        // Music Player media query
         const musicInfo = document.querySelector('.music-info');
         const squareCoverContainer = document.querySelector('.artwork-container-square');
         musicInfo.prepend(squareCoverContainer);
 
 
      } else {
-        // clone first and last card for infinite slider effect
-        const firstCardClone = cardsContainer.children[0].cloneNode(true);
-        const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1].cloneNode(true);
-
-        // insert clones at beginning and end of cardsContainer
+        cardsContainer.classList.add('mobile'); 
+        // remove desktop clones on window resize
+        if (cardsContainer.classList.contains('desktop')) {
+            desktopClones.forEach(clone => clone.remove());
+        }
+        currentCardIndex = 1; 
+        // reset card width back to one card's width when user resizes screen 
+        cardWidth = cards[0].clientWidth; 
+        // set translate position to first real card position
+        cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
+        // insert mobile clones at beginning and end of cardsContainer
         cardsContainer.insertBefore(lastCardClone, cardsContainer.children[0]);
         cardsContainer.appendChild(firstCardClone);
         // index of last clone card after clones have been inserted
         lastCardIndex = cardsContainer.children.length - 1; // expected: 7
-
+        
         console.log('mobile');
         console.log({lastCardIndex}); 
         console.log({currentCardIndex});
         console.log({cardWidth});
         console.log(cardsContainer.style.transform);
-
+        console.log(cardsContainer.children);
      }
     }
 

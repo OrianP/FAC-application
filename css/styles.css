@@ -639,10 +639,11 @@ section.projects {
     box-shadow: none;
     border: none;
     mix-blend-mode: hard-light;
-    transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in;
+    will-change: transform;
 }
 
-.profile:hover .design-circle {
+.overflow-container:hover .design-circle {
     transform: scale(30);
 }
 

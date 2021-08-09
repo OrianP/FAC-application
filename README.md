@@ -15,7 +15,6 @@ The main JavaScript features on this site are:
 - [ ] Light and dark mode toggle
 - [ ] Infinite slider to display project cards 
 - [ ] Music player 
-- [ ] Video carousel
 
 ## Learning Outcomes 
 Below is a list of new information learned and 'ah-ha!' :point_up: moments I had while building this site. I thought it would be beneficial to write down every new piece of knowledge to help it sink in and to show the learning process: 
