@@ -198,18 +198,18 @@ const handleDesktopScreen = (e) => {
         console.log(cardsContainer.children);
 
         // Music Player media query
+        // prepend square artwork to music info container, only visible when 'play' button is clicked
         const musicInfo = document.querySelector('.music-info');
         const squareCoverContainer = document.querySelector('.artwork-container-square');
         musicInfo.prepend(squareCoverContainer);
 
 
-     } else {
+     } else {        
         cardsContainer.classList.add('mobile'); 
         // remove desktop clones on window resize
         if (cardsContainer.classList.contains('desktop')) {
             desktopClones.forEach(clone => clone.remove());
         }
-        currentCardIndex = 1; 
         // reset card width back to one card's width when user resizes screen 
         cardWidth = cards[0].clientWidth; 
         // set translate position to first real card position
@@ -226,6 +226,12 @@ const handleDesktopScreen = (e) => {
         console.log({cardWidth});
         console.log(cardsContainer.style.transform);
         console.log(cardsContainer.children);
+
+        // Music Player media query
+        // prepend square artwork to music player container to be visible at all times
+        const squareCoverContainer = document.querySelector('.artwork-container-square');
+        const musicPlayer = document.querySelector('.music-player');
+        musicPlayer.prepend(squareCoverContainer);
      }
     }
 
@@ -369,6 +375,7 @@ progressContainer.addEventListener('click', setProgress);
 
 // play next song when current song ends
 audio.addEventListener('ended', nextSong);
+
 
 // Pre Requisites
 const profileCards = document.querySelectorAll('.overflow-container');

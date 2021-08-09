@@ -363,6 +363,13 @@ section.projects {
     padding: 2rem 0 3rem 0;
     overflow: hidden;
 }
+
+.music-section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* 
 .music-section h2 {
     padding-top: 2.5rem;
@@ -377,6 +384,7 @@ section.projects {
     background-color: #fff;
     margin: 1rem;
     border-radius: 1rem;
+    width: 80%;
 }
 
 .artwork-container-square {
@@ -639,8 +647,7 @@ section.projects {
     box-shadow: none;
     border: none;
     mix-blend-mode: hard-light;
-    transition: transform 300ms ease-in;
-    will-change: transform;
+    transition: transform 400ms ease-in;
 }
 
 .overflow-container:hover .design-circle {
@@ -659,18 +666,19 @@ section.projects {
     background-color: #cc30c4
 }
 
-.profile-cards-container:hover > .overflow-container {
-    opacity: 0.5;
-}
-
-.profile-cards-container:hover > .overflow-container:hover {
-    opacity: 1.0;
-}
-
 .overflow-container.pointer-cursor {
     cursor: pointer;
 }
 
+/* 'Hover on everything but' trick causing the design-circle scale transform to become glitchy: */
+
+/* .profile-cards-container:hover > .overflow-container {
+    opacity: 0.5;
+}
+
+.profile-cards-container:hover > .overflow-container:hover {
+    opacity: 1.0; 
+} */
 
 /* media query for desktop / laptop */
 @media only screen and (min-width: 1024px) {
@@ -802,6 +810,7 @@ section.projects {
             /* margin-top: 27rem; */
             align-self: center;
             transition: transform 300ms ease-in;
+            width: 100%;
         }
 
         .music-player.play {
@@ -909,6 +918,11 @@ section.projects {
         }
 }
 
+@media only screen and (min-width: 750px) and (max-width: 1024px) {
+    .music-player {
+        width: 60%;
+    }
+}
     
                 
                 
