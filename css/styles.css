@@ -22,10 +22,34 @@ main {
 .section-title {
     width: fit-content;
     font-size: 1.5rem;
-    padding: 2rem 0;
     text-align: left;
-    padding: 0.5rem 1.5rem 0.5rem 5rem;
-    background-color: pink;
+    align-self: flex-start;
+    padding: 0.5rem 1rem 0 5rem;
+    background-color: transparent;
+    border-bottom: 3px solid pink;
+}
+
+.text-container {
+    line-height: 1.4;
+    font-size: 1.2rem;    
+    padding: 1rem 1.5rem;
+    text-align: justify;
+}
+
+.text-container p {
+    padding: 0.5rem 0;
+}
+
+.text-container a {
+    color: rgb(102, 100, 100)
+}
+
+.text-container a:hover {
+    opacity: 0.5;
+}
+
+.italic {
+    font-style: italic;
 }
 
 /* Navigation */
@@ -135,12 +159,6 @@ header {
     
 }
 
-.about-text {
-    line-height: 1.4;
-    font-size: 1.2rem;    
-    padding: 2rem;
-}
-
 /* Projects */
 
 section.projects {
@@ -149,6 +167,11 @@ section.projects {
     --box-shadow: 0px 2px 8px 0px #b0bec5;
     overflow: hidden;
     padding: 2rem 0;
+}
+
+.projects p {
+    font-size: 1.2rem;
+    padding-top: 2rem;
 }
 
 .slider-btns {
@@ -361,7 +384,6 @@ section.projects {
     align-items: center;
     justify-content: center;
     padding: 2rem 0 3rem 0;
-    overflow: hidden;
 }
 
 .music-section-content {
@@ -683,6 +705,15 @@ section.projects {
 /* media query for desktop / laptop */
 @media only screen and (min-width: 1024px) {
 
+    /* Text styles */
+
+    .text-container {
+        line-height: 1.4;
+        font-size: 1.5rem;    
+        padding: 1rem 8rem;
+        text-align: left;
+    }
+    
     /* Navigation */
     
         .hamburger {
@@ -793,13 +824,12 @@ section.projects {
     /* Music Player */
         .music-section {
             justify-content: flex-start;
-            height: 50rem;
         }
         
-        .music-section-content {
+        /* .music-section-content {
             display: flex;
             flex-direction: row;    
-        }
+        } */
 
         .music-section-content .about-text {
             text-align: justify;
@@ -807,14 +837,15 @@ section.projects {
 
         .music-player {
             background-color: transparent;
-            /* margin-top: 27rem; */
-            align-self: center;
-            transition: transform 300ms ease-in;
-            width: 100%;
+            margin-bottom: 3rem;
+            transition: transform 300ms ease-in, margin 300ms ease-in;
+            width: initial;
         }
 
         .music-player.play {
             transform: translateY(150%);
+            margin-top: 10rem;
+            margin-bottom: 18rem;
         }
 
         .music-container {
