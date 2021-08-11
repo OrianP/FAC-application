@@ -42,7 +42,17 @@ main {
     padding: 1rem 0;
 }
 
+/* this is overriding specificity in music section and interfering with absolute positioning - FIX! */
 .text-container p:nth-child(2){
+    position: relative;
+}
+
+.music-section-content .text-container p:nth-child(2){
+    position: unset;
+}
+
+/* adjacent sibling combinator to select only the first paragraph within the text-container immediately after the music player */
+.music-player + .text-container p:nth-child(1){
     position: relative;
 }
 
@@ -58,7 +68,7 @@ main {
     bottom: 0;
     padding: 0;
     transition: opacity 300ms ease-out, transform 200ms linear;
-    z-index: 10;
+    background-color: inherit;
 }
 
 .text-btn:hover {
