@@ -4,7 +4,7 @@
 const hamburger = document.querySelector('.hamburger');
 
 // the menu is expanded by default for progressive enhancement (if JS is disabled in the user's browser)
-// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 23)
+// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 62)
 document.body.classList.remove('js-disabled');
 document.body.classList.add('js-enabled');
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.setAttribute('aria-expanded', 'false');
 
     hamburger.addEventListener('click', () => {
-        if ((hamburger.getAttribute('aria-expanded')) === 'true') {
+        if (hamburger.getAttribute('aria-expanded') === 'true') {
             hamburger.setAttribute('aria-expanded', 'false')
         } else {
             hamburger.setAttribute('aria-expanded', 'true');
@@ -83,6 +83,43 @@ let typeSpeed = 150;
     // console.log(setTimeout.id);
     setTimeout(typeEffect, typeSpeed); 
 }());
+
+// Site Wide Text Content 
+// all p elements have a default 'reveal' class in markup for js-disabled users
+// when the page loads add the 'hide' class to p elements that contain the class 'reveal'
+const pElements = document.querySelectorAll('.text-reveal');
+console.log(pElements);
+
+document.addEventListener('DOMContentLoaded', () => {
+    pElements.forEach(p => p.classList.add('text-hide'))
+})
+
+const txtBtn = document.querySelector('.text-btn');
+console.log(txtBtn);
+
+// add click event listener to each button to toggle the 'reveal' class
+txtBtn.addEventListener('click', () => {
+    pElements.forEach(p => p.classList.toggle('text-hide'));
+    // toggle the transform rotate property via the aria-expanded attribute  
+    if (txtBtn.getAttribute('aria-expanded') === 'true'){
+        txtBtn.setAttribute('aria-expanded', false);
+    } else {
+        txtBtn.setAttribute('aria-expanded', true);
+    }        
+})
+
+// create a reusable function from above that takes an element param and changes it's aria-expanded value to use on hamburger menu too
+
+// convert the logic above to site-wide
+// in HTML, give all ps and btns correct classes
+// select btns with querySelectorAll
+// write function that executes the class toggle and aria-expanded toggle based on button index and paragraph indices 
+// or do the aria-expanded wih event.target so only the button that was clicked rotates
+// how to select only the paragraphs that are siblings of the parent of the button to only hide and show those when btn is clicked?  
+
+
+
+
 
 
 // Projects
@@ -397,7 +434,8 @@ const openLink = (index) => {
     window.open(profileLinks[index], '_tab').opener = null;
 } 
 
-// change cursor style to pointer when user
+// change cursor style to pointer
 const changeCursor = (el) => {
     el.classList.add('pointer-cursor');
 }
+
