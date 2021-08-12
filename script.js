@@ -1,38 +1,44 @@
-// Navigation 
+// Navigation //
 
 // select hamburger button
 const hamburger = document.querySelector('.hamburger');
 
 // the menu is expanded by default for progressive enhancement (if JS is disabled in the user's browser)
-// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 62)
+// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 106)
 document.body.classList.remove('js-disabled');
 document.body.classList.add('js-enabled');
 
 // Event listeners 
 
-// collapse the hamburger menu when the width of the window content area exceeds 1024px 
+// collapse the hamburger menu on page load when JS is enabled (code will not run if JS is disabled) 
+document.addEventListener('DOMContentLoaded', () => {
+    hamburger.setAttribute('aria-expanded', 'false');
+});
+
+hamburger.addEventListener('click', () => {
+    toggleAriaExpanded(hamburger);
+})
+
+// if user resizes screen while menu is expanded, collapse the hamburger menu when the width of the window exceeds 1024px 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 1024) {
         hamburger.setAttribute('aria-expanded', 'false');
     }
 })
 
-// collapse the hamburger menu on page load when JS is enabled (code will not run if JS is disabled) 
-// button click logic: if the menu is expanded: collapse it. else, if it is collapsed: expand it
-document.addEventListener('DOMContentLoaded', function() {
-    hamburger.setAttribute('aria-expanded', 'false');
-
-    hamburger.addEventListener('click', () => {
-        if (hamburger.getAttribute('aria-expanded') === 'true') {
-            hamburger.setAttribute('aria-expanded', 'false')
-        } else {
-            hamburger.setAttribute('aria-expanded', 'true');
-        }
-    })
-});
+// toggle the aria expanded attribute
+// CSS rules define the element display based on this attribute
+// if the element is expanded, collapse it. else, if it is collapsed, expand it
+function toggleAriaExpanded(el) {
+    if (el.getAttribute('aria-expanded') === 'true'){
+        el.setAttribute('aria-expanded', false);
+    } else {
+        el.setAttribute('aria-expanded', true);
+    } 
+}
 
 
-// Banner
+// Banner //
 const phrases = ['Hello Founders and Coders', 'My name is Orian'];
 let phraseIndex = 0;
 let letterIndex = 0;
@@ -84,9 +90,10 @@ let typeSpeed = 150;
     setTimeout(typeEffect, typeSpeed); 
 }());
 
-// Site Wide Text Content 
-// all p elements have a default 'reveal' class in markup for js-disabled users
-// when the page loads add the 'hide' class to p elements that contain the class 'reveal'
+
+// Site Wide Text Content //
+// specific p elements have a default 'reveal' class in markup for js-disabled browsers
+// if js is enabled, those p elements are hidden on page load
 
 // nodelist of all p elements with class 'text-reveal
 const pElements = document.querySelectorAll('.text-reveal');
@@ -94,58 +101,41 @@ const pElements = document.querySelectorAll('.text-reveal');
 const aboutPs = document.querySelectorAll('.about .text-reveal');
 const applicationPs = document.querySelectorAll('.application .text-reveal');
 const backgroundPs = document.querySelectorAll('.music-section .text-reveal');
-// console.log(pElements);
-// console.log(applicationPs); 
-// console.log(aboutPs); 
-// console.log(backgroundPs); 
+ 
 // nodelist of all buttons with class 'text-btn'
 const txtBtns = document.querySelectorAll('.text-btn');
+// nodelists of all buttons with class 'text-btn' per section
 const aboutBtn = document.querySelector('.about .text-btn');
 const applicationBtn = document.querySelector('.application .text-btn');
 const backgroundBtn = document.querySelector('.music-section .text-btn');
-// console.log(txtBtns);
-// console.log({aboutBtn});
-// console.log({applicationBtn});
-// console.log({backgroundBtn});
-
 
 // hide all p elements on DOM content load
 document.addEventListener('DOMContentLoaded', () => {
     pElements.forEach(p => p.classList.add('text-hide'))
 })
 
-// add click event listener to each button to toggle the 'reveal' class
+// toggle the transform:rotate property on all textBtns via the aria-expanded attribute  
 txtBtns.forEach(btn => { 
     btn.addEventListener('click', (event) => {
-    // toggle the transform rotate property via the aria-expanded attribute  
-    
-    if (event.currentTarget.getAttribute('aria-expanded') === 'true'){
-        event.currentTarget.setAttribute('aria-expanded', false);
-    } else {
-        event.currentTarget.setAttribute('aria-expanded', true);
-    } 
-    console.log(event.currentTarget.getAttribute('aria-expanded'));  
+        toggleAriaExpanded(event.currentTarget); 
 })})
 
+// add click event listener to each button to toggle the 'reveal' class on relevant paragraphs
 aboutBtn.addEventListener('click', () => toggleText(aboutPs));
+
 applicationBtn.addEventListener('click', () => toggleText(applicationPs));
+
 backgroundBtn.addEventListener('click', () => toggleText(backgroundPs));
 
 function toggleText (pNodes) {
     pNodes.forEach(p => p.classList.toggle('text-hide'))
 }
-// create a reusable function from above that takes an element param and changes it's aria-expanded value to use on hamburger menu too
 
-// convert the logic above to site-wide
-// write function that executes the hide/reveal class toggle  based on button index and paragraph indices 
-// how to select only the paragraphs that are siblings of the parent of the button to only hide and show those when btn is clicked?  
+// refactor event listeners on each text btn into one 
+// how to write a reusable function that selects only the paragraphs that are siblings of the parent of the button to only hide and show those when btn is clicked?  
 
 
-
-
-
-
-// Projects
+// Projects //
 
 const tagContainer = document.querySelector('.tag-container');
 const projects = document.querySelector('.projects');
@@ -224,7 +214,7 @@ const transitionCard = (index, width) => {
     cardsContainer.style.transform = `translateX(-${index * width}px)`;
 }
 
-// Media query for desktop screens
+// Media query for desktop screens //
 
 // matchMedia() method returns a new MediaQueryList object used to check if the document matches the media query string
 // assign the result of matchMedia to the variable mq
@@ -301,7 +291,7 @@ mq.addEventListener('change', handleDesktopScreen);
 handleDesktopScreen(mq);
 
 
-// Music Player
+// Music Player //
 const musicSection = document.querySelector('.music-section');
 const musicPlayer = document.querySelector('.music-player');
 const musicContainer = document.querySelector('.music-container');
@@ -437,7 +427,7 @@ progressContainer.addEventListener('click', setProgress);
 audio.addEventListener('ended', nextSong);
 
 
-// Pre Requisites
+// Pre Requisites //
 const profileCards = document.querySelectorAll('.overflow-container');
 const profileLinks = document.querySelectorAll('.profile-link');
 

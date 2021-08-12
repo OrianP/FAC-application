@@ -42,21 +42,11 @@ main {
     padding: 1rem 0;
 }
 
-/* this is overriding specificity in music section and interfering with absolute positioning - FIX! */
-.text-container p:nth-child(2){
+.text-btn-container{
     position: relative;
 }
 
-.music-section-content .text-container p:nth-child(2){
-    position: unset;
-}
-
-/* adjacent sibling combinator to select only the first paragraph within the text-container immediately after the music player */
-.music-player + .text-container p:nth-child(1){
-    position: relative;
-}
-
-.js-disabled .txt-btn {
+.js-disabled .text-btn {
     display: none;
 }
 
@@ -81,14 +71,17 @@ main {
 }
 
 .text-reveal {
+    visibility: visible;
     opacity: 1;
-    transition: opacity 500ms ease-in;    
+    transition: opacity 500ms ease-in, visibility 500ms ease-in;    
 }
 
 .text-hide {
-    opacity: 0;
-    /* remove element from flow when hidden, but keep visible to screen readers */
+    /* hide from screen readers */
+    visibility: hidden;
+    /* remove element from flow */
     position: absolute;
+    opacity: 0;
 }
 
 .text-container a {
