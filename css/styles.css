@@ -209,6 +209,7 @@ section.projects {
     --clr-gray: #37474f;
     --clr-gray-light: #b0bec5;
     --box-shadow: 0px 2px 8px 0px #b0bec5;
+    --bg-img-overlay: linear-gradient(0deg, rgba(80, 78, 78, 0.5),rgba(0, 0, 0, 0.5));
     overflow: hidden;
     padding: 2rem 0;
 }
@@ -306,36 +307,38 @@ section.projects {
     align-items: center;   
 }
 
-.project1 .project-img {
-    background-color: #fa4c4c9f;
+.tribute-page .project-img {
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5), rgba(129, 46, 54, 0.671), rgba(250, 160, 167, 0.5)), url("../media/images/project-tribute-page.jpg");
 }
 
-.project2 .project-img {
-    background-color: #4c66fa9f;
+.score-keeper .project-img {
+    background-image: var(--bg-img-overlay), url("../media/images/project-score-keeper.jpg");
 }
 
-.project3 .project-img {
+.js-30 .project-img {
     background-color: #4cfa949f;
 }
 
 .oando .project-img {
-    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), 
+    background-image: var(--bg-img-overlay), 
     url("../media/images/project-oandoduo.png");
 }
 
-.score-keeper .project-img {
-    background-color: #f70073be;
-    /* background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/andrey-metelev-DEuansgqjns-unsplash.jpg); */
+.tortoise-race .project-img {
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url("/media/images/project-tortoise-race.jpg");
+    background-position: center;
 }
 
-.tribute-page .project-img {
-    background-color: #01aeb4;
-    /* background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url(/media/images/banner-leone-venter-unsplash.jpg); */
+.colmar-academy .project-img {
+    background-image: var(--bg-img-overlay), 
+    url("../media/images/project-colmar-academy.jpg");
+    background-position: right;
 }
 
 .project-title {
     color: #fff;
     font-size: 3rem;
+    text-shadow: -1px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
 .info-container {
@@ -345,6 +348,19 @@ section.projects {
     background-color: rgba(255, 255, 255, 0.897);
     transform: translateY(26rem);
     transition: transform 400ms linear, opacity 400ms ease-out;    
+}
+
+.credit {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    width: max-content;
+}
+
+.credit:hover {
+    opacity: 0.5;
 }
 
 .card:hover .info-container {
@@ -857,7 +873,7 @@ section.projects {
             width: 81rem;
             margin: 0;
             box-shadow: unset;
-            overflow: visible;
+            overflow: hidden;
         }
 
         .card {
