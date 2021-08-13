@@ -424,6 +424,7 @@ span.js-tag {
     font-size: 1.0625rem;
     color: #fff;
     text-shadow: -1px 3px 7px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .btn-container a {

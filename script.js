@@ -152,6 +152,8 @@ const desktopClones = Array.from(cards, card =>
 let currentCardIndex = 1;
 let cardWidth = cards[0].clientWidth;
 let lastCardIndex;
+let cardBtns;
+let cardLinks;
 
 // set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 228)
 projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
@@ -214,6 +216,12 @@ const transitionCard = (index, width) => {
     cardsContainer.style.transform = `translateX(-${index * width}px)`;
 }
 
+// open a link from a list of links at a given index in a new tab
+// set opener property to null to prevent tabnabbing 
+const openLink = (linkList, index) => {
+    window.open(linkList[index], '_tab').opener = null;
+} 
+
 // Media query for desktop screens //
 
 // matchMedia() method returns a new MediaQueryList object used to check if the document matches the media query string
@@ -247,6 +255,13 @@ const handleDesktopScreen = (e) => {
         console.log(cardsContainer.style.transform);
         console.log(cardsContainer.children);
 
+        // project cards buttons
+        // select btns and links from real cards and clones
+        cardBtns = document.querySelectorAll('.live-btn, .code-btn');
+        cardLinks = document.querySelectorAll('.btn-container a');
+        // add event listener to each btn to open the link at the same index as btn
+        cardBtns.forEach((btn, index) => btn.addEventListener('click', () => openLink(cardLinks, index)));
+
         // Music Player media query
         // prepend square artwork to music info container, only visible when 'play' button is clicked
         const musicInfo = document.querySelector('.music-info');
@@ -269,7 +284,6 @@ const handleDesktopScreen = (e) => {
         cardsContainer.appendChild(firstCardClone);
         // index of last clone card after clones have been inserted
         lastCardIndex = cardsContainer.children.length - 1; // expected: 7
-        
         console.log('mobile');
         console.log({lastCardIndex}); 
         console.log({currentCardIndex});
@@ -277,6 +291,13 @@ const handleDesktopScreen = (e) => {
         console.log(cardsContainer.style.transform);
         console.log(cardsContainer.children);
 
+        // project cards buttons
+        // select btns and links from real cards and clones
+        cardBtns = document.querySelectorAll('.live-btn, .code-btn');
+        cardLinks = document.querySelectorAll('.btn-container a');
+        // add event listener to each btn to open the link at the same index as btn
+        cardBtns.forEach((btn, index) => btn.addEventListener('click', () => openLink(cardLinks, index)));
+        
         // Music Player media query
         // prepend square artwork to music player container to be visible at all times
         const squareCoverContainer = document.querySelector('.artwork-container-square');
@@ -433,19 +454,12 @@ const profileLinks = document.querySelectorAll('.profile-link');
 
 // for each profile card, open the link at the same index as card
 profileCards.forEach((card, index) => card.addEventListener('click', () => {
-    console.log('clicked');
-    openLink(index);
+    openLink(profileLinks, index);
     }
 ));
 
 // change cursor style to pointer when user hovers on profile card
 profileCards.forEach((card) => card.addEventListener('mouseover', () => changeCursor(card)));
-
-// open the profile link at the given index in a new tab
-// set opener property to null to prevent tabnabbing 
-const openLink = (index) => {
-    window.open(profileLinks[index], '_tab').opener = null;
-} 
 
 // change cursor style to pointer
 const changeCursor = (el) => {
