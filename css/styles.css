@@ -44,6 +44,8 @@ main {
 
 .text-btn-container{
     position: relative;
+    /* ensure button is on top of music player */
+    z-index: 100;
 }
 
 .js-disabled .text-btn {
@@ -94,6 +96,16 @@ main {
 
 .italic {
     font-style: italic;
+}
+
+/* Vectors */
+
+.vector-container {
+    width: 28rem;
+}
+
+.vector-container img {
+    max-width: 100%;
 }
 
 /* Navigation */
@@ -199,7 +211,8 @@ header {
 /* About */
 
 .about {
-    background-color: #F5F4F4;
+    /* background-color: #F5F4F4; */
+    background-color: #fff;
     
 }
 
@@ -833,13 +846,27 @@ span.js-tag {
     .text-container {
         line-height: 1.4;
         font-size: 1.5rem;    
-        padding: 1rem 10rem;
+        padding: 1rem 8rem;
         text-align: left;
     }
 
     .text-btn{
         position: initial;
         font-size: 1.8rem;
+    }
+
+    /* Vectors */
+
+    .about .text-container{
+        display: block;
+    }
+
+    .about .vector-container {
+        float: right;
+    }
+
+    .application .vector-container {
+        width: 32rem;
     }
 
     /* Navigation */
