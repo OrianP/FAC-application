@@ -1,3 +1,19 @@
+// Intro //
+
+// intro section 
+const intro = document.querySelector('.intro');
+
+document.addEventListener('DOMContentLoaded', () => {
+    // hide scroll bar on body
+    document.body.style.overflowY = 'hidden';
+    // transition and fade the intro up after 5s
+    setTimeout(() => {
+        intro.classList.add('translate-up');
+        // show scroll bar on main site 
+        document.body.style.overflowY = 'visible';
+    }, 7700);
+})
+
 // Navigation //
 
 // select hamburger button
@@ -37,7 +53,6 @@ function toggleAriaExpanded(el) {
     } 
 }
 
-
 // Banner //
 const phrases = ['Hello Founders and Coders', 'My name is Orian'];
 let phraseIndex = 0;
@@ -69,7 +84,7 @@ let typeSpeed = 150;
 
     // select the h1 element with a class of 'banner-title' and update it's text content to display the letter
     document.querySelector('.banner-title').textContent = letter;
-    
+
     // if the phrase typing is complete, start removing characters by setting isDeleting to true
     if (letter.length === currentPhrase.length) {
         // pause before deleting characters
@@ -465,4 +480,12 @@ profileCards.forEach((card) => card.addEventListener('mouseover', () => changeCu
 const changeCursor = (el) => {
     el.classList.add('pointer-cursor');
 }
+
+// Test
+// const darkModeBtn = document.querySelector('.dark-mode');
+
+// darkModeBtn.addEventListener('click', () => {
+//     document.body.classList.toggle('dark-mode');   
+// });
+
 

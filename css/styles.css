@@ -1,3 +1,88 @@
+.js-disabled .intro {
+    display: none;
+}
+
+.intro {
+    height: 100vh;
+    width: 100vw;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    transition: transform 1s ease-out;
+}
+
+.translate-up {
+    transform: translateY(-100%);
+}
+
+.banner {
+    font-family:'Fira Mono', monospace;
+    position: relative;
+    animation: blink 1s ease-in forwards;
+}
+
+.emoji {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+}
+
+/* animated banner title */
+.banner-title {
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    
+}
+
+.banner-title::after {
+    content: "";
+    border-right: 5px solid black;
+    margin-left: 2px;
+    animation: blink 0.5s ease-in-out;
+    animation-iteration-count: 21;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.js-disabled .banner-title::after {
+    display: none;
+}
+
+/* if js is enabled hide non-animated banner title from view but not from screen readers */
+.js-enabled .banner-title--no-animation {
+opacity: 0;
+}
+
+/* show banner-title without animation on tablet and mobile screens */
+/* .banner-title--no-animation {
+    font-size: 1.5rem;
+    line-height: 1.3;
+
+} */
+
+/* hide animated banner-title */
+/* .banner-title {
+    display: none;
+} */
+
 main {
     font-family:'Lato', sans-serif; 
     text-align: center;
@@ -187,25 +272,6 @@ header {
     background-position: top right;
     position: relative;
     
-}
-
-.banner {
-    font-family:'Fira Mono', monospace;
-    position: absolute;   
-    top: 20rem;
-    left: 4rem;
-}
-
-/* show banner-title without animation on tablet and mobile screens */
-.banner-title--no-animation {
-    font-size: 1.5rem;
-    line-height: 1.3;
-
-}
-
-/* hide animated banner-title */
-.banner-title {
-    display: none;
 }
 
 /* About */
@@ -907,47 +973,6 @@ span.js-tag {
             linear-gradient(0deg, rgb(247,247,247,0.5), rgba(255, 189, 227, 0.4) 95%),
             url("../media/images/banner-leone-venter-unsplash.jpg");
         }
-    
-        .banner {
-            display: block;
-            top: 18rem;
-            left: 23rem;
-        }
-
-        /* animated banner title */
-        .banner-title {
-            display: block;
-            font-size: 2rem;
-            line-height: 1.2;
-            text-align: center;
-            color: black;
-        }
-
-        .banner-title::after {
-            content: "";
-            border-right: 5px solid black;
-            margin-left: 2px;
-            animation: blink 0.5s ease-in-out;
-            animation-iteration-count: 21;
-        }
-        
-        @keyframes blink {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        
-        .js-disabled .banner-title::after {
-            display: none;
-        }
-
-        /* if js is enabled hide non-animated banner title from view but not from screen readers */
-        .js-enabled .banner-title--no-animation {
-        opacity: 0;
-        }
 
     /* Projects */
 
@@ -1110,7 +1135,31 @@ span.js-tag {
     }
 }
     
-                
+  /* Test for css variables */
+    /* :root {
+    --bg-color: white;
+    --text-color: blueviolet;
+    --btn-text: red;
+    }
+
+    body {    
+      background-color: var(--bg-color);
+      color:var(--text-color);
+    }
+
+    button a {
+        color: var(--btn-text);
+    }
+
+    button.dark-mode {
+        color:var(--btn-text)
+    }
+
+  /* for js */
+  /* .dark-mode {
+      --bg-color: #243138;
+      --text-color: rgb(136, 111, 111);
+  } */ 
                 
 /* Not used yet */
                 .shiny-button {
