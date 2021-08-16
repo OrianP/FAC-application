@@ -2,17 +2,77 @@
 
 // intro section 
 const intro = document.querySelector('.intro');
+const introContent = document.querySelector('.intro-content');
+console.log({introContent});
 
 document.addEventListener('DOMContentLoaded', () => {
     // hide scroll bar on body
     document.body.style.overflowY = 'hidden';
-    // transition and fade the intro up after 5s
+    introContent.classList.add('fade-in');
+    // fade and transition the intro content up
+    setTimeout(() => { 
+            introContent.classList.add('fade-out', 'translate-up') 
+    }, 10900);
+
+    // fade and transition the intro div up
     setTimeout(() => {
         intro.classList.add('translate-up');
         // show scroll bar on main site 
         document.body.style.overflowY = 'visible';
-    }, 7700);
+    }, 11080);
 })
+
+// Intro //
+const phrases = ['Hello Founders and Coders', 'My name is Orian'];
+let phraseIndex = 0;
+let letterIndex = 0;
+let currentPhrase = '';
+let letter = '';
+let isDeleting = false;
+// initial typing speed used as the setTimeout delay parameter 
+let typeSpeed = 150;
+
+// Immediately invoked function
+(function typeEffect () {
+    currentPhrase = phrases[phraseIndex];
+    // Check if we are on the last phrase in the array and keep it displayed on screen instead of deleting
+    if (phraseIndex === phrases.length - 1) {
+        isDeleting = false;
+    }
+
+    if (isDeleting) {
+    // remove character at faster typing speed
+        typeSpeed = 100
+        letter = currentPhrase.substring(0, --letterIndex);
+
+    } else {
+    //  add character at initial typing speed
+        typeSpeed = 150;
+        letter = currentPhrase.substring(0, ++letterIndex);
+    }
+
+    // select the h1 element with a class of 'intro-text' and update it's text content to display the letter
+    document.querySelector('.intro-text').textContent = letter;
+
+    // if the phrase typing is complete, start removing characters by setting isDeleting to true
+    if (letter.length === currentPhrase.length) {
+        // pause before deleting characters
+        typeSpeed = 800
+        isDeleting = true; 
+    };
+    
+    // if the deletion of characters is complete, move on to the next phrase by incrementing phraseIndex and reset letterIndex to type characters from index 0 of the next phrase. Set isDeleting back to false. 
+    if(isDeleting && letter === '') {
+        phraseIndex++;
+        letterIndex = 0;
+        isDeleting = false; 
+        // pause before typing next phrase
+        typeSpeed = 800   
+    }
+    // console.log(typeSpeed);
+    // console.log(setTimeout.id);
+    setTimeout(typeEffect, typeSpeed); 
+}());
 
 // Navigation //
 
@@ -53,57 +113,7 @@ function toggleAriaExpanded(el) {
     } 
 }
 
-// Banner //
-const phrases = ['Hello Founders and Coders', 'My name is Orian'];
-let phraseIndex = 0;
-let letterIndex = 0;
-let currentPhrase = '';
-let letter = '';
-let isDeleting = false;
-// initial typing speed used as the setTimeout delay parameter 
-let typeSpeed = 150;
 
-// Immediately invoked function
-(function typeEffect () {
-    currentPhrase = phrases[phraseIndex];
-    // Check if we are on the last phrase in the array and keep it displayed on screen instead of deleting
-    if (phraseIndex === phrases.length - 1) {
-        isDeleting = false;
-    }
-
-    if (isDeleting) {
-    // remove character at faster typing speed
-        typeSpeed = 100
-        letter = currentPhrase.substring(0, --letterIndex);
-
-    } else {
-    //  add character at initial typing speed
-        typeSpeed = 150;
-        letter = currentPhrase.substring(0, ++letterIndex);
-    }
-
-    // select the h1 element with a class of 'banner-title' and update it's text content to display the letter
-    document.querySelector('.banner-title').textContent = letter;
-
-    // if the phrase typing is complete, start removing characters by setting isDeleting to true
-    if (letter.length === currentPhrase.length) {
-        // pause before deleting characters
-        typeSpeed = 800
-        isDeleting = true; 
-    };
-    
-    // if the deletion of characters is complete, move on to the next phrase by incrementing phraseIndex and reset letterIndex to type characters from index 0 of the next phrase. Set isDeleting back to false. 
-    if(isDeleting && letter === '') {
-        phraseIndex++;
-        letterIndex = 0;
-        isDeleting = false; 
-        // pause before typing next phrase
-        typeSpeed = 800   
-    }
-    // console.log(typeSpeed);
-    // console.log(setTimeout.id);
-    setTimeout(typeEffect, typeSpeed); 
-}());
 
 
 // Site Wide Text Content //

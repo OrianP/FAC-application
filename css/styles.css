@@ -16,14 +16,10 @@
     transition: transform 1s ease-out;
 }
 
-.translate-up {
-    transform: translateY(-100%);
-}
-
-.banner {
-    font-family:'Fira Mono', monospace;
+.intro-content {
     position: relative;
-    animation: blink 1s ease-in forwards;
+    transition: opacity 550ms ease-in, transform 500ms ease-in;
+    opacity: 0;
 }
 
 .emoji {
@@ -34,25 +30,25 @@
     font-size: 2.5rem;
 }
 
-/* animated banner title */
-.banner-title {
+.intro-text {
+    font-family:'Fira Mono', monospace;
     display: block;
     font-size: 1.5rem;
     line-height: 1.2;
     text-align: center;
     color: black;
-    margin-top: 1rem;
-    
+    margin-top: 1rem;    
 }
 
-.banner-title::after {
+/* typing cursor */
+.intro-text::after {
     content: "";
     border-right: 5px solid black;
     margin-left: 2px;
-    animation: blink 0.5s ease-in-out;
-    animation-iteration-count: 21;
+    animation: blink 0.5s ease-in-out infinite;
 }
 
+/* animations */
 @keyframes blink {
     0% {
         opacity: 0;
@@ -62,26 +58,22 @@
     }
 }
 
-.js-disabled .banner-title::after {
-    display: none;
+.translate-up {
+    transform: translateY(-100%);
 }
 
-/* if js is enabled hide non-animated banner title from view but not from screen readers */
-.js-enabled .banner-title--no-animation {
-opacity: 0;
+.fade-in {
+    opacity: 1;
 }
 
-/* show banner-title without animation on tablet and mobile screens */
-/* .banner-title--no-animation {
-    font-size: 1.5rem;
-    line-height: 1.3;
+.fade-out {
+    opacity: 0;    
+}
 
-} */
-
-/* hide animated banner-title */
-/* .banner-title {
-    display: none;
-} */
+/* hide non-animated intro text from view but not from screen readers */
+.screen-reader-only {
+    opacity: 0;
+}
 
 main {
     font-family:'Lato', sans-serif; 
@@ -261,7 +253,7 @@ nav {
 }
 
 
-/* Banner */
+/* Landing page */
 
 header {
     background-image: 
@@ -966,7 +958,7 @@ span.js-tag {
             border-right: none;
         }   
     
-    /* Banner */
+    /* Landing page */
 
         header {
             background-image: 
