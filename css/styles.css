@@ -1,8 +1,14 @@
-/* body {
-    
-    /* width: 100vw;
-    overflow-x: hidden; 
-} */
+html, body {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+section {
+    scroll-snap-align: start;
+    padding-top: 2rem;
+}
 
 /* Layout */
 
@@ -118,7 +124,7 @@
 .intro {
     height: 100vh;
     width: 100vw;
-    z-index: 10;
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -127,6 +133,7 @@
     top: 0;
     left: 0; 
     transition: transform 1s ease-out;
+    /* UNCOMMENT THIS to see intro */
     display: none;
 }
 
@@ -200,7 +207,7 @@ nav {
     visibility: hidden;
     opacity: 0;
     transform: translateY(-80%);
-    transition: all 500ms ease-in;
+    transition: all 500ms ease-in-out;
     text-align: center;
     padding-top: 2rem;
     width: 100%;
@@ -208,7 +215,7 @@ nav {
     background-color: rgb(255,255,255, 0.8);
 } 
 
-/* hide the 'X' icon when JS is enabled in the browser */
+/* hide the 'X' icon when js is enabled in the browser */
 .js-enabled .fa-times {   
     display: none;
 }
@@ -272,9 +279,7 @@ main {
     font-family:'Lato', sans-serif; 
     text-align: center;
     margin-top: 3rem;
-    overflow-y: scroll;
-    scroll-behavior: smooth; 
-    scroll-snap-type: y proximity;   
+    /* overflow-y: scroll; */
 }
 
 /* Landing page */
@@ -313,7 +318,13 @@ main {
 .about {
     /* background-color: #F5F4F4; */
     background-color: #fff;
+    padding-top: 2rem;
     
+}
+
+/* Application */
+.application {
+    padding-top: 2rem;
 }
 
 /* Projects */
@@ -942,7 +953,6 @@ span.js-tag {
 @media only screen and (min-width: 1024px) {
 
     body, html {
-    scroll-snap-type: y proximity;
     scroll-padding-top: 3.5rem;
     }
 
@@ -1025,11 +1035,12 @@ span.js-tag {
     /* Landing page */
 
         .welcome {
-            height: fit-content;
+            height: 100vh;
             margin-top: 4rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
     /* Projects */
