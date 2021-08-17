@@ -1,26 +1,28 @@
 // Intro //
 
 // intro section 
-const intro = document.querySelector('.intro');
-const introContent = document.querySelector('.intro-content');
-console.log({introContent});
+// const intro = document.querySelector('.intro');
+// const introContent = document.querySelector('.intro-content');
+// console.log({introContent});
 
-document.addEventListener('DOMContentLoaded', () => {
-    // hide scroll bar on body
-    document.body.style.overflowY = 'hidden';
-    introContent.classList.add('fade-in');
-    // fade and transition the intro content up
-    setTimeout(() => { 
-            introContent.classList.add('fade-out', 'translate-up') 
-    }, 10900);
+// document.addEventListener('DOMContentLoaded', () => {
+//     // hide scroll bar on body
+//     document.body.style.overflowY = 'hidden';
+//     // fade intro content in
+//     introContent.classList.add('fade-in');
 
-    // fade and transition the intro div up
-    setTimeout(() => {
-        intro.classList.add('translate-up');
-        // show scroll bar on main site 
-        document.body.style.overflowY = 'visible';
-    }, 11080);
-})
+//     // fade and transition the intro content up
+//     setTimeout(() => { 
+//             introContent.classList.add('fade-out', 'translate-up') 
+//     }, 10900);
+
+//     // fade and transition the intro div up
+//     setTimeout(() => {
+//         intro.classList.add('translate-up');
+//         // show scroll bar on main site 
+//         document.body.style.overflowY = 'visible';
+//     }, 11080);
+// })
 
 // Intro //
 const phrases = ['Hello Founders and Coders', 'My name is Orian'];

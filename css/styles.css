@@ -1,84 +1,8 @@
-.js-disabled .intro {
-    display: none;
-}
-
-.intro {
-    height: 100vh;
-    width: 100vw;
-    z-index: 101;
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0; 
-    transition: transform 1s ease-out;
-}
-
-.intro-content {
-    position: relative;
-    transition: opacity 550ms ease-in, transform 500ms ease-in;
-    opacity: 0;
-}
-
-.emoji {
-    position: absolute;
-    top: -2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.5rem;
-}
-
-.intro-text {
-    font-family:'Fira Mono', monospace;
-    display: block;
-    font-size: 1.5rem;
-    line-height: 1.2;
-    text-align: center;
-    color: black;
-    margin-top: 1rem;    
-}
-
-/* typing cursor */
-.intro-text::after {
-    content: "";
-    border-right: 5px solid black;
-    margin-left: 2px;
-    animation: blink 0.5s ease-in-out infinite;
-}
-
-/* animations */
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.translate-up {
-    transform: translateY(-100%);
-}
-
-.fade-in {
-    opacity: 1;
-}
-
-.fade-out {
-    opacity: 0;    
-}
-
-/* hide non-animated intro text from view but not from screen readers */
-.screen-reader-only {
-    opacity: 0;
-}
-
-main {
-    font-family:'Lato', sans-serif; 
-    text-align: center;
-}
+/* body {
+    
+    /* width: 100vw;
+    overflow-x: hidden; 
+} */
 
 /* Layout */
 
@@ -122,7 +46,7 @@ main {
 .text-btn-container{
     position: relative;
     /* ensure button is on top of music player */
-    z-index: 100;
+    z-index: 1;
 }
 
 .js-disabled .text-btn {
@@ -185,14 +109,107 @@ main {
     max-width: 100%;
 }
 
+.js-disabled .intro {
+    display: none;
+}
+
+/* Intro */
+
+.intro {
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    transition: transform 1s ease-out;
+    display: none;
+}
+
+.intro-content {
+    position: relative;
+    transition: opacity 550ms ease-in, transform 500ms ease-in;
+    opacity: 0;
+}
+
+.emoji {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+}
+
+.intro-text {
+    font-family:'Fira Mono', monospace;
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;    
+}
+
+/* typing cursor */
+.intro-text::after {
+    content: "";
+    border-right: 5px solid black;
+    margin-left: 2px;
+    animation: blink 0.5s ease-in-out infinite;
+}
+
+/* animations */
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.translate-up {
+    transform: translateY(-100%);
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;    
+}
+
+/* hide non-animated intro text from view but not from screen readers */
+.screen-reader-only {
+    opacity: 0;
+}
+
 /* Navigation */
 
 nav {
     position: relative;
 }
 
-/* hide the menu and 'X' icon when JS is enabled in the browser */
-.js-enabled .menu, .js-enabled .fa-times {
+ /* hide menu when js is enabled, but keep in flow  */
+.js-enabled .menu {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-80%);
+    transition: all 500ms ease-in;
+    text-align: center;
+    padding-top: 2rem;
+    width: 100%;
+    box-shadow: 0px 6px 6px -4px rgb(236, 234, 234);
+    background-color: rgb(255,255,255, 0.8);
+} 
+
+/* hide the 'X' icon when JS is enabled in the browser */
+.js-enabled .fa-times {   
     display: none;
 }
 
@@ -207,6 +224,7 @@ nav {
     position: absolute;
     right: 0rem;
     cursor: pointer;  
+    z-index: 1;
 }
 
 .fa-bars {
@@ -234,12 +252,10 @@ nav {
 
 /* sibling selector to select the menu when hamburger is expanded */
 .hamburger[aria-expanded ="true"] + .menu {
-    display: block;
-    text-align: center;
-    padding-top: 5rem;
-    width: 100%;
-    box-shadow: 0px 6px 6px -4px rgb(236, 234, 234);
-    background-color: rgb(255,255,255, 0.8);
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    
 }
 
 .menu {
@@ -252,18 +268,44 @@ nav {
     color: rgb(53, 50, 50);
 }
 
+main {
+    font-family:'Lato', sans-serif; 
+    text-align: center;
+    margin-top: 3rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth; 
+    scroll-snap-type: y proximity;   
+}
 
 /* Landing page */
 
-header {
-    background-image: 
-    linear-gradient(0deg, rgb(247,247,247,0.5), rgba(255, 189, 227, 0.4) 95%),
-    url("../media/images/banner-mobile-leone-venter-unsplash.jpg");
-    background-size: cover;
+.welcome {
     height: 100vh;
-    background-position: top right;
-    position: relative;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Not used yet */
+.shiny-button {
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 1rem 5rem;
+    text-transform: uppercase;
+    color: whitesmoke;
+    background: #c94b4b; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
+      /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-size: 300% 300%;
+    transition: background-position 300ms;    
+} 
+
+.shiny-button:hover {
+    background-position: right center;
 }
 
 /* About */
@@ -634,7 +676,7 @@ span.js-tag {
     padding: 1.25rem 2rem;
     position: relative;
     margin-top: 5rem;
-    z-index: 10;
+    z-index: 1;
     border-radius: inherit;
 }
 
@@ -682,7 +724,7 @@ span.js-tag {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 10;
 }
 
 .action-btn {
@@ -829,7 +871,7 @@ span.js-tag {
     align-items: center;
     justify-content: center;
     background-color: #fff; 
-    z-index: 100;   
+    z-index: 10;   
 }
 
 .logo-container img {
@@ -838,7 +880,7 @@ span.js-tag {
     background-color: #fff;
     box-shadow: 0px 5px 15px 5px rgba(59, 59, 59, 0.35);
     transition: all 400ms ease-in-out;
-    z-index: 100;
+    z-index: 10;
 }
 
 .github img, .repl img {
@@ -899,6 +941,11 @@ span.js-tag {
 /* media query for desktop / laptop */
 @media only screen and (min-width: 1024px) {
 
+    body, html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 3.5rem;
+    }
+
     /* Text styles */
 
     .text-container {
@@ -928,6 +975,16 @@ span.js-tag {
     }
 
     /* Navigation */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0; 
+            width: 100%;
+            z-index: 10;
+            background-color: white;
+            
+        }
     
         .hamburger {
             display: none;
@@ -936,6 +993,13 @@ span.js-tag {
         .js-disabled nav, .js-enabled nav {
             display: flex;
             margin-right: 0.5rem;
+        }
+
+        .js-enabled .menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 20;
         }
     
         /* change layout of menu. if JS is disabled, the aria-expanded will be true by default  */
@@ -960,10 +1024,12 @@ span.js-tag {
     
     /* Landing page */
 
-        header {
-            background-image: 
-            linear-gradient(0deg, rgb(247,247,247,0.5), rgba(255, 189, 227, 0.4) 95%),
-            url("../media/images/banner-leone-venter-unsplash.jpg");
+        .welcome {
+            height: fit-content;
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
     /* Projects */
@@ -1153,27 +1219,7 @@ span.js-tag {
       --text-color: rgb(136, 111, 111);
   } */ 
                 
-/* Not used yet */
-                .shiny-button {
-                    margin-top: 1rem;
-                    border: none;
-                    border-radius: 5px;
-                    font-size: 1.2rem;
-                    padding: 1rem 5rem;
-                    text-transform: uppercase;
-                    color: whitesmoke;
-                    background: #c94b4b; /* fallback for old browsers */
-                    background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
-                      /* Chrome 10-25, Safari 5.1-6 */
-                    background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-                    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-                    background-size: 300% 300%;
-                    transition: background-position 300ms;    
-                } 
-                
-                .banner .shiny-button:hover {
-                    background-position: right center;
-                }
+
 
 
 
