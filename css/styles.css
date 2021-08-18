@@ -822,6 +822,85 @@ span.js-tag {
     box-shadow: 0 20px 20px 0 #ec8c9999;
 }
 
+/* Coding Journey */
+
+.coding-journey {
+    padding: 2rem 0;
+}
+
+/* .coding-journey .section-title {
+    padding-left: 9rem;
+} */
+
+.timeline {
+    position: relative;
+    text-align: left;
+    padding: 0.5rem 0;
+    margin-top: 2rem;
+}
+
+/* timeline indicator */
+.timeline::before {
+    content: '';
+    width: 5px;
+    height: 100%;
+    background-color: #243138;
+    position: absolute;
+    top: 0;
+    left: 1rem; 
+    border-radius: 2.5rem 2.5rem;
+    z-index: 1;
+}
+
+.timeline-entry {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 0.5rem;
+    margin-left: 2.5rem;
+    margin-right: 0.5rem;
+    background-color: #cdc2d0;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+}
+
+.timeline-entry:last-child {
+    margin-bottom: 0;
+}
+
+/* circle */
+.timeline-entry::before {
+    content: '';
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid #243138;
+    border-radius: 1.5rem;
+    z-index: 1;
+    background-color: #d5effc;
+    left: -2.1rem;
+    top: 11px;
+}
+
+/* date underline */
+.timeline-entry-date::before {
+    content: '';
+    position: absolute;
+    width: 12rem;
+    height: 2px;
+    background-color: #243138;
+    top: 1.5rem;
+    left: -1rem;
+}
+
+.timeline-entry-date {
+    padding-top: 0.5rem;
+}
+
+.timeline-entry-list {
+    padding: 1rem 0;
+    font-size: 1rem;
+}
+
 /* Pre requisites */
 
 .pre-req {
