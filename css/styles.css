@@ -1,8 +1,9 @@
 html, body {
     scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
+    /* the below is ruining paragraph buttons - snapping to top of the section when clicked */
+    /* scroll-snap-type: y proximity;
     overflow-y: scroll;
-    height: 100vh;
+    height: 100vh; */
 }
 
 section {
@@ -888,7 +889,7 @@ span.js-tag {
     width: 12rem;
     height: 2px;
     background-color: #243138;
-    top: 1.5rem;
+    top: 1.4rem;
     left: -1rem;
 }
 
@@ -1223,58 +1224,190 @@ span.js-tag {
             /* width: 100%;
             left: 0; */
         }
+    
+    /* Coding Journey */
+
+        .coding-journey {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .coding-journey .section-title {
+            align-self: flex-start;
+        }
+
+        .timeline {
+            margin: 4rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 30rem);
+            grid-template-areas: 
+            "entry1 ."
+            ". entry2"
+            "entry3 ."
+            ". entry4"
+            "entry5 ."
+            ". entry6"
+            "entry7 ."
+            ". entry8"
+            "entry9 ."
+            ". entry10"
+            "entry11 ."
+            ". entry12"
+            "entry13 .";
+        }
+
+        /* pad title and list inside entry */
+        .timeline-entry > * {
+            padding-left: 1rem;
+        }
+
+        .timeline-entry:nth-of-type(odd) {
+            padding-left: 0;
+            margin-right: 2.5rem;
+            margin-left: 0.5rem;
+        }
+
+        /* move timeline indicator to middle of grid */
+        .timeline::before {
+            left: 29.9rem;
+        }
+
+        .timeline-entry-date::before {
+            top: 1.45rem;
+        }
+
+        /* circle of odd number entries */
+        .timeline-entry:nth-of-type(odd)::before {
+            left: 28.8rem;
+        }
+
+        /* circle of even number entries */
+        .timeline-entry:nth-of-type(even)::before {
+            left: -3.2rem;
+        }
+
+        /* underline of odd number entries */
+        .timeline-entry:nth-of-type(odd) .timeline-entry-date::before {
+            width: 29rem;
+            left: unset;
+            right: -2rem;
+        }
+
+        /* underline of even number entries */
+        .timeline-entry:nth-of-type(even) .timeline-entry-date::before {
+            width: 29rem;
+            left: unset;
+            right: 0;
+            
+        }
+
+        
+
+        .timeline-entry:nth-child(1) {
+            grid-area: entry1;
+        }
+
+        .timeline-entry:nth-child(2) {
+            grid-area: entry2;
+        }
+
+        .timeline-entry:nth-child(3) {
+            grid-area: entry3;
+        }
+
+        .timeline-entry:nth-child(4) {
+            grid-area: entry4;
+        }
+
+        .timeline-entry:nth-child(5) {
+            grid-area: entry5;
+        }
+
+        .timeline-entry:nth-child(6) {
+            grid-area: entry6;
+        }
+
+        .timeline-entry:nth-child(7) {
+            grid-area: entry7;
+        }
+
+        .timeline-entry:nth-child(8) {
+            grid-area: entry8;
+        }
+
+        .timeline-entry:nth-child(9) {
+            grid-area: entry9;
+        }
+
+        .timeline-entry:nth-child(10) {
+            grid-area: entry10;
+        }
+
+        .timeline-entry:nth-child(11) {
+            grid-area: entry11;
+        }
+
+        .timeline-entry:nth-child(12) {
+            grid-area: entry12;
+        }
+
+        .timeline-entry:nth-child(13) {
+            grid-area: entry13;
+        }
+
 
     /* Pre Requisites */
-    .profile-cards-container {
-        margin: 2rem 8.5rem;
-    }
-
-    .profile-info {
-        position: relative;
-    }
-
-    .profile-info > h3 {
-        width: fit-content;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: all 1s ease-in-out;
-    }
-
-    .profile:hover h3 {
-        top: 1rem;
-        transform: translateY(0);
-        transition: all 500ms ease-out;
-    }
-
-    .profile-info p:nth-child(2), .profile-info p:nth-child(3), .profile-info p:nth-child(4), .profile-info p:nth-child(5) {
-            visibility: hidden;
-            transform: translateY(3rem);
-            opacity: 0;
-            transition: visibility 300s linear 300ms, opacity 300ms ease-in, transform 1s;
+        .profile-cards-container {
+            margin: 2rem 8.5rem;
         }
 
-        .profile-info p:nth-child(2) {
-            transition-delay: 300ms;
+        .profile-info {
+            position: relative;
         }
 
-        .profile-info p:nth-child(3) {
-            transition-delay: 300ms;
+        .profile-info > h3 {
+            width: fit-content;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 1s ease-in-out;
         }
 
-        .profile-info p:nth-child(4) {
-            transition-delay: 200ms;
+        .profile:hover h3 {
+            top: 1rem;
+            transform: translateY(0);
+            transition: all 500ms ease-out;
         }
 
-        .profile-info p:nth-child(5) {
-            transition-delay: 100ms;
-        }
+        .profile-info p:nth-child(2), .profile-info p:nth-child(3), .profile-info p:nth-child(4), .profile-info p:nth-child(5) {
+                visibility: hidden;
+                transform: translateY(3rem);
+                opacity: 0;
+                transition: visibility 300s linear 300ms, opacity 300ms ease-in, transform 1s;
+            }
 
-        .profile:hover p:nth-child(2), .profile:hover p:nth-child(3), .profile:hover p:nth-child(4), .profile:hover p:nth-child(5) {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0); 
-        }
+            .profile-info p:nth-child(2) {
+                transition-delay: 300ms;
+            }
+
+            .profile-info p:nth-child(3) {
+                transition-delay: 300ms;
+            }
+
+            .profile-info p:nth-child(4) {
+                transition-delay: 200ms;
+            }
+
+            .profile-info p:nth-child(5) {
+                transition-delay: 100ms;
+            }
+
+            .profile:hover p:nth-child(2), .profile:hover p:nth-child(3), .profile:hover p:nth-child(4), .profile:hover p:nth-child(5) {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0); 
+            }
 }
 
 @media only screen and (min-width: 750px) and (max-width: 1024px) {
