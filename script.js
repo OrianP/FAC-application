@@ -475,6 +475,38 @@ progressContainer.addEventListener('click', setProgress);
 audio.addEventListener('ended', nextSong);
 
 
+// Coding Journey //
+const openModalBtns = document.querySelectorAll('[aria-controls]');
+const closeModalBtns = document.querySelectorAll('.modal-close-btn');
+const modals = document.querySelectorAll('.modal');
+console.log(modals);
+
+// event listeners
+// create targetModal variable based on the string returned from 'aria-controls' attribute set on buttons
+// the string returned is the id of the modal (i.e #css-cert-modal)
+openModalBtns.forEach(btn => btn.addEventListener('click', () => {
+     const targetModal = document.querySelector(btn.getAttribute('aria-controls'));
+     openModal(targetModal);
+    //  close modal if clicked anywhere besides close button 
+     targetModal.addEventListener('click', () => {
+     closeModal(targetModal);
+})
+}));
+
+closeModalBtns.forEach(btn => btn.addEventListener('click', () => {
+    const targetModal = document.querySelector(btn.getAttribute('aria-controls'));
+    closeModal(targetModal); 
+}));
+
+// functions
+const openModal = (modal) => {
+    modal.classList.add('active');
+}
+
+const closeModal = (modal) => {
+    modal.classList.remove('active');
+}
+
 // Pre Requisites //
 const profileCards = document.querySelectorAll('.overflow-container');
 const profileLinks = document.querySelectorAll('.profile-link');
