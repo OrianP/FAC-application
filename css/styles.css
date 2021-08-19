@@ -958,7 +958,7 @@ span.js-tag {
     opacity: 1;
 }
 
-/* fixed modal that takes up the whol viewport  */
+/* fixed modal that takes up the whole viewport  */
 .modal {
     position: fixed;
     top: 0;
