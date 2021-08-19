@@ -900,6 +900,60 @@ span.js-tag {
 .timeline-entry-list {
     padding: 1rem 0;
     font-size: 1rem;
+    /* position: relative; */
+}
+
+/* tooltip container for course certificates */
+.tooltip {
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    transform: translateX(-50%);
+    top: 3rem;
+    z-index: 10;
+    background-color: rgb(233, 231, 231);
+    padding: 1rem;
+    border-radius: 6px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 400ms ease-in-out;
+}
+
+/* tooltip arrow */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgb(233, 231, 231) transparent;
+}
+
+.tooltip img {
+    max-width: 100%;
+    height: auto;
+}
+
+.tooltip figcaption {
+    padding-top: 0.5rem;
+    text-align: center;
+    color: #141C3A;
+}
+
+.cert-title {
+    color: #141C3A;
+    position: relative;
+}
+
+.cert-title:hover {
+    color: rgb(20,28,58,0.5);
+}
+
+.cert-title:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Pre requisites */
@@ -1240,6 +1294,7 @@ span.js-tag {
         .timeline {
             margin: 4rem 0;
             display: grid;
+            row-gap: 1.5rem;
             grid-template-columns: repeat(2, 30rem);
             grid-template-areas: 
             "entry1 ."
