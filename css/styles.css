@@ -1,9 +1,15 @@
 html, body {
     scroll-behavior: smooth;
-    /* the below is ruining paragraph buttons - snapping to top of the section when clicked */
-    /* scroll-snap-type: y proximity;
-    overflow-y: scroll;
-    height: 100vh; */
+}
+
+/* body {
+    background-color: #FFECCB;
+} */
+
+main {
+    font-family:'Lato', sans-serif; 
+    text-align: center;
+    margin-top: -10rem;
 }
 
 section {
@@ -17,7 +23,6 @@ section {
     display: flex;
 }
 
-/* this has not been applied in HTML yet */
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -205,6 +210,7 @@ nav {
 
  /* hide menu when js is enabled, but keep in flow  */
 .js-enabled .menu {
+    /* display: none; */
     visibility: hidden;
     opacity: 0;
     transform: translateY(-80%);
@@ -213,7 +219,7 @@ nav {
     padding-top: 2rem;
     width: 100%;
     box-shadow: 0px 6px 6px -4px rgb(236, 234, 234);
-    background-color: rgb(255,255,255, 0.8);
+    background-color: rgb(255,255,255);
 } 
 
 /* hide the 'X' icon when js is enabled in the browser */
@@ -276,28 +282,32 @@ nav {
     color: rgb(53, 50, 50);
 }
 
-main {
-    font-family:'Lato', sans-serif; 
-    text-align: center;
-    margin-top: 3rem;
-}
 
 /* Landing page */
 
 .welcome {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 2rem;
+}
+
+.welcome-content a {
+    display: block;
+    padding: 1rem;
+}
+
+.welcome-content h1 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
 }
 
 .shiny-button {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     border: none;
     border-radius: 5px;
     font-size: 1.2rem;
-    padding: 1rem 5rem;
-    text-transform: uppercase;
+    width: 12rem;
     color: whitesmoke;
     background: #c94b4b; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
@@ -1155,8 +1165,12 @@ section.projects {
 /* media query for desktop / laptop */
 @media only screen and (min-width: 1024px) {
 
-    body, html {
-    scroll-padding-top: 3.5rem;
+    html, body {
+    scroll-padding-top: 3.2rem;
+    }
+
+    main {
+        margin-top: 0;
     }
 
     /* Text styles */
@@ -1179,10 +1193,6 @@ section.projects {
         display: block;
     }
 
-    .about .vector-container {
-        float: right;
-    }
-
     .application .vector-container {
         width: 32rem;
     }
@@ -1194,9 +1204,8 @@ section.projects {
             top: 0;
             left: 0; 
             width: 100%;
-            z-index: 10;
+            z-index: 100;
             background-color: white;
-            
         }
     
         .hamburger {
@@ -1241,9 +1250,24 @@ section.projects {
             height: 100vh;
             margin-top: 4rem;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
+        }
+
+        .welcome .vector-container {
+            order: 2;
+        }
+
+        .welcome-content {
+            text-align: left;
+            align-self: flex-start;
+            margin-top: 12rem;
+            padding-left: 2rem;
+        }
+
+        .welcome-content h1 {
+            font-size: 2rem;
         }
 
     /* Projects */
