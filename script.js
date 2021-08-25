@@ -380,6 +380,7 @@ function loadSong(song) {
 function playSong() {
     musicContainer.classList.add("play");
     musicPlayer.classList.add("play");
+    musicSection.classList.add(`${bgColor[songIndex]}`);
     playBtn.querySelector("i.fas").classList.remove("fa-play");
     playBtn.querySelector("i.fas").classList.add("fa-pause");
     audio.play();
@@ -388,6 +389,7 @@ function playSong() {
 function pauseSong() {
     musicContainer.classList.remove("play");
     musicPlayer.classList.remove("play");
+    musicSection.classList.remove(`${bgColor[songIndex]}`);
     playBtn.querySelector("i.fas").classList.add("fa-play");
     playBtn.querySelector("i.fas").classList.remove("fa-pause");
     audio.pause();

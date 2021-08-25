@@ -1,13 +1,29 @@
+:root {
+    --bg-gradient: linear-gradient(to right top, #ffd9c3, #fed7c0,
+    #fcd4bd, #fbd2ba, #f9cfb7);  
+    --main-text-clr: rgb(64,46,50);
+    --h1-clr: rgb(47,11,56);
+    --section-title-clr: rgb(82,62,104);
+    --arrow-icons-clr: rgb(110, 93, 128); 
+    --text-links-clr: rgb(78, 30, 90); 
+}
+
 html, body {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #FFECCB;
+    background-image: var(--bg-gradient);
+    color: var(--main-text-clr) 
+}
+
+header {
+    background-image: linear-gradient(to top, #fcd4bd, #fbd3bb, #fbd2ba, #fad0b8, #f9cfb7);;
 }
 
 main {
     font-family:'Lato', sans-serif; 
+    font-weight: 300;
     text-align: center;
     margin-top: -10rem;
 }
@@ -43,12 +59,13 @@ section {
 .section-title {
     font-size: 1.5rem;
     padding: 2rem 8rem;
+    color: var(--section-title-clr);
 }
 
 .text-container {
     line-height: 1.4;
     font-size: 1.2rem;    
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     text-align: justify;
     position: relative;
     overflow: hidden;
@@ -62,6 +79,10 @@ section {
     position: relative;
     /* ensure button is on top of music player */
     z-index: 1;
+}
+
+.text-btn-container i {
+    color: var(--arrow-icons-clr);
 }
 
 .js-disabled .text-btn {
@@ -102,8 +123,12 @@ section {
     opacity: 0;
 }
 
-.text-container a , .info-text a {
-    color: rgb(102, 100, 100)
+.text-container a {
+    color: var(--text-links-clr);
+    text-decoration: underline;
+    text-decoration-color: #AB85B4;
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 1.2px;
 }
 
 .text-container a:hover, .info-text a:hover {
@@ -222,7 +247,7 @@ nav {
     padding-top: 2rem;
     width: 100%;
     box-shadow: 0px 6px 6px -4px rgb(236, 234, 234);
-    background-color: rgb(255,255,255);
+    background-color: rgb(242, 241, 247);
 } 
 
 /* hide the 'X' icon when js is enabled in the browser */
@@ -231,31 +256,41 @@ nav {
 }
 
 .hamburger {
-    font-family:'Encode Sans Semi Expanded', sans-serif;  
     margin: 0.5rem 0.5rem 0 0;
     padding: 0;
     border: 1px solid transparent;
     background-color: inherit; 
     width: 4rem;
     height: 4rem;
+    border-radius: 4rem;
     position: absolute;
     right: 0rem;
     cursor: pointer;  
     z-index: 1;
+    transition: background-color 400ms ease-in;
 }
 
 .fa-bars {
     font-size: 2.5rem;
-    color: rgb(83, 65, 68);
+    color: var(--dark-text-clr);
 }
 
 .fa-times {
     font-size: 2.5rem;
-    color: rgb(83, 65, 68);
+    color: var(--dark-text-clr);
+}
+
+.menu {
+    font-family:'Encode Sans Semi Expanded', sans-serif;
+    font-weight: 500;
+}
+
+.menu-item {
+    padding-bottom: 1.5rem;
 }
 
 .hamburger[aria-expanded ="true"] {
-    background-color: rgba(252, 199, 212, 0.726);
+    background-color: #FFD9C3;
 }
 
 .hamburger[aria-expanded ="true"] .fa-bars {
@@ -272,19 +307,7 @@ nav {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
-    
 }
-
-.menu {
-    font-family:'Encode Sans Semi Expanded', sans-serif;
-    font-weight: 500;
-}
-
-.menu-item {
-    padding-bottom: 1.5rem;
-    color: rgb(53, 50, 50);
-}
-
 
 /* Landing page */
 
@@ -307,32 +330,35 @@ nav {
 .welcome-content h1 {
     font-size: 1.5rem;
     margin-top: 2rem;
+    color: var(--h1-clr);
 }
 
 .shiny-button {
     margin-top: 1.5rem;
-    border: none;
+    border: transparent;
     border-radius: 5px;
     font-size: 1.2rem;
     width: 12rem;
     color: whitesmoke;
-    background: #c94b4b; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%);
-      /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4b134f 0%, #c94b4b 50%, #4b134f 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #006C5E; /* fallback for old browsers */
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #006C5E 0%, #659B90 50%, #006C5E 100%);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #006C5E 0%, #659B90 50%, #006C5E 100%);   
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     background-size: 300% 300%;
     transition: background-position 300ms;    
 } 
 
 .shiny-button:hover {
+    /* move background to right edge of button to create shine effect */
     background-position: right center;
 }
 
 /* About */
 
 .about {
-    padding-top: 2rem;    
+    padding: 2rem 0;    
 }
 
 .about .vector-container {
@@ -348,7 +374,6 @@ nav {
 
 section.projects {
     --clr-gray: #37474f;
-    --clr-gray-light: #b0bec5;
     --box-shadow: 0px 2px 8px 0px #b0bec5;
     --bg-img-overlay: linear-gradient(0deg, rgba(80, 78, 78, 0.5),rgba(0, 0, 0, 0.5));
     overflow: hidden;
@@ -371,7 +396,8 @@ section.projects {
     margin: 1rem;
     padding: 1rem;
     font-size: 3rem;
-    transition: opacity 300ms ease-out
+    transition: opacity 300ms ease-out;
+    color: var(--arrow-icons-clr);
 }
 
 .slider-btns button:hover {
@@ -600,7 +626,7 @@ section.projects {
 }
 
 .live-btn:hover {
-    color: #243138;;
+    color: rgb(36,49,56);
     text-shadow: none;
     font-weight: bold;
 }
@@ -664,7 +690,6 @@ section.projects {
 /* Background */
 
 .music-section {
-    /* font-family: 'Lato', sans-serif; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -677,13 +702,6 @@ section.projects {
     flex-direction: column;
     align-items: center;
 }
-
-/* 
-.music-section h2 {
-    padding-top: 2.5rem;
-    font-size: 1.5rem;
-    letter-spacing: 0.2rem;
-} */
 
 /* Music Player */
 .music-player {
@@ -879,7 +897,7 @@ section.projects {
     content: '';
     width: 5px;
     height: 100%;
-    background-color: #243138;
+    background-color: rgb(174,114,101);
     position: absolute;
     top: 0;
     left: 1rem; 
@@ -894,7 +912,7 @@ section.projects {
     padding-left: 0.5rem;
     margin-left: 2.5rem;
     margin-right: 0.5rem;
-    background-color: #cdc2d0;
+    background-color: rgb(206,203,230);
     border-radius: 20px 20px 20px 20px;
     box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);    
 }
@@ -909,10 +927,10 @@ section.projects {
     position: absolute;
     width: 1.5rem;
     height: 1.5rem;
-    border: 1px solid #243138;
+    border: 2px solid rgb(95, 69, 105);
     border-radius: 1.5rem;
     z-index: 10;
-    background-color: #d5effc;
+    background-color:rgb(139,121,146);
     left: -2.1rem;
     top: 1.5rem;
 }
@@ -923,7 +941,7 @@ section.projects {
     position: absolute;
     width: 13rem;
     height: 2px;
-    background-color: #243138;
+    background-color: rgb(153, 85, 70);
     top: 2.2rem;
     left: -1rem;
 }
@@ -1053,14 +1071,15 @@ section.projects {
 }
 
 .modal-close-btn:hover {
-    color: #aabdfff8;
+    color: rgb(214, 207, 248);
 }
 
 /* Pre requisites */
 
 .pre-req {
     padding: 2rem 0;
-    background-color: #E6E5E1;
+    background:linear-gradient(to right top, #ab8886, #ba9694, #c9a4a3,
+    #d8b2b1, #e7c0c0);
 }
 
 .profile-cards-container {
@@ -1144,7 +1163,7 @@ section.projects {
     bottom: 7px;
     width: 1rem;
     height: 1rem;
-    background-color: #035572;
+    background-color: rgb(2,52,70);
     border-radius: 1rem;
     outline: transparent;
     box-shadow: none;
@@ -1158,30 +1177,20 @@ section.projects {
 }
 
 .codewars .design-circle {
-    background-color: #0b5e08 ;
+    background-color: rgb(0,91,71);
 }
 
 .github .design-circle {
-    background-color: #cc4230
+    background-color: rgb(204,66,48);
 }
 
 .repl .design-circle {
-    background-color: #cc30c4
+    background-color: rgb(114,35,86);
 }
 
 .overflow-container.pointer-cursor {
     cursor: pointer;
 }
-
-/* 'Hover on everything but' trick causing the design-circle scale transform to become glitchy: */
-
-/* .profile-cards-container:hover > .overflow-container {
-    opacity: 0.5;
-}
-
-.profile-cards-container:hover > .overflow-container:hover {
-    opacity: 1.0; 
-} */
 
 /* media query for desktop / laptop */
 @media only screen and (min-width: 1024px) {
@@ -1199,7 +1208,7 @@ section.projects {
     .text-container {
         line-height: 1.4;
         font-size: 1.5rem;    
-        padding: 1rem 8rem;
+        padding: 1rem 12rem;
         text-align: left;
     }
 
@@ -1226,7 +1235,6 @@ section.projects {
             left: 0; 
             width: 100%;
             z-index: 100;
-            background-color: white;
         }
     
         .hamburger {
@@ -1444,7 +1452,7 @@ section.projects {
         }
 
         .timeline-entry:hover {
-            background-color: white;
+            background-color: rgb(241,237,255);
         }
 
         .timeline-entry:nth-of-type(odd) {
