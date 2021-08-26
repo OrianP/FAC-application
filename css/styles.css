@@ -822,9 +822,6 @@ section.projects {
     font-size: 1.5rem;
 }
 
-.action-btn:focus {
-    outline: 0;
-}
 
 /* theme colors */
 
@@ -1037,7 +1034,12 @@ section.projects {
     color: rgb(20,28,58,0.5);
 }
 
-.cert-title:hover .tooltip {
+.cert-title:hover .tooltip, .cert-title:focus .tooltip  {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip:focus {
     visibility: visible;
     opacity: 1;
 }

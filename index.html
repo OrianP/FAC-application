@@ -49,7 +49,7 @@
         </div>
         <div class="welcome-content">
             <h1>Welcome to my FAC 23 application!</h1>
-            <button class="shiny-button"><a href="#about">About me</a></button>
+            <button class="shiny-button" tabindex="-1"><a href="#about">About me</a></button>
         </div>
     </section> 
     
@@ -118,13 +118,13 @@
                                 <li><i class="fas fa-check-circle"></i>CSS Floats</li>
                             </ul>
                             <div class="btn-container flex">
-                                <button class="live-btn">
+                                <button class="live-btn" tabindex="-1" tabindex="-1">
                                     <a href="https://orianp.github.io/ENIAC-6-tribute/" target="_blank" rel="noopener noreferrer">
                                         <i class="fas fa-eye"></i>
                                         Live site
                                     </a>
                                 </button>
-                                <button class="code-btn">
+                                <button class="code-btn" tabindex="-1" tabindex="-1">
                                     <a href="https://github.com/OrianP/ENIAC-6-tribute" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
                                         Code
@@ -154,13 +154,13 @@
                                 <li><i class="fas fa-check-circle"></i>Winner announcement</li>
                             </ul>
                             <div class="btn-container flex">
-                                <button class="live-btn">
+                                <button class="live-btn" tabindex="-1">
                                     <a href="https://orianp.github.io/score-keeper/" target="_blank" rel="noopener noreferrer">
                                         <i class="fas fa-eye"></i>
                                         Live site
                                     </a>
                                 </button>
-                                <button class="code-btn">
+                                <button class="code-btn" tabindex="-1">
                                     <a href="https://github.com/OrianP/score-keeper" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
                                         Code
@@ -193,13 +193,13 @@
                                 <li><i class="fas fa-check-circle"></i>User inputs to control stroke styles</li>
                             </ul>
                             <div class="btn-container flex">
-                                <button class="live-btn">
+                                <button class="live-btn" tabindex="-1">
                                     <a href="https://orianp.github.io/html5-canvas/" target="_blank" rel="noopener noreferrer">
                                         <i class="fas fa-eye"></i>
                                         Live site
                                     </a>
                                 </button>
-                                <button class="code-btn">
+                                <button class="code-btn" tabindex="-1">
                                     <a href="https://github.com/OrianP/html5-canvas" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
                                         Code
@@ -229,13 +229,13 @@
                                 <li><i class="fas fa-check-circle"></i>Responsive</li>
                             </ul>
                             <div class="btn-container flex">
-                                <button class="live-btn">
+                                <button class="live-btn" tabindex="-1">
                                     <a href="https://oandoduo.com/" target="_blank" rel="noopener noreferrer">
                                         <i class="fas fa-eye"></i>
                                         Live site
                                     </a>
                                 </button>
-                                <button class="code-btn">
+                                <button class="code-btn" tabindex="-1">
                                     <a href="https://github.com/OrianP/oandoduo" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
                                         Code
@@ -264,13 +264,13 @@
                                 <li><i class="fas fa-check-circle"></i>Pause/Reset button</li>
                             </ul>
                             <div class="btn-container flex">
-                                <button class="live-btn">
+                                <button class="live-btn" tabindex="-1">
                                     <a href="https://orianp.github.io/tortoise-race/" target="_blank" rel="noopener noreferrer">
                                         <i class="fas fa-eye"></i>
                                         Live site
                                     </a>
                                 </button>
-                                <button class="code-btn">
+                                <button class="code-btn" tabindex="-1">
                                     <a href="https://github.com/OrianP/tortoise-race" target="_blank" rel="noopener noreferrer">    
                                         <i class="fab fa-github"></i>
                                         Code
@@ -279,7 +279,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="next-btn"></button>
                 </div>
                 <div class="card colmar-academy">
                     <div class="tag-container flex">
@@ -297,13 +296,13 @@
                                 <li><i class="fas fa-check-circle"></i>CSS Grid</li>
                             </ul>
                             <div class="btn-container flex">
-                                <button class="live-btn">
+                                <button class="live-btn" tabindex="-1">
                                     <a href="https://orianp.github.io/colmar-academy/" target="_blank" rel="noopener noreferrer">
                                         <i class="fas fa-eye"></i>
                                         Live site
                                     </a>
                                 </button>
-                                <button class="code-btn">
+                                <button class="code-btn" tabindex="-1">
                                     <a href="https://github.com/OrianP/colmar-academy" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
                                         Code
@@ -312,7 +311,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="next-btn"></button>
                 </div>    
             </div>
         </div>
@@ -434,14 +432,14 @@
                 <ul class="timeline-entry-list">
                     <span class="emoji">&#x2705</span>
                     <li>Complete 
-                        <span class="cert-title">‘Learn CSS’
+                        <a class="cert-title" tabindex="0">‘Learn CSS’
                             <button class="tooltip" aria-controls="#css-cert-modal">
                                 <figure class="certificate">
                                     <img src="./media/images/certificates/learn-css.png" alt="Learn CSS Certificate">
                                     <figcaption>Learn CSS Certificate</figcaption>
                                 </figure>
                             </button>
-                        </span> course on Codecademy     
+                        </a> course on Codecademy     
                     </li>
                 </ul>
                 <div class="modal flex" id="css-cert-modal">
@@ -461,7 +459,7 @@
                     <span class="emoji">&#x2B50</span>
                     <li>Discover FAC and submit an expression of interest</li>
                     <span class="emoji">&#x2705</span>
-                    <li>Complete <span class="cert-title">‘Learn Git’
+                    <li>Complete <span class="cert-title" tabindex="0">‘Learn Git’
                         <button class="tooltip" aria-controls="#git-cert-modal">
                             <figure class="certificate">
                                 <img src="./media/images/certificates/learn-git.png" alt="Learn Git Certificate">
@@ -469,7 +467,7 @@
                             </figure>
                         </button>
                     </span>
-                     and <span class="cert-title">'Learn the command line’
+                     and <span class="cert-title" tabindex="0">'Learn the command line’
                         <button class="tooltip" aria-controls="#cl-cert-modal">
                             <figure class="certificate">
                                 <img src="./media/images/certificates/learn-the-command-line.png" alt="Learn the Command Line Certificate">
@@ -501,7 +499,7 @@
                 <h3 class="timeline-entry-date">February 2021</h3>
                 <ul class="timeline-entry-list">
                     <span class="emoji">&#x2705</span>
-                    <li>Complete <span class="cert-title">final project
+                    <li>Complete <span class="cert-title" tabindex="0">final project
                         <button class="tooltip" aria-controls="#website-cert-modal">
                             <figure class="certificate">
                                 <img src="./media/images/certificates/build-a-website.png" alt="Build a Website Certificate">
@@ -674,10 +672,10 @@
       <div class="contact-details flex">
         <p>Orian Peled</p>
         <div class="contact-btn-container">
-            <button>
+            <button tabindex="-1">
                 <a href="mailto:orianpmusic@gmail.com?subject=Website%20enquiry"><i class="far fa-envelope"></i></a>
             </button>
-            <button>
+            <button tabindex="-1">
                 <a href="tel:+447449876320"><i class="fas fa-phone-alt"></i></a>
             </button>
         </div>

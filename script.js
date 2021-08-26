@@ -176,6 +176,12 @@ const lastCardClone = cardsContainer.children[cardsContainer.children.length - 1
 // For desktop: create an array from the cards Nodelist and clone each card to be appended in media query
 const desktopClones = Array.from(cards, card => 
     card.cloneNode(true));
+// remove tabindex from buttons and anchor tags on clones so that users don't need to tab through the cards twice
+desktopClones.forEach(clone => {
+    const tabElements = clone.querySelectorAll('a, button');
+    tabElements.forEach(el => el.setAttribute('tabindex', '-1'))
+})
+
 let currentCardIndex = 1;
 let cardWidth = cards[0].clientWidth;
 let lastCardIndex;
@@ -505,6 +511,9 @@ closeModalBtns.forEach(btn => btn.addEventListener('click', () => {
 // functions
 const openModal = (modal) => {
     modal.classList.add('active');
+    // does not work yet: 
+    const targetClosebtn = modal.querySelector('.modal-close-btn');
+    targetClosebtn.focus();
 }
 
 const closeModal = (modal) => {
