@@ -360,7 +360,7 @@ const squareCover = document.querySelector('#square-cover')
 const cover = document.querySelector('#cover');
 
 // song titles
-const songs = ['Here We Are', 'Dancing On The Floor', 'Leave It Til Tomorrow', 'When It Comes To Love'];
+const songs = ['Here We Are', 'Dancing on the Floor', 'Leave It Til Tomorrow', 'When It Comes To Love'];
 // progress bar color classes
 const colors = ['pink', 'blue', 'green', 'red'];
 // musicSection background gradient classes
