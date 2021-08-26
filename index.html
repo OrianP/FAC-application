@@ -90,7 +90,6 @@
             <h2 class="section-title">Projects</h2>
         </div>
         
-
         <!-- project cards -->
         <div class="slider-btns flex">
             <button class="prev-btn"><i class="fas fa-arrow-circle-left"></i></button>
@@ -432,18 +431,18 @@
                 <ul class="timeline-entry-list">
                     <span class="emoji">&#x2705</span>
                     <li>Complete 
-                        <a class="cert-title" tabindex="0">‘Learn CSS’
+                        <span class="cert-title" tabindex="0">‘Learn CSS’
                             <button class="tooltip" aria-controls="#css-cert-modal">
                                 <figure class="certificate">
                                     <img src="./media/images/certificates/learn-css.png" alt="Learn CSS Certificate">
                                     <figcaption>Learn CSS Certificate</figcaption>
                                 </figure>
                             </button>
-                        </a> course on Codecademy     
+                        </span> course on Codecademy     
                     </li>
                 </ul>
                 <div class="modal flex" id="css-cert-modal">
-                    <button class="modal-close-btn" aria-controls="#css-cert-modal">
+                    <button class="modal-close-btn" aria-controls="#css-cert-modal" tabindex="0">
                         <i class="fas fa-times-circle"></i>
                     </button>
                     <figure class="modal-certificate">
@@ -467,6 +466,15 @@
                             </figure>
                         </button>
                     </span>
+                    <div class="modal flex" id="git-cert-modal">
+                        <button class="modal-close-btn" aria-controls="#git-cert-modal">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                        <figure class="modal-certificate">
+                            <img src="./media/images/certificates/modal-learn-git.png" alt="Learn Git Certificate">
+                            <figcaption>Learn Git Certificate</figcaption>
+                        </figure>
+                    </div>
                      and <span class="cert-title" tabindex="0">'Learn the command line’
                         <button class="tooltip" aria-controls="#cl-cert-modal">
                             <figure class="certificate">
@@ -476,15 +484,6 @@
                         </button>    
                      </span> courses on Codecademy</li>
                 </ul>
-                <div class="modal flex" id="git-cert-modal">
-                    <button class="modal-close-btn" aria-controls="#git-cert-modal">
-                        <i class="fas fa-times-circle"></i>
-                    </button>
-                    <figure class="modal-certificate">
-                        <img src="./media/images/certificates/modal-learn-git.png" alt="Learn Git Certificate">
-                        <figcaption>Learn Git Certificate</figcaption>
-                    </figure>
-                </div>
                 <div class="modal flex" id="cl-cert-modal">
                     <button class="modal-close-btn" aria-controls="#cl-cert-modal">
                         <i class="fas fa-times-circle"></i>
@@ -599,7 +598,7 @@
                 <div class="profile fcc">
                 <div class="profile-info">
                     <h3>Free Code Camp</h3>
-                    <p class="username">OrianP</p>
+                    <p>OrianP</p>
                     <p>Joined March 2021</p>
                     <p>272 points</p>
                 </div>
@@ -615,9 +614,9 @@
                 <div class="profile codewars">
                 <div class="profile-info">
                     <h3>Codewars</h3>
-                    <p class="username">OrianP</p>
+                    <p>OrianP</p>
                     <p>Joined April 2021</p>
-                    <p>6kyu, 174 honor</p>
+                    <p>6kyu, 190 honor</p>
                 </div>
                 <a class="profile-link" href="https://www.codewars.com/users/OrianP" target="_blank" rel="noopener noreferrer">
                     <div class="logo-container">
@@ -632,9 +631,9 @@
                 <div class="profile github">
                 <div class="profile-info">
                     <h3>Github</h3>
-                    <p class="username">OrianP</p>
+                    <p>OrianP</p>
                     <p>First commit on February 2021</p>
-                    <p>6 repositories</p>
+                    <p>7 repositories</p>
                 </div>
                 <a class="profile-link" href="https://github.com/OrianP" target="_blank" rel="noopener noreferrer">
                     <div class="logo-container">
@@ -649,9 +648,9 @@
                 <div class="profile repl">
                 <div class="profile-info">
                     <h3>Repl.it</h3>
-                    <p class="username">OrianP</p>
                     <p>Daily challenges completed:</p>
-                    <p>20/20</p>
+                    <p>Previous cycle 20/20</p>
+                    <p>Current cycle 15/20</p>
                 </div>
                 <a class="profile-link" href="https://replit.com/@OrianP" target="_blank" rel="noopener noreferrer">
                     <div class="logo-container">

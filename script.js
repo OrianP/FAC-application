@@ -511,9 +511,6 @@ closeModalBtns.forEach(btn => btn.addEventListener('click', () => {
 // functions
 const openModal = (modal) => {
     modal.classList.add('active');
-    // does not work yet: 
-    const targetClosebtn = modal.querySelector('.modal-close-btn');
-    targetClosebtn.focus();
 }
 
 const closeModal = (modal) => {
