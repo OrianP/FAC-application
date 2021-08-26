@@ -528,30 +528,30 @@ section.projects {
 }
 
 .tribute-page .project-img {
-    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5), rgba(129, 46, 54, 0.671), rgba(250, 160, 167, 0.5)), url("../media/images/project-tribute-page.jpg");
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5), rgba(129, 46, 54, 0.671), rgba(250, 160, 167, 0.5)), url("../media/images/project-tribute-page.png");
 }
 
 .score-keeper .project-img {
-    background-image: var(--bg-img-overlay), url("../media/images/project-score-keeper.jpg");
+    background-image: var(--bg-img-overlay), url("../media/images/project-score-keeper.png");
 }
 
 .js-30 .project-img {
-    background-image: var(--bg-img-overlay), url("../media/images/project-js30.jpg");
+    background-image: var(--bg-img-overlay), url("../media/images/project-js30.png");
 }
 
 .oando .project-img {
     background-image: var(--bg-img-overlay), 
-    url("../media/images/project-oandoduo.jpg");
+    url("../media/images/project-oandoduo.png");
 }
 
 .tortoise-race .project-img {
-    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url("../media/images/project-tortoise-race.jpg");
+    background-image: linear-gradient(0deg, rgba(80, 78, 78, 0.5)50%, rgba(0, 0, 0, 0.5)), url("../media/images/project-tortoise-race.png");
     background-position: center;
 }
 
 .colmar-academy .project-img {
     background-image: var(--bg-img-overlay), 
-    url("../media/images/project-colmar-academy.jpg");
+    url("../media/images/project-colmar-academy.png");
     background-position: right;
 }
 
