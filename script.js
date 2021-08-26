@@ -381,6 +381,7 @@ function playSong() {
     musicContainer.classList.add("play");
     musicPlayer.classList.add("play");
     musicSection.classList.add(`${bgColor[songIndex]}`);
+    musicContainer.classList.add(`${boxShadow[songIndex]}`);
     playBtn.querySelector("i.fas").classList.remove("fa-play");
     playBtn.querySelector("i.fas").classList.add("fa-pause");
     audio.play();
@@ -390,6 +391,7 @@ function pauseSong() {
     musicContainer.classList.remove("play");
     musicPlayer.classList.remove("play");
     musicSection.classList.remove(`${bgColor[songIndex]}`);
+    musicContainer.classList.remove(`${boxShadow[songIndex]}`);
     playBtn.querySelector("i.fas").classList.add("fa-play");
     playBtn.querySelector("i.fas").classList.remove("fa-pause");
     audio.pause();

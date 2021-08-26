@@ -26,13 +26,13 @@ html, body {
 }
 
 body {
-    background-image: var(--bg-gradient);
+    background: var(--bg-gradient);
     color: var(--main-text-clr);
      
 }
 
 header {
-    background-image: linear-gradient(to top, #fcd4bd, #fbd3bb, #fbd2ba, #fad0b8, #f9cfb7);;
+    background: linear-gradient(to top, #fcd4bd, #fbd3bb, #fbd2ba, #fad0b8, #f9cfb7);
 }
 
 main {
@@ -63,16 +63,28 @@ section {
 /* Text Content */
 
 .section-title-container {
-    background: url("../media/vectors/title-bg-1.png");
+    background-image: url("../media/vectors/title-bg-1.png");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: fit-content;
-    width: -moz-fit-content;
+    width: 18rem;
+    height: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coding-journey .section-title-container, .application .section-title-container {
+    width: 20rem;
+    background-image: url("../media/vectors/title-bg-3.png");
+}
+
+.projects .section-title-container, .pre-req .section-title-container {
+    background-image: url("../media/vectors/title-bg-2.png");
 }
 
 .section-title {
     font-size: 1.5rem;
-    padding: 2rem 8rem;
     color: var(--section-title-clr);
 }
 
@@ -260,8 +272,9 @@ nav {
     text-align: center;
     padding-top: 2rem;
     width: 100%;
-    box-shadow: 0px 6px 6px -4px rgb(236, 234, 234);
-    background-color: rgb(242, 241, 247);
+    border-radius: 5px;
+    box-shadow: 0px 6px 6px -4px rgb(207, 221, 241);
+    background-color: rgb(223, 235, 253);
 } 
 
 /* hide the 'X' icon when js is enabled in the browser */
@@ -286,12 +299,12 @@ nav {
 
 .fa-bars {
     font-size: 2.5rem;
-    color: var(--dark-text-clr);
+    color: var(--main-text-clr);
 }
 
 .fa-times {
     font-size: 2.5rem;
-    color: var(--dark-text-clr);
+    color: var(--main-text-clr);
 }
 
 .menu {
@@ -304,8 +317,9 @@ nav {
 }
 
 .hamburger[aria-expanded ="true"] {
-    background-color: #FFD9C3;
+    background-color: rgb(252, 212, 189);
 }
+
 
 .hamburger[aria-expanded ="true"] .fa-bars {
     display: none;
@@ -691,10 +705,6 @@ section.projects {
 /* Background */
 
 .music-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 2rem 0 3rem 0;
 }
 
@@ -705,6 +715,7 @@ section.projects {
 }
 
 /* Music Player */
+
 .music-player {
     display: flex;
     flex-direction: column;
@@ -747,6 +758,7 @@ section.projects {
     margin-top: 5rem;
     z-index: 1;
     border-radius: inherit;
+    box-shadow: 0 20px 20px 0 rgb(233, 174, 140);
 }
 
 .music-info {
@@ -754,7 +766,7 @@ section.projects {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ffffffbe;;
+    background-color: rgba(255, 255, 255, 0.795);
     padding: 1rem 0 0 0;
     border-radius: 15px 15px 0 0;
     position: absolute;
@@ -764,7 +776,6 @@ section.projects {
     opacity: 0;
     transform: translateY(0%);
     transition: transform 300ms ease-in, opacity 300ms ease-in;
-    
 }
 
 .music-container.play .music-info {
@@ -773,7 +784,7 @@ section.projects {
 }
 
 .progress-container {
-    background-color: #cdc2d0;
+    background-color: rgb(205,194,208);
     border-radius: 5px;
     cursor: pointer;
     margin: 0.6rem 0;
@@ -782,7 +793,7 @@ section.projects {
 }
 
 .progress {
-    background-color: #f68e88CC;
+    background-color: rgba(246, 142, 136, 0.815);
     border-radius: inherit;
     height: 100%;
     width: 0%;
@@ -799,7 +810,7 @@ section.projects {
 .action-btn {
     background-color: #fff;
     border: 0;
-    color: #dfdbdf;
+    color: rgb(223,219,223);
     font-size: 1.25rem;
     cursor: pointer;
     padding: 1rem;
@@ -807,7 +818,7 @@ section.projects {
 }
 
 .action-btn-big {
-    color: #cdc2d0;
+    color: rgb(205,194,208);
     font-size: 1.5rem;
 }
 
@@ -815,19 +826,23 @@ section.projects {
     outline: 0;
 }
 
-/* Use the below as a model for all the different color gradients */
+/* theme colors */
+
+/* progress bar color */
 .pink {
     background-color: #f68e88;
 }
 
+/* section bg gradient */
 .pink-bg {
-    background-image: linear-gradient(
+    background: linear-gradient(
         0deg,
         #f7f7f7 23.8%,
         #fcdddd 92%
         );
     }
-    
+
+/* music player shadow */
 .pink-shadow {
     box-shadow: 0 20px 20px 0 #fca9a999;
 }
@@ -837,7 +852,7 @@ section.projects {
 }
 
 .blue-bg {
-    background-image: linear-gradient(
+    background: linear-gradient(
         0deg,
         #dff3fa 23.8%,
         #c0ebfa 92%
@@ -853,10 +868,10 @@ section.projects {
 }
         
 .green-bg {
-    background-image: linear-gradient(
+    background: linear-gradient(
         0deg,
-        #cdf5e1 23.8%,
-        #0c4d28 92%
+        #c1e4d2 60%,
+        #68af87
     );
 }
             
@@ -869,10 +884,10 @@ section.projects {
 }
             
 .red-bg {
-    background-image: linear-gradient(
+    background: linear-gradient(
         0deg,
-        #fdd9de 23.8%,
-        #af0a23 92%
+        #fcc1c9 60%,
+        #ff6e84 
     );
 }
                 
@@ -1089,7 +1104,6 @@ section.projects {
     grid-template-columns: repeat(auto-fit, minmax(23rem, 30rem));
     justify-content: center;
     gap: 1.2rem; 
-
 }
 
 .overflow-container {
@@ -1196,7 +1210,7 @@ section.projects {
 /* Footer */
 
 footer {
-    background-image: linear-gradient(to bottom, #3b4764, #38435f, #354059, #323c54, #2f394f);
+    background: linear-gradient(to bottom, #3b4764, #38435f, #354059, #323c54, #2f394f);
     color: var(--light-text-clr);
 }
 
@@ -1471,16 +1485,6 @@ footer {
     
     /* Coding Journey */
 
-        .coding-journey {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .coding-journey .section-title {
-            align-self: flex-start;
-        }
-
         .timeline {
             margin: 4rem 0;
             display: grid;
@@ -1604,6 +1608,15 @@ footer {
         
 
     /* Pre Requisites */
+
+        .pre-req {
+            display: block;
+        }
+        
+        .pre-req .section-title-container {
+            margin-left: 2rem;
+        } 
+        
         .profile-cards-container {
             margin: 2rem 8.5rem;
         }
