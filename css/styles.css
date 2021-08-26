@@ -1,13 +1,25 @@
 :root {
+    /* fonts */
+    --main-font: 'Lato', sans-serif; 
+    /* body background */
     --bg-gradient: linear-gradient(to right top, #ffd9c3, #fed7c0,
     #fcd4bd, #fbd2ba, #f9cfb7);  
+    /* text colors */
     --main-text-clr: rgb(64,46,50);
     --h1-clr: rgb(47,11,56);
     --section-title-clr: rgb(82,62,104);
+    --text-links-clr: rgb(78, 30, 90);
+    --text-links-underline-clr: rgb(171,133,180);
+    --light-text-clr: rgb(245, 226, 226); 
+    /* button colors */
     --arrow-icons-clr: rgb(110, 93, 128); 
-    --text-links-clr: rgb(78, 30, 90); 
-    --main-font: 'Lato', sans-serif; 
+    
 }
+
+/* .dark-mode {
+    --bg-gradient: #2F4858;
+    --main-text-clr: rgb(241, 220, 220);
+} */
 
 html, body {
     scroll-behavior: smooth;
@@ -125,10 +137,10 @@ section {
     opacity: 0;
 }
 
-.text-container a {
+ .text-container a, .cert-title {
     color: var(--text-links-clr);
     text-decoration: underline;
-    text-decoration-color: #AB85B4;
+    text-decoration-color: var(--text-links-underline-clr);
     text-decoration-thickness: 0.125rem;
     text-underline-offset: 1.2px;
 }
@@ -1183,27 +1195,33 @@ section.projects {
 
 /* Footer */
 
-/* footer {
-    
-} */
+footer {
+    background-image: linear-gradient(to bottom, #3b4764, #38435f, #354059, #323c54, #2f394f);
+    color: var(--light-text-clr);
+}
 
 .contact-details {
     font-family: var(--main-font);
-    padding: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.15rem;
+    padding: 2rem;
     font-size: 1.5rem;
     justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed var(--arrow-icons-clr);
 }
 
 .contact-details button {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: rgb(241, 220, 220);
-    height: 4rem;
-    width: 4rem;
-    border-radius: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 3.5rem;
     background-color: var(--arrow-icons-clr);
     border: transparent;
     transition: opacity 400ms ease-in;
-    margin: 0 0.5rem;
+    margin: 0 0.2rem;
+    cursor: pointer;
 }
 
 .contact-details button:hover {
@@ -1212,9 +1230,21 @@ section.projects {
 
 .credits {
     font-family: var(--main-font);
-    padding: 1rem;
+    font-weight: 100;
+    padding: 1rem 2rem;   
+    text-align: justify;    
 }
 
+.credit-links-container, .credits p {
+    display: inline;
+}
+
+.credits a {
+    text-decoration: underline;
+    text-decoration-color: var(--text-links-underline-clr);
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 1.2px;
+}
 
 
 /* media query for desktop / laptop */
@@ -1603,60 +1633,42 @@ section.projects {
                 transition: visibility 300s linear 300ms, opacity 300ms ease-in, transform 1s;
             }
 
-            .profile-info p:nth-child(2) {
+        .profile-info p:nth-child(2) {
                 transition-delay: 300ms;
             }
 
-            .profile-info p:nth-child(3) {
+        .profile-info p:nth-child(3) {
                 transition-delay: 300ms;
             }
 
-            .profile-info p:nth-child(4) {
+        .profile-info p:nth-child(4) {
                 transition-delay: 200ms;
             }
 
-            .profile-info p:nth-child(5) {
+        .profile-info p:nth-child(5) {
                 transition-delay: 100ms;
             }
 
-            .profile:hover p:nth-child(2), .profile:hover p:nth-child(3), .profile:hover p:nth-child(4), .profile:hover p:nth-child(5) {
+        .profile:hover p:nth-child(2), .profile:hover p:nth-child(3), .profile:hover p:nth-child(4), .profile:hover p:nth-child(5) {
                 visibility: visible;
                 opacity: 1;
                 transform: translateY(0); 
             }
+
+        /* Footer */
+
+        .credit-links-container a {
+            margin-right: 0.5rem;
+        }
+
 }
 
 @media only screen and (min-width: 750px) and (max-width: 1024px) {
+
     .music-player {
         width: 60%;
-    }
+    }    
 }
-    
-  /* Test for css variables */
-    /* :root {
-    --bg-color: white;
-    --text-color: blueviolet;
-    --btn-text: red;
-    }
-
-    body {    
-      background-color: var(--bg-color);
-      color:var(--text-color);
-    }
-
-    button a {
-        color: var(--btn-text);
-    }
-
-    button.dark-mode {
-        color:var(--btn-text)
-    }
-
-  /* for js */
-  /* .dark-mode {
-      --bg-color: #243138;
-      --text-color: rgb(136, 111, 111);
-  } */ 
                 
 
 
