@@ -168,7 +168,7 @@ section {
 /* Vectors */
 
 .vector-container {
-    width: 28rem;
+    max-width: 100vw;
 }
 
 .vector-container img {
@@ -1103,7 +1103,6 @@ section.projects {
 .profile-cards-container {
     margin: 2rem 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(23rem, 30rem));
     justify-content: center;
     gap: 1.2rem; 
 }
@@ -1620,7 +1619,8 @@ footer {
         } 
         
         .profile-cards-container {
-            margin: 2rem 8.5rem;
+            margin: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(23rem, 30rem));
         }
 
         .profile-info {
