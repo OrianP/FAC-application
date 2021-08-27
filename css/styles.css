@@ -456,7 +456,7 @@ section.projects {
     height: 30rem;
     width: 23rem;
     overflow: hidden;
-    background-color: #fff;
+    background-color: rgb(255,255,255);
     text-align: center;
     border-radius: 1rem;
     
@@ -475,7 +475,7 @@ section.projects {
     box-shadow: var(--box-shadow);
     border-radius: 5rem;
     font-size: 1rem;
-    color: #fff;
+    color: rgb(255,255,255);
 }
 
 .projects span > i {
@@ -556,7 +556,7 @@ section.projects {
 }
 
 .project-title {
-    color: #fff;
+    color: rgb(255,255,255);
     font-size: 3rem;
     text-shadow: -1px 3px 7px rgba(0, 0, 0, 0.5);
     transition: opacity 500ms ease;
@@ -630,7 +630,7 @@ section.projects {
     /* padding: 0.5rem; */
     font-family: inherit;
     font-size: 1.0625rem;
-    color: #fff;
+    color: rgb(255,255,255);
     text-shadow: -1px 3px 7px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
@@ -719,7 +719,7 @@ section.projects {
 .music-player {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: rgb(255,255,255);
     margin: 1rem;
     border-radius: 1rem;
     width: 80%;
@@ -749,7 +749,7 @@ section.projects {
 }
 
 .music-container {
-    background-color: #fff;
+    background-color: rgb(255,255,255);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -808,7 +808,7 @@ section.projects {
 }
 
 .action-btn {
-    background-color: #fff;
+    background-color: rgb(255,255,255);
     border: 0;
     color: rgb(223,219,223);
     font-size: 1.25rem;
@@ -1123,7 +1123,8 @@ section.projects {
     position: relative;
     overflow: hidden;  
     box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
-    border-radius: 20px;    
+    border-radius: 20px; 
+    cursor: pointer;   
 }
 
 .profile-info {
@@ -1150,14 +1151,12 @@ section.projects {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff; 
+    background-color: rgb(255,255,255); 
     z-index: 10;   
 }
 
 .logo-container img {
     max-width: 100%;
-    border-radius: 5px;
-    background-color: #fff;
     box-shadow: 0px 5px 15px 5px rgba(59, 59, 59, 0.35);
     transition: all 400ms ease-in-out;
     z-index: 10;
