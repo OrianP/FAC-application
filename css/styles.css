@@ -188,13 +188,11 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;   
-    background-color: white;
+    background-color: rgb(198, 212, 252);
     position: fixed;
     top: 0;
     left: 0; 
     transition: transform 1s ease-out;
-    /* UNCOMMENT THIS to see intro */
-    display: none;
 }
 
 .intro-content {

@@ -81,11 +81,3 @@ A non-exhaustive list of new information learned and 'ah-ha!':point_up: moments 
 and many more...
 
 **Thank you for considering my application! :bouquet:** 
-
-
-
-
-
-
-
-

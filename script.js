@@ -1,30 +1,33 @@
 // Intro //
 
 // intro section 
-// const intro = document.querySelector('.intro');
-// const introContent = document.querySelector('.intro-content');
-// console.log({introContent});
+const intro = document.querySelector('.intro');
+const introContent = document.querySelector('.intro-content');
+const nav = document.querySelector('header');
+console.log(nav);
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     // hide scroll bar on body
-//     document.body.style.overflowY = 'hidden';
-//     // fade intro content in
-//     introContent.classList.add('fade-in');
+document.addEventListener('DOMContentLoaded', () => {
+    // hide scroll bar on body
+    document.body.style.overflowY = 'hidden';
+    nav.style.position = 'static';
+    // fade intro content in
+    introContent.classList.add('fade-in');
 
-//     // fade and transition the intro content up
-//     setTimeout(() => { 
-//             introContent.classList.add('fade-out', 'translate-up') 
-//     }, 10900);
+    // fade and transition the intro content up
+    setTimeout(() => { 
+            introContent.classList.add('fade-out', 'translate-up') 
+    }, 10900);
 
-//     // fade and transition the intro div up
-//     setTimeout(() => {
-//         intro.classList.add('translate-up');
-//         // show scroll bar on main site 
-//         document.body.style.overflowY = 'visible';
-//     }, 11080);
-// })
+    // fade and transition the intro div up
+    setTimeout(() => {
+        intro.classList.add('translate-up');
+        // show scroll bar on main site 
+        document.body.style.overflowY = 'visible';
+        nav.style.removeProperty('position');
+    }, 11080);
+})
 
-// Intro //
+// typewriter effect 
 const phrases = ['Hello Founders and Coders', 'My name is Orian'];
 let phraseIndex = 0;
 let letterIndex = 0;
@@ -71,8 +74,6 @@ let typeSpeed = 150;
         // pause before typing next phrase
         typeSpeed = 800   
     }
-    // console.log(typeSpeed);
-    // console.log(setTimeout.id);
     setTimeout(typeEffect, typeSpeed); 
 }());
 
@@ -197,10 +198,6 @@ btnNext.addEventListener('click', () => {
     if (currentCardIndex < lastCardIndex) {
         currentCardIndex++;
         transitionCard(currentCardIndex, cardWidth);
-        
-        console.log(cardsContainer.style.transform);
-        console.log({currentCardIndex});
-        console.log({lastCardIndex})
     }
 })
 
@@ -209,10 +206,6 @@ btnPrev.addEventListener('click', () => {
     if (currentCardIndex > 0) {
         currentCardIndex--;
         transitionCard(currentCardIndex, cardWidth);
-
-        console.log(cardsContainer.style.transform);
-        console.log({currentCardIndex});
-        console.log({lastCardIndex})
     }
 })
 
@@ -223,9 +216,6 @@ cardsContainer.addEventListener('transitionend', () => {
         cardsContainer.classList.remove('card-transition');
         currentCardIndex = lastCardIndex - 1;
         cardsContainer.style.transform = `translateX(-${currentCardIndex * cardWidth}px)`;
-        
-        console.log({lastCardIndex, currentCardIndex}); 
-        console.log(cardsContainer.style.transform);
 }
 
     if(currentCardIndex === lastCardIndex) {
@@ -233,9 +223,6 @@ cardsContainer.addEventListener('transitionend', () => {
         cardsContainer.classList.remove('card-transition');
         currentCardIndex = 1;
         cardsContainer.style.transform = `translateX(-${currentCardIndex * cardWidth}px)`;
-
-        console.log({lastCardIndex, currentCardIndex}); 
-        console.log(cardsContainer.style.transform);
 }
 })
 
@@ -277,13 +264,6 @@ const handleDesktopScreen = (e) => {
         // update lastCardIndex to transition correctly:
         // displaying 3 cards at a time with 2 sets of real cards and 1 set of clones on either side to create the infinite slider effect 
         lastCardIndex = 3; 
-        
-        console.log('desktop');
-        console.log({lastCardIndex}); 
-        console.log({currentCardIndex});
-        console.log({cardWidth});
-        console.log(cardsContainer.style.transform);
-        console.log(cardsContainer.children);
 
         // project cards buttons
         // select btns and links from real cards and clones
@@ -314,13 +294,7 @@ const handleDesktopScreen = (e) => {
         cardsContainer.appendChild(firstCardClone);
         // index of last clone card after clones have been inserted
         lastCardIndex = cardsContainer.children.length - 1; // expected: 7
-        console.log('mobile');
-        console.log({lastCardIndex}); 
-        console.log({currentCardIndex});
-        console.log({cardWidth});
-        console.log(cardsContainer.style.transform);
-        console.log(cardsContainer.children);
-
+        
         // project cards buttons
         // select btns and links from real cards and clones
         cardBtns = document.querySelectorAll('.live-btn, .code-btn');
@@ -437,10 +411,6 @@ function changeTheme (el, arr) {
     if (songIndex === 0) {
         el.classList.remove(`${arr[lastSongIndex]}`) 
     };
-    // console.log(songIndex);
-    // console.log(prevIndex);
-    // console.log(nextIndex);
-    // console.log(el.className);
 };
         
 function updateProgress (e) {
@@ -485,7 +455,6 @@ audio.addEventListener('ended', nextSong);
 const openModalBtns = document.querySelectorAll('[aria-controls]');
 const closeModalBtns = document.querySelectorAll('.modal-close-btn');
 const modals = document.querySelectorAll('.modal');
-console.log(modals);
 
 // event listeners
 // create targetModal variable based on the string returned from 'aria-controls' attribute set on buttons
