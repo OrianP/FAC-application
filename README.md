@@ -32,17 +32,31 @@ I drew on many online resources during the process of building this site, both f
 A brief summary of the features I find more complex: 
 * **Projects slider:** the slider is achieved by using the CSS property `transform: translateX()` to move the cards on the x axis when the slider controls are clicked. The 'infinite' effect is achieved by cloning the project cards. On mobile, the first and last cards are cloned and inserted at the beginning (last card clone) and end (first card clone) of the cards container. The cards are contained within a viewport which is a fixed width and has it's `overflow` property set to hidden. Only the card that is currently aligned with the viewport is visibile to the user. When the user clicks on the slider navigation buttons, a `transitionCard` function is triggered which applies a transition class and shifts the element on the x axis. After the user navigates beyond the last real card to the clone of the first card or before the real first card to the clone of the last card, a `transitionend` event listener fires. It removes the transition class and updates the x axis position of the card based on the card index * card width. This way the user sees the clone briefly before 'jumping' to the real card. With the viewport hiding the other cards the result is a seemingly infinite, smooth transition from the last card to the first card and vice versa. 
 
-* **Music Player:** The song titles are stored as strings in an array. The correlating image and audio files are named exactly as the strings in the array. A function called `loadSong` updates the song title text content and artwork and audio sources based on the song title via a template literal that contains the relative file path. Each song has a correlating background color, progress bar color and box shadow. These are also stored in arrays and their indices are the same as their correlating song, which is what allows the `changeTheme` function to update the correct theme based on the song index. These styles are applied and changed by adding and removing CSS classes. The music player play/pause button functionality is controlled by an `isPlaying` flag whose boolean value is the result of checking whether the music player contains the class 'play'. The 'play' class is added in the `playSong` function when the 'play' button is clicked. If the element contains the 'play' class, then the song is paused. Else, the song resumes playing. The progress bar is set and updated using the `timeupdate` event listener and `duration` property for HTML5 audio and video elements. If the user listens to a song through to the end, the `ended` event listener triggers a function to play the next song (same as the 'next' button does).   
+* **Music Player:** The song titles are stored as strings in an array. The correlating image and audio files are named exactly as the strings in the array. A function called `loadSong` updates the song title text content and artwork and audio sources based on the song title via a template literal that contains the relative file path. Each song has a correlating background color, progress bar color and box shadow. These are also stored in arrays and their indices are the same as their correlating song, which is what allows the `changeTheme` function to update the correct theme based on the song index. These styles are applied and changed by adding and removing CSS classes. The music player play/pause button functionality is controlled by an `isPlaying` flag whose boolean value is the result of checking whether the music player contains the class 'play'. The 'play' class is added in the `playSong` function when the 'play' button is clicked. If the element contains the 'play' class, then the song is paused. Else, the song resumes playing. The progress bar is set and updated using the `timeupdate` event listener and `duration` property for HTML5 audio and video elements. If the user listens to a song through to the end, the `ended` event listener triggers a function to play the next song (same as the 'next' button does). 
+
+## What could be improved
+* Accessibility: although I kept this in mind whilst developing, some features fall short when it comes to accessibility. One example is that in the coding journey timeline, each entry contains a list which contains `<span>` elements and `<a>` tags. This has been flagged as an issue in the Lighthouse report as lists should only contain `<li>`, `<script>` or `<template>` elements.
+* Projects section: 
+    * Currently it is not responsive as the viewport element width is fixed to one width on mobile, and another on desktop - this is part of how the infinite slider functionality works, as it shifts the cards by the their width on the x axis. It is currently too wide for some mobile screens. 
+    * Although I set negative `tabIndex` on clone cards so that users don't have to tab through the same information twice, tabbing for sighted users in this section is still quite a hot mess!
+
+* Design: If I were to start again from scratch, I would try designing the site first on Figma or similar tool and then building it. I was designing as I went along and that made the developing process slower and more difficult as I would find myself distracted by design decisions.
+
+* Features to add: 
+    * Light/dark mode with a toggle button - I want to learn how to create a toggle button look in CSS.
+    * Custom cursor that changes when hovered on certain elements.
+    * Touch screen functionality for mobile with touch event listeners.
+    * Random personal fact generator - I thought it might be a fun way to share some facts about me while learning more about `Math.random`. 
 
 ## Learnings 
-Some of the new information learned and 'ah-ha!' :point_up: moments I had while building this site: 
+A non-exhaustive list of new information learned and 'ah-ha!':point_up: moments I had while building this site: 
 
 1. **General JavaScript:** 
 * How to create deep node clones with `cloneNode(true)`
 * I tried to append multiple clones with `appendChild()` and learned that this method can only append one child at a time (It's kind of in the name I guess!), but `append()` can append multiple elements! 
 * Setting a CSS variable dynamically through JavaScript: I needed to get an element's `clientHeight` property dynamically and set that value as a CSS variable using `setProperty()`. In the end I discarded this code but it was good to learn how to do it!
 * Using a flag variable that is set to a Boolean value to control which code blocks should be triggered. 
- 
+* Selecting an element via it's correlating button's `[aria-controls]` attribute. 
 
 2. **JavaScript Media Queries:**
 * How to use the value (Boolean) of the `matches` property of the `MediaQueryList` Object returned by the `matchMedia()` method as a condition for the execution of code.
@@ -55,8 +69,18 @@ Some of the new information learned and 'ah-ha!' :point_up: moments I had while 
 * `Calc()` function: although I eventually discarded this in my code it was a great revelation that CSS has this functionality! 
 * `mix-blend-mode` property that defines how element colors should be blended with the backdrop.
 * How to create mailto and telephone anchor links.
-* How to use CSS focus states to improve tabbing through site. 
+* How to use CSS focus states to improve tabbing through site.
+* How to use Pseudo-elements for design purposes.  
 
+4. **HTML**
+* HTML5 DOM has methods, properties and events for video and audio elements.
+* Using the `tabindex` attribute to set or remove focus from an element.
+* Semantic use of headings and sections. Appropriate use of divs.   
+* Ordering the document flow in such a way that focus moves correctly from one focusable element to the next. 
+
+and many more...
+
+**Thank you for considering my application! :bouquet:** 
 
 
 
