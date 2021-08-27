@@ -188,9 +188,6 @@ let lastCardIndex;
 let cardBtns;
 let cardLinks;
 
-// set CSS variable for the tag-container-height dynamically to use in calc function (see CSS line 228)
-projects.style.setProperty('--tag-container-height', `${tagContainer.clientHeight}px`);
-
 // set initial cardsContainer position to show the real first card (not the clone) which is now at index 1
 // cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
 
@@ -450,7 +447,6 @@ function updateProgress (e) {
     const {duration, currentTime} = e.srcElement;
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
-
 }
 
 function setProgress (e) {
