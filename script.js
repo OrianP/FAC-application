@@ -4,11 +4,11 @@
 const intro = document.querySelector('.intro');
 const introContent = document.querySelector('.intro-content');
 const nav = document.querySelector('header');
-console.log(nav);
 
 document.addEventListener('DOMContentLoaded', () => {
     // hide scroll bar on body
     document.body.style.overflowY = 'hidden';
+    // hide nav
     nav.style.position = 'static';
     // fade intro content in
     introContent.classList.add('fade-in');
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         intro.classList.add('translate-up');
         // show scroll bar on main site 
         document.body.style.overflowY = 'visible';
+        // remove the inline 'static' position style to show nav
         nav.style.removeProperty('position');
     }, 11080);
 })
@@ -37,14 +38,14 @@ let isDeleting = false;
 // initial typing speed used as the setTimeout delay parameter 
 let typeSpeed = 150;
 
-// Immediately invoked function
+// Immediately invoked function expression
 (function typeEffect () {
     currentPhrase = phrases[phraseIndex];
     // Check if we are on the last phrase in the array and keep it displayed on screen instead of deleting
     if (phraseIndex === phrases.length - 1) {
-        isDeleting = false;
-    }
-
+        isDeleting = false;    
+    } 
+    
     if (isDeleting) {
     // remove character at faster typing speed
         typeSpeed = 100
@@ -74,7 +75,13 @@ let typeSpeed = 150;
         // pause before typing next phrase
         typeSpeed = 800   
     }
-    setTimeout(typeEffect, typeSpeed); 
+
+    const id = setTimeout(typeEffect, typeSpeed); 
+
+    // base case to check if the last phrase has been fully typed out
+    if (letter === phrases[phrases.length -1]) {
+        clearTimeout(id);
+    }    
 }());
 
 // Navigation //
@@ -83,7 +90,7 @@ let typeSpeed = 150;
 const hamburger = document.querySelector('.hamburger');
 
 // the menu is expanded by default for progressive enhancement (if JS is disabled in the user's browser)
-// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 106)
+// if JS is enabled in the browser, add the classlist 'js-enabled' to the document body to hide the menu items (see css line 264)
 document.body.classList.remove('js-disabled');
 document.body.classList.add('js-enabled');
 
@@ -115,8 +122,6 @@ function toggleAriaExpanded(el) {
         el.setAttribute('aria-expanded', true);
     } 
 }
-
-
 
 
 // Site Wide Text Content //
@@ -165,7 +170,8 @@ function toggleText (pNodes) {
 
 // Projects //
 
-const tagContainer = document.querySelector('.tag-container');
+// Don't need the tag container anymore  
+// const tagContainer = document.querySelector('.tag-container');
 const projects = document.querySelector('.projects');
 const btnNext = document.querySelector('.next-btn');
 const btnPrev = document.querySelector('.prev-btn');
@@ -182,10 +188,10 @@ desktopClones.forEach(clone => {
     const tabElements = clone.querySelectorAll('a, button');
     tabElements.forEach(el => el.setAttribute('tabindex', '-1'))
 })
-
-let currentCardIndex = 1;
+// index set to 1 showing the first real card on mobile and the second set of cards on desktop
+let currentCardIndex = 1; 
 let cardWidth = cards[0].clientWidth;
-let lastCardIndex;
+let lastCardIndex; // defined in media query
 let cardBtns;
 let cardLinks;
 
@@ -257,12 +263,13 @@ const handleDesktopScreen = (e) => {
         }
         // total width to disply three cards with 2rem left and right margins
         cardWidth = ((cards[0].clientWidth + 64) * 3);
-        // set translate position to first three real cards
+        // set translate position to second set of three real cards
         cardsContainer.style.transform = `translateX(-${cardWidth}px)`;
         // spread desktop clones array and append to the cardsContainer 
         cardsContainer.append(...desktopClones);
         // update lastCardIndex to transition correctly:
-        // displaying 3 cards at a time with 2 sets of real cards and 1 set of clones on either side to create the infinite slider effect 
+        // displaying 3 cards at a time with 2 sets of real cards and 2 sets of clones
+        // essentially grouping each three cards into one index
         lastCardIndex = 3; 
 
         // project cards buttons
@@ -342,7 +349,7 @@ const boxShadow = ['pink-shadow', 'blue-shadow', 'green-shadow', 'red-shadow'];
 let songIndex = 0;
 let lastSongIndex = songs.length - 1;
 
-// load song info to DOM
+// load first song info to DOM
 loadSong(songs[songIndex]);
 
 // load and update song title and media
@@ -355,7 +362,10 @@ function loadSong(song) {
 
 // functions for play and pause btns
 function playSong() {
+    // add a class 'play' to be used in the isPlaying flag variable in the play btn event listener
+    // translate the music info (child of music container) up to reveal square artwork
     musicContainer.classList.add("play");
+    // translate the whole music player down for an overall opening effect
     musicPlayer.classList.add("play");
     musicSection.classList.add(`${bgColor[songIndex]}`);
     musicContainer.classList.add(`${boxShadow[songIndex]}`);
@@ -424,6 +434,9 @@ function setProgress (e) {
     const clickX = e.offsetX;
     const duration = audio.duration;
     audio.currentTime = (clickX / width) * duration;
+
+    console.log({width, clickX, duration})
+    console.log(audio.currentTime);
 }
 
 // Event Listeners 

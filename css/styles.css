@@ -12,8 +12,7 @@
     --text-links-underline-clr: rgb(171,133,180);
     --light-text-clr: rgb(245, 226, 226); 
     /* button colors */
-    --arrow-icons-clr: rgb(110, 93, 128); 
-    
+    --arrow-icons-clr: rgb(110, 93, 128);     
 }
 
 /* .dark-mode {
@@ -193,6 +192,7 @@ section {
     top: 0;
     left: 0; 
     transition: transform 1s ease-out;
+    /* display: none; */
 }
 
 .intro-content {
@@ -262,7 +262,6 @@ nav {
 
  /* hide menu when js is enabled, but keep in flow  */
 .js-enabled .menu {
-    /* display: none; */
     visibility: hidden;
     opacity: 0;
     transform: translateY(-80%);
@@ -317,7 +316,6 @@ nav {
 .hamburger[aria-expanded ="true"] {
     background-color: rgb(252, 212, 189);
 }
-
 
 .hamburger[aria-expanded ="true"] .fa-bars {
     display: none;
@@ -1693,8 +1691,3 @@ footer {
         width: 60%;
     }    
 }
-                
-
-
-
-
