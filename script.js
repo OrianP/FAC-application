@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // typewriter effect 
-const phrases = ['Hello Founders and Coders', 'My name is Orian'];
+const phrases = ['Hello Agile Collective', 'My name is Orian'];
 let phraseIndex = 0;
 let letterIndex = 0;
 let currentPhrase = '';
